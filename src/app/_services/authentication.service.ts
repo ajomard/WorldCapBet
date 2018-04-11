@@ -1,14 +1,18 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
+
 @Injectable()
 export class AuthenticationService {
+    apiUrl = environment.apiUrl;
     constructor(private http: HttpClient) { }
 
     login(username: string, password: string) {
-        return this.http.post<any>('/api/authenticate', { username: username, password: password })
+        return this.http.post<any>(this.apiUrl + '/Users/authenticate', { username: username, password: password })
             .map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
