@@ -11,6 +11,7 @@ import { AlertService, UserService } from '../_services/index';
 export class RegisterComponent {
     model: any = {};
     loading = false;
+    passwordverification: "";
 
     constructor(
         private router: Router,
