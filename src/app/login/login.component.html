@@ -1,6 +1,5 @@
 <div class="row justify-content-center">
   <div class="col-4">
-    <alert></alert>
     <h2>Login</h2>
     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
         <div class="form-group">
@@ -19,4 +18,5 @@
             <a [routerLink]="['/register']" class="btn btn-link">Register</a>
         </div>
     </form>
+  </div>
 </div>
