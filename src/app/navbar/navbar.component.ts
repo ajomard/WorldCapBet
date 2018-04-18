@@ -9,9 +9,9 @@ import { AuthenticationService } from '../_services/index';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  
 
-  constructor(private authenticationService: AuthenticationService) {
+
+  constructor(public authenticationService: AuthenticationService) {
 
   }
 
