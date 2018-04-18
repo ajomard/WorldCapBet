@@ -12,7 +12,7 @@
         <a class="nav-link" href="#">Matches</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Results</a>
+        <a class="nav-link" [routerLink]="['/results']">Results</a>
       </li>
     </ul>
   </div>
@@ -21,6 +21,6 @@
     <span  class="navbar-text">
       {{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}
     </span>
-    <a class="nav-item nav-link" href="/login">Logout</a>
+    <a class="nav-item nav-link" [routerLink]="['/login']">Logout</a>
   </div>
 </nav>
