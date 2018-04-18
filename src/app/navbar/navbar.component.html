@@ -17,8 +17,10 @@
     </ul>
   </div>
 
-  <div class="navbar-nav">
-    <span *ngIf="authenticationService.getLoggedUser()" class="navbar-text">{{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}</span>
+  <div *ngIf="authenticationService.getLoggedUser()" class="navbar-nav">
+    <span  class="navbar-text">
+      {{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}
+    </span>
     <a class="nav-item nav-link" href="/login">Logout</a>
   </div>
 </nav>

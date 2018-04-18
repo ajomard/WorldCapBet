@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
@@ -23,7 +24,8 @@ import { NavbarComponent } from './navbar/navbar.component';
         FormsModule,
         HttpClientModule,
         routing,
-        NgbModule.forRoot()
+        NgbModule.forRoot(),
+        NgxSpinnerModule
     ],
     declarations: [
         AppComponent,
