@@ -11,6 +11,7 @@ import { AlertService, UserService } from '../_services/index';
 export class RegisterComponent {
     model: any = {};
     loading = false;
+    passwordverification: "";
 
     constructor(
         private router: Router,
@@ -26,7 +27,7 @@ export class RegisterComponent {
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error(error.error);
                     this.loading = false;
                 });
     }

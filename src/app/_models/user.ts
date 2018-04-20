@@ -5,4 +5,6 @@
     firstName: string;
     lastName: string;
     email: string;
+    score: number;
+    rank: number;
 }
