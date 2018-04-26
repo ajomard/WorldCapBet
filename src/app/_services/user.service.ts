@@ -2,6 +2,8 @@
 import { HttpClient } from '@angular/common/http';
 
 import { User } from '../_models/index';
+import { Pronostic } from '../_models/index';
+import { Matches } from '../_models/index';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -14,7 +16,7 @@ export class UserService {
     }
 
     getById(id: number) {
-        return this.http.get(this.apiUrl + '/Users/' + id);
+        return this.http.get<User>(this.apiUrl + '/Users/' + id);
     }
 
     create(user: User) {
@@ -27,5 +29,13 @@ export class UserService {
 
     delete(id: number) {
         return this.http.delete(this.apiUrl + '/Users/' + id);
+    }
+
+    getAllMatchesAndPronostics(id: number) {
+      return this.http.get<Matches[]>(this.apiUrl + '/Users/' + id +'/AllMatchAndPronostic');
+    }
+
+    getPronostics(id: number) {
+        return this.http.get<Pronostic[]>(this.apiUrl + '/Users/' + id +'/pronostics');
     }
 }

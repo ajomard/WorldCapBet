@@ -1,3 +1,5 @@
+import { Pronostic } from '../_models/index';
+
 export class Matches {
   id: number;
   team1: string;
@@ -5,4 +7,5 @@ export class Matches {
   scoreTeam1: number;
   scoreTeam2: number;
   date: Date;
+  pronostic:Pronostic;
 }

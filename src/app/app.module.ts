@@ -12,7 +12,7 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService, MatchesService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, MatchesService, PronosticService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -49,6 +49,7 @@ import { BetComponent } from './bet/bet.component';
         AlertService,
         AuthenticationService,
         MatchesService,
+        PronosticService,
         UserService,
         {
             provide: HTTP_INTERCEPTORS,
