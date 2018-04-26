@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/index';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
+import { BetComponent } from './bet/bet.component';
 
 @NgModule({
     imports: [
@@ -37,7 +38,11 @@ import { MatchesComponent } from './matches/matches.component';
         NavbarComponent,
         RegisterComponent,
         ResultsComponent,
-        MatchesComponent
+        MatchesComponent,
+        BetComponent
+    ],
+    entryComponents: [
+      BetComponent
     ],
     providers: [
         AuthGuard,
