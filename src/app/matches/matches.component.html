@@ -1,0 +1,7 @@
+<h2>Matches</h2>
+
+<ul>
+  <li *ngFor="let matche of matches" (click)="onSelect(match)">
+    <span class="badge">{{matche.team1}} {{matche.team2}}</span> {{matche.scoreTeam1}} {{matche.scoreTeam2}}
+  </li>
+</ul>

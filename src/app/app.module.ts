@@ -12,12 +12,13 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, MatchesService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ResultsComponent } from './results/results.component';
+import { MatchesComponent } from './matches/matches.component';
 
 @NgModule({
     imports: [
@@ -35,12 +36,14 @@ import { ResultsComponent } from './results/results.component';
         LoginComponent,
         NavbarComponent,
         RegisterComponent,
-        ResultsComponent
+        ResultsComponent,
+        MatchesComponent
     ],
     providers: [
         AuthGuard,
         AlertService,
         AuthenticationService,
+        MatchesService,
         UserService,
         {
             provide: HTTP_INTERCEPTORS,
