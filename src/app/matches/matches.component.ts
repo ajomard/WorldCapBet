@@ -17,8 +17,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class MatchesComponent implements OnInit {
   matches:Matches[];
-  pronostics:Pronostic[];
-  test = {};
+  //pronostics:Pronostic[];
+
   constructor(private matchesService: MatchesService,
     private modalService: NgbModal,
     public authenticationService: AuthenticationService,
@@ -30,13 +30,16 @@ export class MatchesComponent implements OnInit {
 
   getAllMatchesAndPronostics() {
     let userid = this.authenticationService.getLoggedUser().id;
-    this.userService.getAllMatchesAndPronostics(userid).subscribe(matches => this.matches = matches);
+    this.userService.getAllMatchesAndPronostics(userid).subscribe(matches => {
+      this.matches = matches
+      this.sortByDate();
+    });
   }
 
-  getPronostics() {
+  /*getPronostics() {
     let userid = this.authenticationService.getLoggedUser().id;
     this.userService.getPronostics(userid).subscribe(pronostics => this.pronostics = pronostics);
-  }
+  }*/
 
   openBetModal(match:Matches) {
     const modal = this.modalService.open(BetComponent, { centered: true });
@@ -46,6 +49,12 @@ export class MatchesComponent implements OnInit {
 
   isMatchAlreadyPlayed(match:Matches): boolean {
     return moment(match.date) <= moment();
+  }
+
+  sortByDate(): void {
+    this.matches.sort((a: Matches, b: Matches) => {
+        return moment(a.date).valueOf() - moment(a.date).valueOf();
+    })
   }
 
 }
