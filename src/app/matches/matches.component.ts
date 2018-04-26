@@ -6,6 +6,7 @@ import { Matches } from '../_models/index';
 import { User } from '../_models/index';
 import { Pronostic } from '../_models/index';
 import { BetComponent } from '../bet/bet.component';
+import { AlertService } from '../_services/index';
 import * as moment from 'moment';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -22,7 +23,8 @@ export class MatchesComponent implements OnInit {
   constructor(private matchesService: MatchesService,
     private modalService: NgbModal,
     public authenticationService: AuthenticationService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private alertService: AlertService) { }
 
   ngOnInit() {
     this.getAllMatchesAndPronostics();
@@ -52,9 +54,20 @@ export class MatchesComponent implements OnInit {
   }
 
   sortByDate(): void {
-    this.matches.sort((a: Matches, b: Matches) => {
-        return moment(a.date).valueOf() - moment(a.date).valueOf();
+    this.matches = this.matches.sort((a: Matches, b: Matches) => {
+        return moment(a.date).valueOf() - moment(b.date).valueOf();
     })
+  }
+
+  delete(match:Matches) {
+    this.matchesService.delete(match).subscribe(
+        data => {
+
+            this.alertService.success('Match Deleted');
+        },
+        error => {
+            this.alertService.error(error.error);
+        });;
   }
 
 }

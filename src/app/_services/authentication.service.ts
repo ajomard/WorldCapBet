@@ -34,4 +34,8 @@ export class AuthenticationService {
     getLoggedUser() {
         return JSON.parse(localStorage.getItem('currentUser'));
     }
+
+    isAdmin() {
+      return this.getLoggedUser().username == 'akubler';
+    }
 }

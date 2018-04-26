@@ -18,6 +18,7 @@
       <td>{{match.pronostic.scoreTeam1}} - {{match.pronostic.scoreTeam2}}</td>
       <td>
         <button class="btn" (click)="openBetModal(match)" [disabled]="isMatchAlreadyPlayed(match)">Bet</button>
+        <button class="btn" *ngIf="authenticationService.isAdmin()" (click)="delete(match)">Anti Filou</button>
       </td>
     </tr>
   </tbody>

@@ -13,7 +13,8 @@ export class MatchesService {
         return this.http.get<Matches[]>(this.apiUrl + '/Matches');
     }
 
-    getNotStarted() {
-      
+    delete(match:Matches) {
+      return this.http.delete(this.apiUrl + '/Matches/' + match.id);
     }
+
 }
