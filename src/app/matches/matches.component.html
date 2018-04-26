@@ -6,7 +6,8 @@
       <th scope="col">Date</th>
       <th scope="col">Team 1</th>
       <th scope="col">Team 2</th>
-      <th scope="col">Bet</th>
+      <th scope="col">Pronostic</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
       <td>{{match.date | date:'dd/MM/yyyy HH:mm'}}</td>
       <td>{{match.team1}}</td>
       <td>{{match.team2}}</td>
+      <td>{{match.pronostic.scoreTeam1}} - {{match.pronostic.scoreTeam2}}</td>
       <td>
         <button class="btn" (click)="openBetModal(match)">Bet</button>
       </td>
