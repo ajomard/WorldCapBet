@@ -17,7 +17,7 @@
       <td>{{match.team2}}</td>
       <td>{{match.pronostic.scoreTeam1}} - {{match.pronostic.scoreTeam2}}</td>
       <td>
-        <button class="btn" (click)="openBetModal(match)">Bet</button>
+        <button class="btn" (click)="openBetModal(match)" [disabled]="isMatchAlreadyPlayed(match)">Bet</button>
       </td>
     </tr>
   </tbody>

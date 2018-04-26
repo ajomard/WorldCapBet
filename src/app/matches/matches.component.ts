@@ -6,6 +6,7 @@ import { Matches } from '../_models/index';
 import { User } from '../_models/index';
 import { Pronostic } from '../_models/index';
 import { BetComponent } from '../bet/bet.component';
+import * as moment from 'moment';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
@@ -41,8 +42,10 @@ export class MatchesComponent implements OnInit {
     const modal = this.modalService.open(BetComponent, { centered: true });
     modal.componentInstance.match = match;
     modal.componentInstance.pronosticTmp = Object.assign({}, match.pronostic);
+  }
 
-    //modal.componentInstance.createBet(match);
+  isMatchAlreadyPlayed(match:Matches): boolean {
+    return moment(match.date) <= moment();
   }
 
 }
