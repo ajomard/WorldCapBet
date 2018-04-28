@@ -1,4 +1,4 @@
-import {Component, Input, Inject} from '@angular/core';
+import {Component, Input, Inject, OnInit} from '@angular/core';
 
 import { Matches } from '../_models/index';
 import { Pronostic } from '../_models/index';
@@ -15,9 +15,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   templateUrl: './bet.component.html',
   styleUrls: ['./bet.component.css']
 })
-export class BetComponent {
+export class BetComponent implements OnInit {
   //@Input() match:Matches;
-//  pronosticTmp: Pronostic;
+  pronosticTmp: Pronostic;
 
   constructor(public authenticationService: AuthenticationService,
    private pronosticService: PronosticService,
@@ -26,16 +26,17 @@ export class BetComponent {
    @Inject(MAT_DIALOG_DATA) public data: Matches) { }
 
    ngOnInit() {
-     //this.pronosticTmp = Object.assign({}, this.data.pronostic);
+     this.pronosticTmp = Object.assign({}, this.data.pronostic);
    }
 
   saveBet() {
-    this.pronosticService.update(this.data.pronostic).subscribe(
+    this.pronosticService.update(this.pronosticTmp).subscribe(
         data => {
-          this.dialogRef.close(this.data.pronostic);
+          this.data.pronostic = this.pronosticTmp;
+          this.close();
         },
         error => {
-            close();
+          this.close();
         });
   }
 
