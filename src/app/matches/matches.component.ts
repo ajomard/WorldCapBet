@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatchesService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
 import { UserService } from '../_services/index';
@@ -9,6 +9,8 @@ import { BetComponent } from '../bet/bet.component';
 import { AlertService } from '../_services/index';
 import * as moment from 'moment';
 
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -17,8 +19,12 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./matches.component.css']
 })
 export class MatchesComponent implements OnInit {
-  matches:Matches[];
-  //pronostics:Pronostic[];
+  displayedColumns = ['date', 'team1', 'team2', 'pronostic', 'score', 'action'];
+  dataSource: MatTableDataSource<Matches>;
+  isLoadingResults = true;
+
+  //@ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private matchesService: MatchesService,
     private modalService: NgbModal,
@@ -26,15 +32,34 @@ export class MatchesComponent implements OnInit {
     private userService: UserService,
     private alertService: AlertService) { }
 
-  ngOnInit() {
-    this.getAllMatchesAndPronostics();
-  }
+    ngOnInit() {
+      this.getAllMatchesAndPronostics();
+    }
+
+      /**
+     * Set the paginator and sort after the view init since this component will
+     * be able to query its view for the initialized paginator and sort.
+     */
+    ngAfterViewInit() {
+      //this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
+
+    applyFilter(filterValue: string) {
+      filterValue = filterValue.trim(); // Remove whitespace
+      filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+      this.dataSource.filter = filterValue;
+    }
 
   getAllMatchesAndPronostics() {
     let userid = this.authenticationService.getLoggedUser().id;
     this.userService.getAllMatchesAndPronostics(userid).subscribe(matches => {
-      this.matches = matches
-      this.sortByDate();
+      //this.matches = matches
+      this.dataSource = new MatTableDataSource(matches);
+      //this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.isLoadingResults = false;
+      //this.sortByDate();
     });
   }
 
@@ -61,11 +86,11 @@ export class MatchesComponent implements OnInit {
     return match.scoreTeam1 != null && match.scoreTeam2 != null;
   }
 
-  sortByDate(): void {
+  /*sortByDate(): void {
     this.matches = this.matches.sort((a: Matches, b: Matches) => {
         return moment(a.date).valueOf() - moment(b.date).valueOf();
     })
-  }
+  }*/
 
   delete(match:Matches) {
     this.matchesService.delete(match).subscribe(

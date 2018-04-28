@@ -1,5 +1,63 @@
-<h2>Matches</h2>
+<div class="matches-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
 
+<div class="matches-container mat-elevation-z8">
+  <div class="matches-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" matSort matSortActive="date" matSortDisableClear matSortDirection="asc">
+
+    <!-- Date -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Date </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.date | date:'dd/MM/yyyy HH:mm' }} </mat-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="team1">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Team 1 </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.team1}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="team2">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Team 2 </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.team2}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="pronostic">
+      <mat-header-cell *matHeaderCellDef> Pronostic </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="row.color">
+        <span *ngIf="isPronostic(row)">{{row.pronostic.scoreTeam1}} - {{row.pronostic.scoreTeam2}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="row.color">
+        <span *ngIf="isMatchScore(row)">{{row.scoreTeam1}} - {{row.scoreTeam2}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="row.color">
+        <button mat-button>Bet</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <!--<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>-->
+</div>
+<!--
 <table class="table table-striped table-hover table-sm ">
   <thead>
     <tr class="d-flex">
@@ -33,3 +91,4 @@
     </tr>
   </tbody>
 </table>
+-->

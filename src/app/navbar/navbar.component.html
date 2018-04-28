@@ -1,4 +1,17 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<mat-toolbar color="primary">
+  <a mat-button [routerLink]="['/']">World Cap Bet</a>
+  <a mat-button [routerLink]="['/matches']">Matches</a>
+  <a mat-button [routerLink]="['/results']">Ranking</a>
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+
+  <span class="font-size-14" *ngIf="authenticationService.getLoggedUser()">
+    {{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}
+    <a mat-button routerLink="." title="Logout"><mat-icon aria-label="Logout"><i class="material-icons">exit_to_app</i></mat-icon></a>
+  </span>
+</mat-toolbar>
+
+<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" [routerLink]="['/']">World Cap Bet</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,3 +37,4 @@
     <a class="nav-item nav-link" [routerLink]="['/login']">Logout</a>
   </div>
 </nav>
+-->

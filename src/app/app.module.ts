@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -21,6 +22,18 @@ import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
 import { BetComponent } from './bet/bet.component';
 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatInputModule} from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -28,7 +41,18 @@ import { BetComponent } from './bet/bet.component';
         HttpClientModule,
         routing,
         NgbModule.forRoot(),
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatInputModule,
+        MatProgressSpinnerModule
     ],
     declarations: [
         AppComponent,

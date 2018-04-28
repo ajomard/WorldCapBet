@@ -1,18 +1,9 @@
-﻿<!-- main app container -->
-<!--<alert></alert>-->
-<header>
+<mat-sidenav-container>
+  <mat-sidenav>Start</mat-sidenav>
+  <mat-sidenav-content>
+
     <app-navbar></app-navbar>
-</header>
+    <router-outlet></router-outlet>
 
-<div class="container-fluid">
-  <ngx-spinner bdColor = "#333" size = "default" color = "#fff" type = "line-spin-fade"></ngx-spinner>
-  <alert></alert>
-  <router-outlet></router-outlet>
-</div>
-
-<!--<footer class="footer">
-  <div class="container">
-    <span class="text-muted">Filou la pussy</span>
-  </div>
-</footer>
--->
+  </mat-sidenav-content>
+</mat-sidenav-container>
