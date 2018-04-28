@@ -38,4 +38,8 @@ export class UserService {
     getPronostics(id: number) {
         return this.http.get<Pronostic[]>(this.apiUrl + '/Users/' + id +'/pronostics');
     }
+
+    getRanking() {
+      return this.http.get<User[]>(this.apiUrl + '/Users/ranking');
+    }
 }
