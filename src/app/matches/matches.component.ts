@@ -53,6 +53,14 @@ export class MatchesComponent implements OnInit {
     return moment(match.date) <= moment();
   }
 
+  isPronostic(match:Matches): boolean {
+    return match.pronostic.scoreTeam1 != null && match.pronostic.scoreTeam2 != null;
+  }
+
+  isMatchScore(match:Matches): boolean {
+    return match.scoreTeam1 != null && match.scoreTeam2 != null;
+  }
+
   sortByDate(): void {
     this.matches = this.matches.sort((a: Matches, b: Matches) => {
         return moment(a.date).valueOf() - moment(b.date).valueOf();
