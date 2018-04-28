@@ -1,4 +1,18 @@
-<div class="modal-header">
+<h2 mat-dialog-title>{{data.team1}} - {{data.team2}}</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input type="number" matInput [(ngModel)]="data.pronostic.scoreTeam1" placeholder="Score {{data.team1}}">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="number" matInput [(ngModel)]="data.pronostic.scoreTeam2" placeholder="Score {{data.team2}}">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Back</button>
+  <button mat-button (click)="saveBet()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>
+
+<!--<div class="modal-header">
   <h4 class="modal-title">{{match.team1}} - {{match.team2}}</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
@@ -15,3 +29,4 @@
   <button type="button" class="btn" (click)="closeWithoutSave()">Back</button>
   <button type="submit" class="btn btn-success" (click)="saveBet()">Save</button>
 </div>
+-->

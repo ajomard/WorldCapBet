@@ -1,7 +1,4 @@
-import {Component, ViewEncapsulation, Input} from '@angular/core';
-
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {Component, Input, Inject} from '@angular/core';
 
 import { Matches } from '../_models/index';
 import { Pronostic } from '../_models/index';
@@ -11,36 +8,38 @@ import { AuthenticationService } from '../_services/index';
 import { PronosticService } from '../_services/index';
 import { AlertService } from '../_services/index';
 
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
 @Component({
   selector: 'app-bet',
   templateUrl: './bet.component.html',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./bet.component.css']
 })
 export class BetComponent {
-  @Input() match:Matches;
-  pronosticTmp: Pronostic;
+  //@Input() match:Matches;
+//  pronosticTmp: Pronostic;
 
-  constructor(public activeModal: NgbActiveModal,
-   public authenticationService: AuthenticationService,
+  constructor(public authenticationService: AuthenticationService,
    private pronosticService: PronosticService,
-   private alertService: AlertService) { }
+   private alertService: AlertService,
+   public dialogRef: MatDialogRef<BetComponent>,
+   @Inject(MAT_DIALOG_DATA) public data: Matches) { }
 
+   ngOnInit() {
+     //this.pronosticTmp = Object.assign({}, this.data.pronostic);
+   }
 
   saveBet() {
-    this.pronosticService.update(this.pronosticTmp).subscribe(
+    this.pronosticService.update(this.data.pronostic).subscribe(
         data => {
-            this.match.pronostic = this.pronosticTmp;
-            this.alertService.success('Bet Saved');
-            this.activeModal.close();
+          this.dialogRef.close(this.data.pronostic);
         },
         error => {
-            this.alertService.error(error.error);
-            this.activeModal.dismiss();
-        });;
+            close();
+        });
   }
 
-  closeWithoutSave() {
-    this.activeModal.dismiss();
+  close() {
+    this.dialogRef.close();
   }
 }

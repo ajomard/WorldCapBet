@@ -32,6 +32,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatPaginatorModule,
         MatSortModule,
         MatInputModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatDialogModule
     ],
     declarations: [
         AppComponent,

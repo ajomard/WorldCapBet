@@ -46,7 +46,7 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
       <mat-cell *matCellDef="let row" [style.color]="row.color">
-        <button mat-button>Bet</button>
+        <button mat-button (click)="openDialog(row)" [disabled]="isMatchAlreadyPlayed(row)">Bet</button>
       </mat-cell>
     </ng-container>
 

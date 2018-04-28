@@ -9,9 +9,9 @@ import { BetComponent } from '../bet/bet.component';
 import { AlertService } from '../_services/index';
 import * as moment from 'moment';
 
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-matches',
@@ -27,22 +27,24 @@ export class MatchesComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private matchesService: MatchesService,
-    private modalService: NgbModal,
     public authenticationService: AuthenticationService,
     private userService: UserService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    public dialog: MatDialog) { }
 
     ngOnInit() {
       this.getAllMatchesAndPronostics();
     }
 
-      /**
-     * Set the paginator and sort after the view init since this component will
-     * be able to query its view for the initialized paginator and sort.
-     */
-    ngAfterViewInit() {
-      //this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+    openDialog(match:Matches) {
+      const dialogRef = this.dialog.open(BetComponent, {
+        data: match
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+      //  if(result != null)
+          //match.pronostic = result;
+      });
     }
 
     applyFilter(filterValue: string) {
@@ -68,11 +70,7 @@ export class MatchesComponent implements OnInit {
     this.userService.getPronostics(userid).subscribe(pronostics => this.pronostics = pronostics);
   }*/
 
-  openBetModal(match:Matches) {
-    const modal = this.modalService.open(BetComponent, { centered: true });
-    modal.componentInstance.match = match;
-    modal.componentInstance.pronosticTmp = Object.assign({}, match.pronostic);
-  }
+
 
   isMatchAlreadyPlayed(match:Matches): boolean {
     return moment(match.date) <= moment();
