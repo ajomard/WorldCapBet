@@ -16,8 +16,8 @@ export class RegisterComponent implements OnInit {
     passwordverification: "";
     registerForm: FormGroup;
 
-    email = new FormControl('', [Validators.required, Validators.email]);
-    passwordVerificationControl = new FormControl('', [Validators.required]);
+    //email = new FormControl('', [Validators.required, Validators.email]);
+    //passwordVerificationControl = new FormControl('', [Validators.required]);
 
     constructor(
         private router: Router,
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
          ]),
          'email': new FormControl(this.model.email, [
            Validators.required,
-           Validators.email
+           Validators.pattern('^[a-zA-Z0-9_.+-]+@capgemini\.com$')
          ]),
          'username': new FormControl(this.model.username, [
            Validators.required
@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
 
     getErrorEmailMessage() {
      return this.registerForm.controls['email'].hasError('required') ? 'You must enter a value' :
-         this.registerForm.controls['email'].hasError('email') ? 'Not a valid email' : '';
+         this.registerForm.controls['email'].hasError('pattern') ? 'Not a valid email (must be a capgemini mail)' : '';
    }
 
    getErrorPasswordMessage() {
