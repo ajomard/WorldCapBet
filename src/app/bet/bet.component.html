@@ -1,11 +1,19 @@
 <h2 mat-dialog-title>{{data.team1}} - {{data.team2}}</h2>
 <mat-dialog-content>
-  <mat-form-field>
-    <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam1" placeholder="Score {{data.team1}}">
-  </mat-form-field>
-  <mat-form-field>
-    <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam2" placeholder="Score {{data.team2}}">
-  </mat-form-field>
+  <form  [formGroup]="betForm">
+    <mat-form-field>
+      <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam1" formControlName="scoreTeam1"  placeholder="Score {{data.team1}}" required>
+      <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.required">You must enter a value</mat-error>
+      <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.min">Min score is 0</mat-error>
+            <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.max">Max score is 20</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam2" formControlName="scoreTeam2" placeholder="Score {{data.team2}}" required>
+      <mat-error *ngIf="betForm.controls['scoreTeam2'].errors && betForm.controls['scoreTeam2'].errors.required">You must enter a value</mat-error>
+      <mat-error *ngIf="betForm.controls['scoreTeam2'].errors && betForm.controls['scoreTeam2'].errors.min">Min score is 0</mat-error>
+      <mat-error *ngIf="betForm.controls['scoreTeam2'].errors && betForm.controls['scoreTeam2'].errors.max">Max score is 20</mat-error>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="close()">Back</button>

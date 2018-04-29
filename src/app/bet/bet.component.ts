@@ -1,4 +1,5 @@
 import {Component, Input, Inject, OnInit} from '@angular/core';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 
 import { Matches } from '../_models/index';
 import { Pronostic } from '../_models/index';
@@ -16,8 +17,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./bet.component.css']
 })
 export class BetComponent implements OnInit {
-  //@Input() match:Matches;
   pronosticTmp: Pronostic;
+  betForm: FormGroup;
 
   constructor(public authenticationService: AuthenticationService,
    private pronosticService: PronosticService,
@@ -27,6 +28,19 @@ export class BetComponent implements OnInit {
 
    ngOnInit() {
      this.pronosticTmp = Object.assign({}, this.data.pronostic);
+
+     this.betForm = new FormGroup({
+        'scoreTeam1': new FormControl(this.pronosticTmp.scoreTeam1, [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(20)
+        ]),
+        'scoreTeam2': new FormControl(this.pronosticTmp.scoreTeam1, [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(20)
+        ]),
+      });
    }
 
   saveBet() {
