@@ -19,23 +19,23 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input type="text" name="username" matInput [(ngModel)]="model.username" formControlName="username"  placeholder="Username" required>
+        <input type="text" name="username" matInput [(ngModel)]="model.username" formControlName="username" placeholder="Username" required>
         <mat-error *ngIf="registerForm.controls['username'].errors">You must enter a value</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input type="password" name="password" matInput [(ngModel)]="model.password" formControlName="password"  placeholder="Password" required>
+        <input type="password" name="password" matInput [(ngModel)]="model.password" formControlName="password" placeholder="Password" required>
         <mat-error *ngIf="registerForm.controls['password'].errors">You must enter a value</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input type="password" name="password2" matInput [(ngModel)]="passwordverification" formControlName="password2"   placeholder="Retype password" required>
-
+        <input type="password" name="password2" matInput [(ngModel)]="passwordverification" formControlName="password2" placeholder="Retype password" required>
+          <mat-error *ngIf="registerForm.controls['password2'].errors">You must enter a value</mat-error>
       </mat-form-field>
     </form>
     <div class="button-row">
       <a mat-button [routerLink]="['/login']">Cancel</a>
-      <button mat-button (click)="register()">Register</button>
+      <button mat-button [disabled]="registerForm.invalid" (click)="register()">Register</button>
     </div>
   </div>
   <div class="width-33"></div>
