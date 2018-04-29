@@ -1,11 +1,11 @@
 <h2 mat-dialog-title>{{data.team1}} - {{data.team2}}</h2>
 <mat-dialog-content>
-  <form  [formGroup]="betForm">
+  <form  [formGroup]="betForm" (ngSubmit)="f.form.valid && saveBet()" #f="ngForm" novalidate>
     <mat-form-field>
       <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam1" formControlName="scoreTeam1"  placeholder="Score {{data.team1}}" required>
       <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.required">You must enter a value</mat-error>
       <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.min">Min score is 0</mat-error>
-            <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.max">Max score is 20</mat-error>
+      <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.max">Max score is 20</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam2" formControlName="scoreTeam2" placeholder="Score {{data.team2}}" required>
@@ -17,24 +17,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="close()">Back</button>
-  <button mat-button (click)="saveBet()" cdkFocusInitial>Save</button>
+  <button mat-button [disabled]="betForm.invalid" (click)="saveBet()" cdkFocusInitial>Save</button>
 </mat-dialog-actions>
-
-<!--<div class="modal-header">
-  <h4 class="modal-title">{{match.team1}} - {{match.team2}}</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <form class="form-inline justify-content-center align-items-center">
-    <input type="number" [(ngModel)]="pronosticTmp.scoreTeam1" class="form-control mb-2 mr-sm-2" name="scoreTeam1" min="0" max="20">
-    <span class="mr-3 ml-3">-</span>
-    <input type="number" [(ngModel)]="pronosticTmp.scoreTeam2" class="form-control mb-2 mr-sm-2" name="scoreTeam2" min="0" max="20">
-  </form>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn" (click)="closeWithoutSave()">Back</button>
-  <button type="submit" class="btn btn-success" (click)="saveBet()">Save</button>
-</div>
--->
