@@ -32,6 +32,7 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let rank; columns: displayedColumns;"></mat-row>
+    <!--  [style.background]="rank.id == highlightedRow ? '#3F51B5' : ''"-->
   </mat-table>
 
   <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
