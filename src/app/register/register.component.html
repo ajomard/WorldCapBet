@@ -30,7 +30,8 @@
 
       <mat-form-field>
         <input type="password" name="password2" matInput [(ngModel)]="passwordverification" formControlName="password2" placeholder="Retype password" required>
-          <mat-error *ngIf="registerForm.controls['password2'].errors">You must enter a value</mat-error>
+        <mat-error *ngIf="registerForm.controls['password2'].errors">You must enter a value</mat-error>
+        <mat-hint class="mat-error" *ngIf="passwordverification != model.password">Password mismatch</mat-hint>
       </mat-form-field>
     </form>
     <div class="button-row">

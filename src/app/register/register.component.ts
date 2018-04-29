@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
          'password2': new FormControl(this.passwordverification, [
            Validators.required
          ]),
-       });
+       }, this.passwordMatchValidator);
     }
 
     register() {
@@ -65,9 +65,10 @@ export class RegisterComponent implements OnInit {
     getErrorEmailMessage() {
      return this.registerForm.controls['email'].hasError('required') ? 'You must enter a value' :
          this.registerForm.controls['email'].hasError('pattern') ? 'Not a valid email (must be a capgemini mail)' : '';
-   }
+    }
 
-   getErrorPasswordMessage() {
-     return 'test';
-   }
+    passwordMatchValidator(g: FormGroup) {
+       return g.get('password').value === g.get('password2').value
+          ? null : {'mismatch': true};
+    }
 }
