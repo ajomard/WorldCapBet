@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{data.team1}} - {{data.team2}}</h2>
 <mat-dialog-content>
-  <form  [formGroup]="betForm" (ngSubmit)="f.form.valid && saveBet()" #f="ngForm" novalidate>
+  <form  [formGroup]="betForm" novalidate>
     <mat-form-field>
       <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam1" formControlName="scoreTeam1"  placeholder="Score {{data.team1}}" required>
       <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.required">You must enter a value</mat-error>
