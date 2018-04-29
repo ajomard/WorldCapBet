@@ -1,0 +1,19 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-container {
+  display: flex;
+  align-items: center;
+}
+
+.width-33 {
+  width: 33%;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
