@@ -1,4 +1,4 @@
-.register-container {
+.register-container, .register-form {
   display: flex;
   flex-direction: column;
 }

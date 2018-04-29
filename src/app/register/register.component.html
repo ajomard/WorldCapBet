@@ -2,40 +2,40 @@
   <div class="width-33"></div>
   <div class="register-container width-33">
     <h1>Register</h1>
-    <mat-form-field>
-      <input type="text" name="firstName" matInput [(ngModel)]="model.firstName"  placeholder="First name" #firstName="ngModel" required>
-      <mat-error *ngIf="firstName.invalid">You must enter a value</mat-error>
-    </mat-form-field>
+    <form class="register-form" [formGroup]="registerForm" novalidate>
+      <mat-form-field>
+        <input type="text" name="firstName" matInput [(ngModel)]="model.firstName" formControlName="firstName"  placeholder="First name" required>
+        <mat-error *ngIf="registerForm.controls['firstName'].errors">You must enter a value</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <input type="text" name="lastName" matInput [(ngModel)]="model.lastName" placeholder="Last name" #lastName="ngModel" required>
-      <mat-error *ngIf="lastName.invalid">You must enter a value</mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <input type="text" name="lastName" matInput [(ngModel)]="model.lastName" formControlName="lastName" placeholder="Last name" required>
+        <mat-error *ngIf="registerForm.controls['lastName'].errors">You must enter a value</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <input type="text" name="email" matInput [(ngModel)]="model.email" [formControl]="email" placeholder="Email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorEmailMessage()}}</mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <input type="text" name="email" matInput [(ngModel)]="model.email" formControlName="email" placeholder="Email" required>
+        <mat-error *ngIf="registerForm.controls['email'].errors">{{getErrorEmailMessage()}}</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <input type="text" name="username" matInput [(ngModel)]="model.username" placeholder="Username" #username="ngModel"  required>
-      <mat-error *ngIf="username.invalid">You must enter a value</mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <input type="text" name="username" matInput [(ngModel)]="model.username" formControlName="username"  placeholder="Username" required>
+        <mat-error *ngIf="registerForm.controls['username'].errors">You must enter a value</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <input type="password" name="password" matInput [(ngModel)]="model.password" placeholder="Password" #password="ngModel" required>
-      <mat-error *ngIf="password.invalid">You must enter a value</mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <input type="password" name="password" matInput [(ngModel)]="model.password" formControlName="password"  placeholder="Password" required>
+        <mat-error *ngIf="registerForm.controls['password'].errors">You must enter a value</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <input type="password" name="password2" matInput [(ngModel)]="passwordverification"  placeholder="Retype password" #password2="ngModel" required>
-      
-    </mat-form-field>
+      <mat-form-field>
+        <input type="password" name="password2" matInput [(ngModel)]="passwordverification" formControlName="password2"   placeholder="Retype password" required>
 
+      </mat-form-field>
+    </form>
     <div class="button-row">
       <a mat-button [routerLink]="['/login']">Cancel</a>
       <button mat-button (click)="register()">Register</button>
-
     </div>
   </div>
   <div class="width-33"></div>
