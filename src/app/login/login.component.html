@@ -1,4 +1,24 @@
-<div class="row justify-content-center">
+<div class="full-container">
+  <div class="width-33"></div>
+  <div class="login-container width-33">
+    <h1>Login</h1>
+    <mat-form-field>
+      <input type="text" matInput [(ngModel)]="model.username" placeholder="Username">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="password" matInput [(ngModel)]="model.password" placeholder="Password">
+    </mat-form-field>
+
+    <div class="button-row">
+      <button mat-button (click)="login()">Login</button>
+      <a mat-button [routerLink]="['/register']">Register</a>
+    </div>
+  </div>
+  <div class="width-33"></div>
+</div>
+
+<!--<div class="row justify-content-center">
   <div class="col-4">
     <alert></alert>
     <h2>Login</h2>
@@ -20,3 +40,4 @@
     </form>
   </div>
 </div>
+-->
