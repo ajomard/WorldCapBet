@@ -1,4 +1,17 @@
-<h2 mat-dialog-title>{{data.team1}} - {{data.team2}}</h2>
+<h2 mat-dialog-title>
+  <div fxLayout="row" fxFlex>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <span class="padding-team">{{data.team1}}</span>
+      <img class="padding-team" src="../../assets/flags-mini/de.png" [alt]="data.team1" [title]="data.team1">
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <img class="padding-team" src="../../assets/flags-mini/de.png" [alt]="data.team2" [title]="data.team2">
+      <span class="padding-team">{{data.team2}}</span>
+    </div>
+  </div>
+
+</h2>
 <mat-dialog-content>
   <form  [formGroup]="betForm" novalidate>
     <mat-form-field>
@@ -19,3 +32,9 @@
   <button mat-button (click)="close()">Back</button>
   <button mat-button color="primary" [disabled]="betForm.invalid" (click)="saveBet()">Save</button>
 </mat-dialog-actions>
+
+
+<mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="end center">
+    <span class="padding-team" >{{row.team1}}</span>
+    <img class="padding-team" src="../../assets/flags-mini/fr.png" [alt]="row.team1" [title]="row.team1">
+</mat-cell>

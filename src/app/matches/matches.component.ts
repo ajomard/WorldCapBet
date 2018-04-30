@@ -6,10 +6,9 @@ import { Matches } from '../_models/index';
 import { User } from '../_models/index';
 import { Pronostic } from '../_models/index';
 import { BetComponent } from '../bet/bet.component';
-import { AlertService } from '../_services/index';
 import * as moment from 'moment';
 
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 
 
 
@@ -29,8 +28,8 @@ export class MatchesComponent implements OnInit {
   constructor(private matchesService: MatchesService,
     public authenticationService: AuthenticationService,
     private userService: UserService,
-    private alertService: AlertService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar) { }
 
     ngOnInit() {
       this.getAllMatchesAndPronostics();
@@ -62,6 +61,10 @@ export class MatchesComponent implements OnInit {
       this.dataSource = new MatTableDataSource(matchsResults);
       this.dataSource.sort = this.sort;
       this.isLoadingResults = false;
+    },
+    error => {
+        this.openSnackBar('Error while loading matches', 10000);
+        this.isLoadingResults = false;
     });
   }
 
@@ -77,8 +80,10 @@ export class MatchesComponent implements OnInit {
     return match.scoreTeam1 != null && match.scoreTeam2 != null;
   }
 
-  filter() {
-
+  openSnackBar(message: string, time: number) {
+    this.snackBar.open(message,'Close', {
+      duration: time,
+    });
   }
 
   /*delete(match:Matches) {

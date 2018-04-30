@@ -19,6 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
 import { BetComponent } from './bet/bet.component';
+import { UsersComponent } from './administration/users/users.component';
+import { AdminMatchesComponent } from './administration/admin-matches/admin-matches.component';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -34,6 +36,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 
 @NgModule({
@@ -58,7 +62,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         MatSlideToggleModule,
         MatCardModule,
         FlexLayoutModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatMenuModule
     ],
     declarations: [
         AppComponent,
@@ -69,7 +74,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         RegisterComponent,
         ResultsComponent,
         MatchesComponent,
-        BetComponent
+        BetComponent,
+        UsersComponent,
+        AdminMatchesComponent
     ],
     entryComponents: [
       BetComponent

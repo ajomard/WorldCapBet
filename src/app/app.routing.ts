@@ -5,6 +5,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
+import { UsersComponent } from './administration/users/users.component';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'results', component: ResultsComponent, canActivate: [AuthGuard] },
     { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard] },
+    { path: 'admin/users', component: UsersComponent , canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

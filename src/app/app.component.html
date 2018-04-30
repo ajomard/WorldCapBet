@@ -4,6 +4,15 @@
       <a mat-button [routerLink]="['/']">World Cap Bet</a>
       <a mat-button [routerLink]="['/matches']">Matches</a>
       <a mat-button [routerLink]="['/results']">Ranking</a>
+
+      <button mat-button [matMenuTriggerFor]="menu" *ngIf="authenticationService.isAdmin()">Administration</button>
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item [routerLink]="['/admin/users']">
+          Users
+        </a>
+      </mat-menu>
+
+      <!--<a mat-button *ngIf="authenticationService.isAdmin()" [routerLink]="['/admin/users']">Administration</a>-->
     </div>
     <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button (click)="sidenav.toggle()">

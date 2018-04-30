@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AlertService } from '../_services/index';
 import { User } from '../_models/index';
 import { UserService, AuthenticationService } from '../_services/index';
 
@@ -23,7 +22,6 @@ export class ResultsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private userService: UserService,
-    private alertService:AlertService,
     private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
