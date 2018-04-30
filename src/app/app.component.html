@@ -6,10 +6,10 @@
       <a mat-button [routerLink]="['/results']">Ranking</a>
     </div>
     <div fxShow="true" fxHide.gt-sm="true">
-        <button mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon><i class="material-icons">menu</i></mat-icon>
-        </button>
-      </div>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon><i class="material-icons">menu</i></mat-icon>
+      </button>
+    </div>
 
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
@@ -23,8 +23,8 @@
   <mat-sidenav-container fxFlexFill (backdropClick)="close()">
     <mat-sidenav #sidenav mode="over" fxLayout="column" opened="false">
       <div fxLayout="column">
-        <a mat-button [routerLink]="['/matches']">Matches</a>
-        <a mat-button [routerLink]="['/results']">Ranking</a>
+        <a mat-button [routerLink]="['/matches']" (click)="sidenav.toggle()">Matches</a>
+        <a mat-button [routerLink]="['/results']" (click)="sidenav.toggle()">Ranking</a>
       </div>
 
     </mat-sidenav>
