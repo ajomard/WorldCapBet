@@ -33,6 +33,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -55,7 +57,9 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatSortModule,
         MatInputModule,
         MatProgressSpinnerModule,
-        MatDialogModule
+        MatDialogModule,
+        MatSlideToggleModule,
+        MatCardModule
     ],
     declarations: [
         AppComponent,
