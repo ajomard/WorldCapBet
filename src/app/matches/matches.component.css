@@ -41,3 +41,7 @@
   overflow: auto;
   max-height: 100vh;
 }
+
+.padding-team {
+  padding : 0 15px;
+}

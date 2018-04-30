@@ -1,8 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup,  Validators} from '@angular/forms';
+import { MatSnackBar} from '@angular/material';
 
-import { AlertService, UserService } from '../_services/index';
+import { UserService } from '../_services/index';
 
 @Component({
     moduleId: module.id.toString(),
@@ -16,13 +17,10 @@ export class RegisterComponent implements OnInit {
     passwordverification: "";
     registerForm: FormGroup;
 
-    //email = new FormControl('', [Validators.required, Validators.email]);
-    //passwordVerificationControl = new FormControl('', [Validators.required]);
-
     constructor(
         private router: Router,
         private userService: UserService,
-        private alertService: AlertService) { }
+        public snackBar: MatSnackBar) { }
 
     ngOnInit() {
       this.registerForm = new FormGroup({
@@ -53,11 +51,11 @@ export class RegisterComponent implements OnInit {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful', true);
+                    this.openSnackBar('Registration successful', 5000);
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    this.alertService.error(error.error);
+                    this.openSnackBar(error.error, 10000);
                     this.loading = false;
                 });
     }
@@ -70,5 +68,11 @@ export class RegisterComponent implements OnInit {
     passwordMatchValidator(g: FormGroup) {
        return g.get('password').value === g.get('password2').value
           ? null : {'mismatch': true};
+    }
+
+    openSnackBar(message: string, time: number) {
+      this.snackBar.open(message,'Close', {
+        duration: time,
+      });
     }
 }

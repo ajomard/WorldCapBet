@@ -9,7 +9,7 @@ import { AuthenticationService } from '../_services/index';
 import { PronosticService } from '../_services/index';
 import { AlertService } from '../_services/index';
 
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-bet',
@@ -24,6 +24,7 @@ export class BetComponent implements OnInit {
    private pronosticService: PronosticService,
    private alertService: AlertService,
    public dialogRef: MatDialogRef<BetComponent>,
+   public snackBar: MatSnackBar,
    @Inject(MAT_DIALOG_DATA) public data: Matches) { }
 
    ngOnInit() {
@@ -47,14 +48,22 @@ export class BetComponent implements OnInit {
     this.pronosticService.update(this.pronosticTmp).subscribe(
         data => {
           this.data.pronostic = this.pronosticTmp;
+          this.openSnackBar('Bet saved', 2000);
           this.close();
         },
         error => {
+          this.openSnackBar('Error while saving bet', 10000);
           this.close();
         });
   }
 
   close() {
     this.dialogRef.close();
+  }
+
+  openSnackBar(message: string, time: number) {
+    this.snackBar.open(message,'Close', {
+      duration: time,
+    });
   }
 }

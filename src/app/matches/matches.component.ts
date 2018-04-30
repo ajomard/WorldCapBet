@@ -40,11 +40,6 @@ export class MatchesComponent implements OnInit {
       const dialogRef = this.dialog.open(BetComponent, {
         data: match
       });
-
-      /*dialogRef.afterClosed().subscribe(result => {
-      //  if(result != null)
-          //match.pronostic = result;
-      });*/
     }
 
     changeFilter() {
