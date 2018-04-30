@@ -33,6 +33,7 @@ export class AuthenticationService {
     }
 
     isAdmin() {
-      return this.getLoggedUser().username == 'akubler';
+      let user = this.getLoggedUser();
+      return user != null && user.username == 'akubler';
     }
 }

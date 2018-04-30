@@ -1,20 +1,20 @@
 <div class="full-container">
   <div class="login-container" fxFlex="33" fxFlex.lt-sm="75">
-    <mat-card class="login-card">
+    <mat-card >
       <mat-card-title>Login</mat-card-title>
+      <form fxLayout="column" (submit)="login()">
+        <mat-form-field>
+          <input type="text" name="username" matInput [(ngModel)]="model.username" placeholder="Username" cdkFocusInitial>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input type="text" matInput [(ngModel)]="model.username" placeholder="Username" cdkFocusInitial>
-      </mat-form-field>
+        <mat-form-field>
+          <input [type]="hidePassword ? 'password' : 'text'" name="password" matInput [(ngModel)]="model.password" placeholder="Password">
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword" class="cursor-pointer">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input [type]="hidePassword ? 'password' : 'text'" matInput [(ngModel)]="model.password" placeholder="Password">
-        <mat-icon matSuffix (click)="hidePassword = !hidePassword" class="cursor-pointer">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" (click)="login()">Login</button>
-      <a mat-button [routerLink]="['/register']">Register</a>
-
+        <button mat-raised-button color="primary" (click)="login()">Login</button>
+        <a mat-button [routerLink]="['/register']">Register</a>
+      </form>
     </mat-card>
   </div>
 </div>
