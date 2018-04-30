@@ -1,9 +1,35 @@
-<mat-sidenav-container>
-  <mat-sidenav>Start</mat-sidenav>
-  <mat-sidenav-content>
+<div class="full-height">
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button [routerLink]="['/']">World Cap Bet</a>
+      <a mat-button [routerLink]="['/matches']">Matches</a>
+      <a mat-button [routerLink]="['/results']">Ranking</a>
+    </div>
+    <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon><i class="material-icons">menu</i></mat-icon>
+        </button>
+      </div>
 
-    <app-navbar></app-navbar>
-    <router-outlet></router-outlet>
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
 
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <span class="font-size-14" *ngIf="authenticationService.getLoggedUser()">
+      {{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}
+      <a mat-button routerLink="/login" title="Logout"><mat-icon aria-label="Logout"><i class="material-icons">exit_to_app</i></mat-icon></a>
+    </span>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill (backdropClick)="close()">
+    <mat-sidenav #sidenav mode="over" fxLayout="column" opened="false">
+      <div fxLayout="column">
+        <a mat-button [routerLink]="['/matches']">Matches</a>
+        <a mat-button [routerLink]="['/results']">Ranking</a>
+      </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -59,7 +60,8 @@ import {MatCardModule} from '@angular/material/card';
         MatProgressSpinnerModule,
         MatDialogModule,
         MatSlideToggleModule,
-        MatCardModule
+        MatCardModule,
+        FlexLayoutModule
     ],
     declarations: [
         AppComponent,
