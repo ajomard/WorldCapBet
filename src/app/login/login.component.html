@@ -8,7 +8,8 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input type="password" matInput [(ngModel)]="model.password" placeholder="Password">
+        <input [type]="hidePassword ? 'password' : 'text'" matInput [(ngModel)]="model.password" placeholder="Password">
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword" class="cursor-pointer">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
 
       <button mat-raised-button color="primary" (click)="login()">Login</button>

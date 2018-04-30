@@ -24,12 +24,14 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input type="password" name="password" matInput [(ngModel)]="model.password" formControlName="password" placeholder="Password" required>
+          <input [type]="hidePassword ? 'password' : 'text'" name="password" matInput [(ngModel)]="model.password" formControlName="password" placeholder="Password" required>
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword" class="cursor-pointer">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
           <mat-error *ngIf="registerForm.controls['password'].errors">You must enter a value</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input type="password" name="password2" matInput [(ngModel)]="passwordverification" formControlName="password2" placeholder="Retype password" required>
+          <input [type]="hidePassword2 ? 'password' : 'text'" name="password2" matInput [(ngModel)]="passwordverification" formControlName="password2" placeholder="Retype password" required>
+          <mat-icon matSuffix (click)="hidePassword2 = !hidePassword2" class="cursor-pointer">{{hidePassword2 ? 'visibility' : 'visibility_off'}}</mat-icon>
           <mat-error *ngIf="registerForm.controls['password2'].errors">You must enter a value</mat-error>
           <mat-hint class="mat-error" *ngIf="passwordverification != model.password">Password mismatch</mat-hint>
         </mat-form-field>

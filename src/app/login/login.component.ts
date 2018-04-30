@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
+    hidePassword = true;
 
     constructor(
         private route: ActivatedRoute,

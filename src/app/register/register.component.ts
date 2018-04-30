@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
     loading = false;
     passwordverification: "";
     registerForm: FormGroup;
+    hidePassword = true;
+    hidePassword2 = true;
 
     constructor(
         private router: Router,
