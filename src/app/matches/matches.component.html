@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title class="header">
     <span>Matches</span>
-    <mat-slide-toggle color="primary" [checked]="checked" [disabled]="disabled">
+    <mat-slide-toggle color="primary" [checked]="isFilterOn" (change)="changeFilter()">
       Only not played
     </mat-slide-toggle>
   </mat-card-title>
