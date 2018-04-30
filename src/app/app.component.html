@@ -16,7 +16,7 @@
 
     <span class="font-size-14" *ngIf="authenticationService.getLoggedUser()">
       {{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}
-      <a mat-button routerLink="/login" title="Logout"><mat-icon aria-label="Logout"><i class="material-icons">exit_to_app</i></mat-icon></a>
+      <a mat-icon-button routerLink="/login" title="Logout"><mat-icon aria-label="Logout"><i class="material-icons">exit_to_app</i></mat-icon></a>
     </span>
   </mat-toolbar>
 
