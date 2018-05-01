@@ -1,0 +1,14 @@
+.match-container, .match-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-container {
+  display: flex;
+  justify-content: center;
+}
+
+.match-card {
+  display: flex;
+  flex-direction: column;
+}

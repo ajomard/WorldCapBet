@@ -1,0 +1,37 @@
+<div class="full-container">
+  <div class="match-container" fxFlex="33" fxFlex.lt-sm="75">
+    <mat-card class="match-card">
+      <mat-card-title>Match</mat-card-title>
+      <form class="match-form" [formGroup]="matchForm" novalidate>
+        <mat-form-field>
+          <input type="date" name="date" matInput [(ngModel)]="match.date" formControlName="date"  placeholder="Date" required>
+          <mat-error *ngIf="matchForm.controls['date'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" name="team1" matInput [(ngModel)]="match.team1" formControlName="team1" placeholder="Team 1" required>
+          <mat-error *ngIf="matchForm.controls['team1'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" name="team2" matInput [(ngModel)]="match.team2" formControlName="team2" placeholder="Team 2" required>
+          <mat-error *ngIf="matchForm.controls['team2'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="number" min="0" max="20" name="scoreTeam1" matInput [(ngModel)]="match.scoreTeam1" formControlName="scoreTeam1" placeholder="Score Team 1" required>
+          <mat-error *ngIf="matchForm.controls['scoreTeam1'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="number" min="0" max="20" name="scoreTeam2" matInput [(ngModel)]="match.scoreTeam2" formControlName="scoreTeam2" placeholder="Score Team 2" required>
+          <mat-error *ngIf="matchForm.controls['scoreTeam2'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+      </form>
+
+      <button mat-raised-button color="primary" [disabled]="matchForm.invalid" (click)="createOrUpdate()">Create / Update</button>
+      <a mat-button [routerLink]="['/admin/matches']">Cancel</a>
+
+    </mat-card>
+  </div>
+</div>

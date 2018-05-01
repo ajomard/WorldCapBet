@@ -10,11 +10,19 @@ export class MatchesService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<Matches[]>(this.apiUrl + '/Matches');
+        return this.http.get<Matches[]>(this.apiUrl + 'Matches');
+    }
+
+    create(match:Matches) {
+      return this.http.post(this.apiUrl + 'Matches/', match);
+    }
+
+    update(match:Matches) {
+      return this.http.put(this.apiUrl + 'Matches/' + match.id, match);
     }
 
     delete(match:Matches) {
-      return this.http.delete(this.apiUrl + '/Matches/' + match.id);
+      return this.http.delete(this.apiUrl + 'Matches/' + match.id);
     }
 
 }

@@ -11,7 +11,7 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService, MatchesService, PronosticService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, MatchesService, PronosticService, DataService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -20,7 +20,8 @@ import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
 import { BetComponent } from './bet/bet.component';
 import { UsersComponent } from './administration/users/users.component';
-import { AdminMatchesComponent } from './administration/admin-matches/admin-matches.component';
+import { AdminListMatchesComponent } from './administration/admin-list-matches/admin-list-matches.component';
+import { AdminMatchComponent } from './administration/admin-match/admin-match.component';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -37,6 +38,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
+
 
 
 
@@ -76,7 +78,8 @@ import {MatMenuModule} from '@angular/material/menu';
         MatchesComponent,
         BetComponent,
         UsersComponent,
-        AdminMatchesComponent
+        AdminListMatchesComponent,
+        AdminMatchComponent
     ],
     entryComponents: [
       BetComponent
@@ -87,6 +90,7 @@ import {MatMenuModule} from '@angular/material/menu';
         AuthenticationService,
         MatchesService,
         PronosticService,
+        DataService,
         UserService,
         {
             provide: HTTP_INTERCEPTORS,

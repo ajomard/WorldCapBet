@@ -1,11 +1,14 @@
 <mat-card>
   <mat-card-title class="header">
     <span>Matches</span>
+    <a mat-raised-button color="primary" [routerLink]="['/admin/match/create']">New Match</a>
     <mat-slide-toggle color="primary" [checked]="isFilterOn" (change)="changeFilter()">
       Only not played
     </mat-slide-toggle>
   </mat-card-title>
 </mat-card>
+
+
 
 <div class="matches-container mat-elevation-z8">
   <div class="matches-loading-shade" *ngIf="isLoadingResults">
@@ -24,7 +27,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="end center">
           <span class="padding-team" >{{row.team1}}</span>
-          <img class="padding-team" src="../../assets/flags-mini/fr.png" [alt]="row.team1" [title]="row.team1">
+          <img class="padding-team" src="../../../assets/flags-mini/fr.png" [alt]="row.team1" [title]="row.team1">
       </mat-cell>
     </ng-container>
 
@@ -34,14 +37,6 @@
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="start center">
           <img class="padding-team" src="../../assets/flags-mini/de.png" [alt]="row.team2" [title]="row.team2">
           <span class="padding-team">{{row.team2}}</span>
-      </mat-cell>
-    </ng-container>
-
-    <!-- Color Column -->
-    <ng-container matColumnDef="pronostic">
-      <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Pronostic </mat-header-cell>
-      <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
-        <span *ngIf="isPronostic(row)">{{row.pronostic.scoreTeam1}} - {{row.pronostic.scoreTeam2}}</span>
       </mat-cell>
     </ng-container>
 
@@ -55,8 +50,7 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Action </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-button color="primary" (click)="openDialog(row)" [disabled]="isMatchAlreadyPlayed(row)">Bet</button>
-        <button mat-button color="primary" (click)="openDialog(row)" *ngIf="authenticationService.isAdmin()">Edit</button>
+        <button mat-button color="primary" (click)="edit(row)">Edit</button>
       </mat-cell>
     </ng-container>
 

@@ -2,8 +2,8 @@
   <mat-card-title>Users</mat-card-title>
 </mat-card>
 
-<div class="matches-container mat-elevation-z8">
-  <div class="matches-loading-shade" *ngIf="isLoadingResults">
+<div class="users-container mat-elevation-z8">
+  <div class="users-loading-shade" *ngIf="isLoadingResults">
     <mat-spinner></mat-spinner>
   </div>
   <mat-table [dataSource]="dataSource" matSort matSortActive="lastName" matSortDisableClear matSortDirection="asc">
