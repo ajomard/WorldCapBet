@@ -86,4 +86,12 @@ export class AdminListMatchesComponent implements OnInit {
     this.router.navigate(["/admin/match/edit"]);
   }
 
+  delete(match:Matches) {
+    this.matchesService.delete(match).subscribe(
+        data => {
+            this.getAllMatches();
+            this.openSnackBar('Match Deleted',2000);
+        });
   }
+
+}

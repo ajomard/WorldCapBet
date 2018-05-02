@@ -23,8 +23,8 @@
     <ng-container matColumnDef="team1">
       <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="end center">
-          <span class="padding-team" >{{row.team1}}</span>
-          <img class="padding-team" src="../../assets/flags-mini/fr.png" [alt]="row.team1" [title]="row.team1">
+          <span class="padding-team" >{{row.team1.name}}</span>
+          <img class="padding-team" src="../../assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
       </mat-cell>
     </ng-container>
 
@@ -32,8 +32,8 @@
     <ng-container matColumnDef="team2">
       <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 2 </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="start center">
-          <img class="padding-team" src="../../assets/flags-mini/de.png" [alt]="row.team2" [title]="row.team2">
-          <span class="padding-team">{{row.team2}}</span>
+          <img class="padding-team" src="../../assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
+          <span class="padding-team">{{row.team2.name}}</span>
       </mat-cell>
     </ng-container>
 

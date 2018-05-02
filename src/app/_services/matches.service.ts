@@ -25,4 +25,8 @@ export class MatchesService {
       return this.http.delete(this.apiUrl + 'Matches/' + match.id);
     }
 
+    getAllMatchesAndPronostics(id: string) {
+      return this.http.get<Matches[]>(this.apiUrl + 'Matches/Pronostic/'+ id );
+    }
+
 }

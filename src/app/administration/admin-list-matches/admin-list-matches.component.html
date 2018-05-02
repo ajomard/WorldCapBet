@@ -51,6 +51,7 @@
       <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Action </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
         <button mat-button color="primary" (click)="edit(row)">Edit</button>
+        <button mat-button color="warn" (click)="delete(row)">Delete</button>
       </mat-cell>
     </ng-container>
 

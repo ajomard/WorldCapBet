@@ -49,7 +49,7 @@ export class MatchesComponent implements OnInit {
   getAllMatchesAndPronostics() {
     this.isLoadingResults = true;
     let userid = this.authenticationService.getLoggedUser().id;
-    this.userService.getAllMatchesAndPronostics(userid).subscribe(matches => {
+    this.matchesService.getAllMatchesAndPronostics(userid).subscribe(matches => {
       let matchsResults = [];
       if(this.isFilterOn) {
         for(let match of matches) {
@@ -85,15 +85,5 @@ export class MatchesComponent implements OnInit {
       duration: time,
     });
   }
-
-  /*delete(match:Matches) {
-    this.matchesService.delete(match).subscribe(
-        data => {
-            this.alertService.success('Match Deleted');
-        },
-        error => {
-            this.alertService.error(error.error);
-        });;
-  }*/
 
 }
