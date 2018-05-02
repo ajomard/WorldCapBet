@@ -22,11 +22,6 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-        <!--
-        <mat-form-field>
-          <input type="text" name="team1" matInput [(ngModel)]="match.team1" formControlName="team1" placeholder="Team 1" required>
-          <mat-error *ngIf="matchForm.controls['team1'].errors">You must enter a value</mat-error>
-        </mat-form-field>-->
 
         <mat-form-field>
           <input type="text" name="team2" matInput formControlName="team2" [(ngModel)]="match.team2" [matAutocomplete]="auto" placeholder="Team 2" required>
@@ -36,11 +31,6 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-
-        <!--<mat-form-field>
-          <input type="text" name="team2" matInput [(ngModel)]="match.team2" formControlName="team2" placeholder="Team 2" required>
-          <mat-error *ngIf="matchForm.controls['team2'].errors">You must enter a value</mat-error>
-        </mat-form-field>-->
 
         <mat-form-field>
           <input type="number" name="scoreTeam1" matInput [(ngModel)]="match.scoreTeam1" formControlName="scoreTeam1" placeholder="Score Team 1">

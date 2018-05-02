@@ -41,6 +41,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { AdminListTeamsComponent } from './administration/admin-list-teams/admin-list-teams.component';
+import { AdminTeamComponent } from './administration/admin-team/admin-team.component';
 
 
 
@@ -85,7 +87,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
         BetComponent,
         UsersComponent,
         AdminListMatchesComponent,
-        AdminMatchComponent
+        AdminMatchComponent,
+        AdminListTeamsComponent,
+        AdminTeamComponent
     ],
     entryComponents: [
       BetComponent

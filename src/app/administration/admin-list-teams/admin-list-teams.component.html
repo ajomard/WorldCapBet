@@ -1,0 +1,44 @@
+<div class="full-container">
+  <div class="login-container" fxFlex="50" fxFlex.lt-sm="75">
+  <mat-card>
+    <mat-card-title class="header">
+      <span>Teams</span>
+      <a mat-raised-button color="primary" [routerLink]="['/admin/team/create']">New Team</a>
+    </mat-card-title>
+</mat-card>
+
+  <div class="teams-container mat-elevation-z8">
+    <div class="teams-loading-shade" *ngIf="isLoadingResults">
+      <mat-spinner></mat-spinner>
+    </div>
+    <mat-table [dataSource]="dataSource" matSort matSortActive="date" matSortDisableClear matSortDirection="asc">
+
+      <!-- Date -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Name </mat-header-cell>
+        <mat-cell *matCellDef="let team"> {{team.name }} </mat-cell>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="team">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Flag </mat-header-cell>
+        <mat-cell *matCellDef="let team" fxLayout="row" fxLayoutAlign="center center">
+            <img src="../../../assets/flags-mini/{{team.flag}}.png" [title]="team.name">
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Action </mat-header-cell>
+        <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+          <button mat-button color="primary" (click)="edit(row)">Edit</button>
+          <button mat-button color="warn" (click)="delete(row)">Delete</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+</div>
+</div>

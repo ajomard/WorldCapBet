@@ -1,0 +1,23 @@
+<div class="full-container">
+  <div class="team-container" fxFlex="33" fxFlex.lt-sm="75">
+    <mat-card class="team-card">
+      <mat-card-title>Team</mat-card-title>
+      <form class="team-form" [formGroup]="teamForm" novalidate>
+
+        <mat-form-field>
+          <input type="text" name="country" matInput formControlName="country" [(ngModel)]="country" [matAutocomplete]="auto" placeholder="Team" required>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let country of filteredCountry | async" [value]="country">
+              {{ country.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </form>
+
+      <button mat-raised-button color="primary" [disabled]="teamForm.invalid" (click)="createOrUpdate()">Create / Update</button>
+      <a mat-button [routerLink]="['/admin/teams']">Cancel</a>
+
+    </mat-card>
+  </div>
+</div>

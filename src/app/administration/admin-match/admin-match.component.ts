@@ -39,11 +39,11 @@ export class AdminMatchComponent implements OnInit {
                 map(name => name ? this.filterTeam(name) : this.teams.slice())
               );
           this.filteredTeams2 = this.matchForm.controls['team2'].valueChanges
-                  .pipe(
-                    startWith<string | Team>(''),
-                    map(value => typeof value === 'string' ? value : value.name),
-                    map(name => name ? this.filterTeam(name) : this.teams.slice())
-                  );
+              .pipe(
+                startWith<string | Team>(''),
+                map(value => typeof value === 'string' ? value : value.name),
+                map(name => name ? this.filterTeam(name) : this.teams.slice())
+              );
         });
 
 
