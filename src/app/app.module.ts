@@ -11,7 +11,7 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService, MatchesService, PronosticService, DataService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, TeamService, MatchesService, PronosticService, DataService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -23,6 +23,7 @@ import { UsersComponent } from './administration/users/users.component';
 import { AdminListMatchesComponent } from './administration/admin-list-matches/admin-list-matches.component';
 import { AdminMatchComponent } from './administration/admin-match/admin-match.component';
 
+import {MatNativeDateModule} from '@angular/material';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -38,6 +39,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
@@ -65,7 +68,10 @@ import {MatMenuModule} from '@angular/material/menu';
         MatCardModule,
         FlexLayoutModule,
         MatSnackBarModule,
-        MatMenuModule
+        MatMenuModule,
+        MatAutocompleteModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     declarations: [
         AppComponent,
@@ -91,6 +97,7 @@ import {MatMenuModule} from '@angular/material/menu';
         MatchesService,
         PronosticService,
         DataService,
+        TeamService,
         UserService,
         {
             provide: HTTP_INTERCEPTORS,

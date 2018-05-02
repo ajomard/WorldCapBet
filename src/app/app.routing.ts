@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     { path: 'admin/users', component: UsersComponent , canActivate: [AuthGuard] },
     { path: 'admin/matches', component: AdminListMatchesComponent , canActivate: [AuthGuard] },
     { path: 'admin/match/create', component: AdminMatchComponent , canActivate: [AuthGuard] },
-      { path: 'admin/match/edit', component: AdminMatchComponent , canActivate: [AuthGuard] },
+    { path: 'admin/match/edit', component: AdminMatchComponent , canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

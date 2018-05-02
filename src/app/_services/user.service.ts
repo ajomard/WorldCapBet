@@ -12,7 +12,7 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<User[]>(this.apiUrl + '/Users');
+        return this.http.get<User[]>(this.apiUrl + 'Users');
     }
 
     getById(id: number) {
@@ -20,7 +20,7 @@ export class UserService {
     }
 
     create(user: User) {
-        return this.http.post(this.apiUrl + '/Users', user);
+        return this.http.post(this.apiUrl + 'Users', user);
     }
 
     update(user: User) {
