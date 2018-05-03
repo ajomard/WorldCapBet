@@ -45,16 +45,33 @@ export class BetComponent implements OnInit {
    }
 
   saveBet() {
-    this.pronosticService.update(this.pronosticTmp).subscribe(
-        data => {
-          this.data.pronostic = this.pronosticTmp;
-          this.openSnackBar('Bet saved', 2000);
-          this.close();
-        },
-        error => {
-          this.openSnackBar('Error while saving bet', 10000);
-          this.close();
-        });
+    if(this.pronosticTmp.id != null) {
+      this.pronosticService.update(this.pronosticTmp).subscribe(
+          data => {
+            this.data.pronostic = this.pronosticTmp;
+            this.openSnackBar('Bet saved', 2000);
+            this.close();
+          },
+          error => {
+            this.openSnackBar('Error while saving bet', 10000);
+            this.close();
+          });
+    } else {
+      this.pronosticTmp.match = this.data;
+      this.pronosticTmp.user = new User();
+      this.pronosticTmp.user.id = this.authenticationService.getLoggedUser().id;
+      this.pronosticService.create(this.pronosticTmp).subscribe(
+          data => {
+            this.data.pronostic = this.pronosticTmp;
+            this.openSnackBar('Bet created', 2000);
+            this.close();
+          },
+          error => {
+            this.openSnackBar('Error while creating bet', 10000);
+            this.close();
+          });
+    }
+
   }
 
   close() {

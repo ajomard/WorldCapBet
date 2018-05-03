@@ -1,13 +1,13 @@
 <h2 mat-dialog-title>
   <div fxLayout="row" fxFlex>
     <div fxLayout="row" fxLayoutAlign="end center">
-      <span class="padding-team">{{data.team1}}</span>
-      <img class="padding-team" src="../../assets/flags-mini/de.png" [alt]="data.team1" [title]="data.team1">
+      <span class="padding-team">{{data.team1.name}}</span>
+      <img class="padding-team" src="../../assets/flags-mini/{{data.team1.flag}}.png" [title]="data.team1.name">
     </div>
 
     <div fxLayout="row" fxLayoutAlign="start center">
-      <img class="padding-team" src="../../assets/flags-mini/de.png" [alt]="data.team2" [title]="data.team2">
-      <span class="padding-team">{{data.team2}}</span>
+      <img class="padding-team" src="../../assets/flags-mini/{{data.team2.flag}}.png" [title]="data.team2.name">
+      <span class="padding-team">{{data.team2.name}}</span>
     </div>
   </div>
 
@@ -15,13 +15,13 @@
 <mat-dialog-content>
   <form  [formGroup]="betForm" novalidate>
     <mat-form-field>
-      <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam1" formControlName="scoreTeam1"  placeholder="Score {{data.team1}}" required>
+      <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam1" formControlName="scoreTeam1"  placeholder="Score {{data.team1.name}}" required>
       <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.required">You must enter a value</mat-error>
       <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.min">Min score is 0</mat-error>
       <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.max">Max score is 20</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam2" formControlName="scoreTeam2" placeholder="Score {{data.team2}}" required>
+      <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam2" formControlName="scoreTeam2" placeholder="Score {{data.team2.name}}" required>
       <mat-error *ngIf="betForm.controls['scoreTeam2'].errors && betForm.controls['scoreTeam2'].errors.required">You must enter a value</mat-error>
       <mat-error *ngIf="betForm.controls['scoreTeam2'].errors && betForm.controls['scoreTeam2'].errors.min">Min score is 0</mat-error>
       <mat-error *ngIf="betForm.controls['scoreTeam2'].errors && betForm.controls['scoreTeam2'].errors.max">Max score is 20</mat-error>

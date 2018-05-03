@@ -73,7 +73,7 @@ export class MatchesComponent implements OnInit {
   }
 
   isPronostic(match:Matches): boolean {
-    return match.pronostic.scoreTeam1 != null && match.pronostic.scoreTeam2 != null;
+    return match.pronostic != null;
   }
 
   isMatchScore(match:Matches): boolean {

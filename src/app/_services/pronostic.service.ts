@@ -14,4 +14,12 @@ export class PronosticService {
     update(pronostic: Pronostic) {
         return this.http.put(this.apiUrl + 'Pronostics/' + pronostic.id, pronostic);
     }
+
+    create(pronostic: Pronostic) {
+        return this.http.post(this.apiUrl + 'Pronostics/', pronostic);
+    }
+
+    get(id: number) {
+        return this.http.get<Pronostic>(this.apiUrl + 'Pronostics/' + id);
+    }
 }
