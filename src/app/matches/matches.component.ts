@@ -59,6 +59,13 @@ export class MatchesComponent implements OnInit {
         matchsResults = matches;
       }
       this.dataSource = new MatTableDataSource(matchsResults);
+      this.dataSource.sortingDataAccessor = (item, property) => {
+        switch(property) {
+          case 'team1': return item.team1.name;
+          case 'team2': return item.team2.name;
+          default: return item[property];
+        }
+      };
       this.dataSource.sort = this.sort;
       this.isLoadingResults = false;
     },

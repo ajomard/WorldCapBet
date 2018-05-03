@@ -8,6 +8,7 @@ import { MatSnackBar} from '@angular/material';
 import { Matches } from '../../_models/index';
 import { Team } from '../../_models/index';
 import { UserService, MatchesService, DataService, TeamService } from '../../_services/index';
+import { DateTimeAdapter } from 'ng-pick-datetime';
 
 @Component({
   selector: 'app-admin-match',
@@ -26,7 +27,10 @@ export class AdminMatchComponent implements OnInit {
       private matchService: MatchesService,
       private teamService: TeamService,
       public snackBar: MatSnackBar,
-      private dataService: DataService) { }
+      private dataService: DataService,
+      private dateTimeAdapter: DateTimeAdapter<any>) {
+        dateTimeAdapter.setLocale('fr');
+      }
 
       ngOnInit() {
         this.teamService.getAll().subscribe(teams => {
@@ -72,6 +76,7 @@ export class AdminMatchComponent implements OnInit {
       }
 
       createOrUpdate() {
+        //this.match.date = new Date(this.match.date).toISOString();
         if(this.match.id == null) {
           this.matchService.create(this.match).subscribe(data => {
             this.dataService.delete();

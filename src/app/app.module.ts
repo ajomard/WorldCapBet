@@ -45,7 +45,7 @@ import { AdminListTeamsComponent } from './administration/admin-list-teams/admin
 import { AdminTeamComponent } from './administration/admin-team/admin-team.component';
 
 
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
     imports: [
@@ -73,7 +73,9 @@ import { AdminTeamComponent } from './administration/admin-team/admin-team.compo
         MatMenuModule,
         MatAutocompleteModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule,
     ],
     declarations: [
         AppComponent,
