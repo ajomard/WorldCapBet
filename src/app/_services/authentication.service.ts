@@ -37,6 +37,6 @@ export class AuthenticationService {
 
     isAdmin() {
       let user = this.getLoggedUser();
-      return user != null && user.username == 'akubler';
+      return user != null && user.role == 'Admin';
     }
 }
