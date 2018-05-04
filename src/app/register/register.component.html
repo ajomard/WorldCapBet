@@ -2,7 +2,7 @@
   <div class="register-container" fxFlex="33" fxFlex.lt-sm="75">
     <mat-card class="register-card">
       <mat-card-title>Register</mat-card-title>
-      <form class="register-form" [formGroup]="registerForm" novalidate>
+      <form class="register-form" [formGroup]="registerForm" (submit)="register()" novalidate>
         <mat-form-field>
           <input type="text" name="firstName" matInput [(ngModel)]="model.firstName" formControlName="firstName"  placeholder="First name" required>
           <mat-error *ngIf="registerForm.controls['firstName'].errors">You must enter a value</mat-error>
@@ -19,11 +19,6 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input type="text" name="username" matInput [(ngModel)]="model.username" formControlName="username" placeholder="Username" required>
-          <mat-error *ngIf="registerForm.controls['username'].errors">You must enter a value</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
           <input [type]="hidePassword ? 'password' : 'text'" name="password" matInput [(ngModel)]="model.password" formControlName="password" placeholder="Password" required>
           <mat-icon matSuffix (click)="hidePassword = !hidePassword" class="cursor-pointer">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
           <mat-error *ngIf="registerForm.controls['password'].errors">You must enter a value</mat-error>
@@ -35,10 +30,12 @@
           <mat-error *ngIf="registerForm.controls['password2'].errors">You must enter a value</mat-error>
           <mat-hint class="mat-error" *ngIf="passwordverification != model.password">Password mismatch</mat-hint>
         </mat-form-field>
+
+        <button mat-raised-button color="primary" [disabled]="registerForm.invalid" (click)="register()">Register</button>
+        <a mat-button [routerLink]="['/login']">Cancel</a>
       </form>
 
-      <button mat-raised-button color="primary" [disabled]="registerForm.invalid" (click)="register()">Register</button>
-      <a mat-button [routerLink]="['/login']">Cancel</a>
+
 
     </mat-card>
   </div>

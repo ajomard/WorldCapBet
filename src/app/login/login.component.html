@@ -1,10 +1,10 @@
 <div class="full-container">
   <div class="login-container" fxFlex="33" fxFlex.lt-sm="75">
-    <mat-card >
+    <mat-card>
       <mat-card-title>Login</mat-card-title>
       <form fxLayout="column" (submit)="login()">
         <mat-form-field>
-          <input type="text" name="username" matInput [(ngModel)]="model.username" placeholder="Username" cdkFocusInitial>
+          <input type="text" name="email" matInput [(ngModel)]="model.email" placeholder="Email" cdkFocusInitial>
         </mat-form-field>
 
         <mat-form-field>

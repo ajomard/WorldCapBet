@@ -36,9 +36,6 @@ export class RegisterComponent implements OnInit {
            Validators.required,
            Validators.pattern('^[a-zA-Z0-9_.+-]+@capgemini\.com$')
          ]),
-         'username': new FormControl(this.model.username, [
-           Validators.required
-         ]),
          'password': new FormControl(this.model.password, [
            Validators.required
          ]),
@@ -57,7 +54,9 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    this.openSnackBar(error.error, 10000);
+                    //get first error
+                    var error = Object.values(error.error)[0][0];
+                    this.openSnackBar(error, 10000);
                     this.loading = false;
                 });
     }

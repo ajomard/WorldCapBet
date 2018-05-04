@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar} from '@angular/material';
 
 import { AuthenticationService } from '../_services/index';
+import { User } from '../_models/index';
 
 @Component({
     moduleId: module.id.toString(),
@@ -11,7 +12,7 @@ import { AuthenticationService } from '../_services/index';
 })
 
 export class LoginComponent implements OnInit {
-    model: any = {};
+    model: User;
     loading = false;
     returnUrl: string;
     hidePassword = true;
@@ -25,13 +26,14 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         // reset login status
         this.authenticationService.logout();
+        this.model = new User();
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     login() {
         this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
+        this.authenticationService.login(this.model)
             .subscribe(
                 data => {
                     this.openSnackBar('Login successful', 2000);
