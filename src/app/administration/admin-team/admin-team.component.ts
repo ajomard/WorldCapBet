@@ -58,6 +58,7 @@ export class AdminTeamComponent implements OnInit {
         if(this.team.id == null) {
           this.teamService.create(this.team).subscribe(data => {
             this.dataService.delete();
+            this.openSnackBar("Team created", 2000);
             this.router.navigate(["/admin/teams"]);
           }, error => {
             //alert('ko');
@@ -66,6 +67,7 @@ export class AdminTeamComponent implements OnInit {
         } else {
           this.teamService.update(this.team).subscribe(data => {
             this.dataService.delete();
+            this.openSnackBar("Team updated", 2000);
             this.router.navigate(["/admin/teams"]);
           }, error => {
             //alert('ko');
@@ -86,4 +88,10 @@ export class AdminTeamComponent implements OnInit {
         let country: Country = countries.find(c => c.iso === this.team.flag);
         this.team.name = country.name;
       }
+      openSnackBar(message: string, time: number) {
+        this.snackBar.open(message,'Close', {
+          duration: time,
+        });
+      }
+
 }

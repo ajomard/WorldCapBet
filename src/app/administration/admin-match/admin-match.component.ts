@@ -80,6 +80,7 @@ export class AdminMatchComponent implements OnInit {
         if(this.match.id == null) {
           this.matchService.create(this.match).subscribe(data => {
             this.dataService.delete();
+            this.openSnackBar("Match created", 2000);
             this.router.navigate(["/admin/matches"]);
           }, error => {
             //alert('ko');
@@ -88,6 +89,7 @@ export class AdminMatchComponent implements OnInit {
         } else {
           this.matchService.update(this.match).subscribe(data => {
             this.dataService.delete();
+            this.openSnackBar("Match updated", 2000);
             this.router.navigate(["/admin/matches"]);
           }, error => {
             //alert('ko');
@@ -104,6 +106,12 @@ export class AdminMatchComponent implements OnInit {
 
       displayFn(team?: Team): string | undefined {
          return team ? team.name : undefined;
+       }
+
+       openSnackBar(message: string, time: number) {
+         this.snackBar.open(message,'Close', {
+           duration: time,
+         });
        }
 
 

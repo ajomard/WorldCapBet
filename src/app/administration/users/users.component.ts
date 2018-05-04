@@ -12,7 +12,7 @@ import {MatPaginator, MatSort, MatTableDataSource, MatSnackBar} from '@angular/m
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  displayedColumns = ['lastName', 'firstName', 'username', 'email', 'action'];
+  displayedColumns = ['lastName', 'firstName', 'email', 'action'];
   dataSource: MatTableDataSource<User>;
   isLoadingResults = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
