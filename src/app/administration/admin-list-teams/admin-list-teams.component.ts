@@ -44,7 +44,7 @@ export class AdminListTeamsComponent implements OnInit {
       this.isLoadingResults = false;
     },
     error => {
-        this.openSnackBar('Error while loading teams', 10000);
+        //this.openSnackBar('Error while loading teams', 10000);
         this.isLoadingResults = false;
     });
   }

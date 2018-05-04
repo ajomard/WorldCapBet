@@ -53,7 +53,7 @@ export class BetComponent implements OnInit {
             this.close();
           },
           error => {
-            this.openSnackBar('Error while saving bet', 10000);
+            //this.openSnackBar('Error while saving bet', 10000);
             this.close();
           });
     } else {
@@ -67,7 +67,7 @@ export class BetComponent implements OnInit {
             this.close();
           },
           error => {
-            this.openSnackBar('Error while creating bet', 10000);
+            //this.openSnackBar('Error while creating bet', 10000);
             this.close();
           });
     }

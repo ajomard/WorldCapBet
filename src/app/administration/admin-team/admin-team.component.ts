@@ -60,7 +60,7 @@ export class AdminTeamComponent implements OnInit {
             this.dataService.delete();
             this.router.navigate(["/admin/teams"]);
           }, error => {
-            alert('ko');
+            //alert('ko');
             this.dataService.delete();
           });
         } else {
@@ -68,7 +68,7 @@ export class AdminTeamComponent implements OnInit {
             this.dataService.delete();
             this.router.navigate(["/admin/teams"]);
           }, error => {
-            alert('ko');
+            //alert('ko');
             this.dataService.delete();
           });
         }

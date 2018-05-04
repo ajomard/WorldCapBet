@@ -35,6 +35,10 @@ export class AuthenticationService {
         return JSON.parse(localStorage.getItem('currentUser'));
     }
 
+    isLogged() {
+      return this.getLoggedUser() != null;
+    }
+
     isAdmin() {
       let user = this.getLoggedUser();
       return user != null && user.role == 'Admin';

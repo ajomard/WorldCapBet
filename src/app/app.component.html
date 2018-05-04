@@ -21,7 +21,7 @@
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
 
-    <span class="font-size-14" *ngIf="authenticationService.getLoggedUser()">
+    <span class="font-size-14" *ngIf="authenticationService.isLogged()">
       {{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}
       <a mat-icon-button routerLink="/login" title="Logout"><mat-icon aria-label="Logout"><i class="material-icons">exit_to_app</i></mat-icon></a>
     </span>

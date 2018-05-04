@@ -66,7 +66,7 @@ export class AdminListMatchesComponent implements OnInit {
       this.isLoadingResults = false;
     },
     error => {
-        this.openSnackBar('Error while loading matches', 10000);
+        //this.openSnackBar('Error while loading matches', 10000);
         this.isLoadingResults = false;
     });
   }

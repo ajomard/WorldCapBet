@@ -82,7 +82,7 @@ export class AdminMatchComponent implements OnInit {
             this.dataService.delete();
             this.router.navigate(["/admin/matches"]);
           }, error => {
-            alert('ko');
+            //alert('ko');
             this.dataService.delete();
           });
         } else {
@@ -90,7 +90,7 @@ export class AdminMatchComponent implements OnInit {
             this.dataService.delete();
             this.router.navigate(["/admin/matches"]);
           }, error => {
-            alert('ko');
+            //alert('ko');
             this.dataService.delete();
           });
         }

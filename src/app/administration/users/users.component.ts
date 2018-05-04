@@ -35,7 +35,7 @@ export class UsersComponent implements OnInit {
         this.isLoadingResults = false;
       },
       error => {
-          this.openSnackBar('Error while loading users', 10000);
+        //  this.openSnackBar('Error while loading users', 10000);
       });
     }
 
@@ -45,7 +45,7 @@ export class UsersComponent implements OnInit {
         this.openSnackBar('User deleted', 2000);
       },
       error => {
-          this.openSnackBar('Error while deleting user', 10000);
+          //this.openSnackBar('Error while deleting user', 10000);
       });
     }
 
