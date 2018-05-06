@@ -8,10 +8,9 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
-import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService, TeamService, MatchesService, PronosticService, DataService } from './_services/index';
+import { AuthenticationService, UserService, TeamService, MatchesService, PronosticService, DataService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -79,7 +78,6 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     ],
     declarations: [
         AppComponent,
-        AlertComponent,
         HomeComponent,
         LoginComponent,
         NavbarComponent,
@@ -98,7 +96,6 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     ],
     providers: [
         AuthGuard,
-        AlertService,
         AuthenticationService,
         MatchesService,
         PronosticService,

@@ -1,11 +1,9 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 import {User} from '../_models/user';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
-
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticationService {
@@ -13,8 +11,8 @@ export class AuthenticationService {
     constructor(private http: HttpClient) { }
 
     login(user:User) {
-        return this.http.post<any>(this.apiUrl + '/Auth/login', user)
-            .map(user => {
+        return this.http.post<any>(this.apiUrl + '/Auth/login', user);
+          /*  .subscribe(user => {
                 // login successful if there's a jwt token in the response
                 if (user) {
                   let userObj = JSON.parse(user);
@@ -24,7 +22,7 @@ export class AuthenticationService {
                   }
                 }
                 return user;
-            })
+            })*/
     }
 
     logout() {

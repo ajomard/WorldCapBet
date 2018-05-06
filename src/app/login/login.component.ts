@@ -36,6 +36,13 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model)
             .subscribe(
                 data => {
+                    if (data) {
+                      let userObj = JSON.parse(data);
+                      if(userObj.auth_token) {
+                        // store user details and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser',data );
+                      }
+                    }
                     this.openSnackBar('Login successful', 2000);
                     this.router.navigate([this.returnUrl]);
                 },
@@ -44,6 +51,8 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
+
 
     openSnackBar(message: string, time: number) {
       this.snackBar.open(message,'Close', {
