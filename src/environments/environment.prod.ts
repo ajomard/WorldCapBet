@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: "http://worldcapbetwebservice.azurewebsites.net/api/"
+  apiUrl: "http://worldcapbetservice.azurewebsites.net/api/",
+  baseHrefForImages: "./"
 };

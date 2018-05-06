@@ -32,6 +32,9 @@
       <div fxLayout="column">
         <a mat-button [routerLink]="['/matches']" (click)="sidenav.toggle()">Matches</a>
         <a mat-button [routerLink]="['/results']" (click)="sidenav.toggle()">Ranking</a>
+        <a mat-button [routerLink]="['/admin/users']" *ngIf="authenticationService.isAdmin()">Admin Users</a>
+        <a mat-button [routerLink]="['/admin/matches']" *ngIf="authenticationService.isAdmin()">Admin Matches</a>
+        <a mat-button [routerLink]="['/admin/teams']" *ngIf="authenticationService.isAdmin()">Admin Teams</a>
       </div>
 
     </mat-sidenav>

@@ -9,7 +9,7 @@ import { BetComponent } from '../bet/bet.component';
 import * as moment from 'moment';
 
 import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
-
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -22,6 +22,7 @@ export class MatchesComponent implements OnInit {
   dataSource: MatTableDataSource<Matches>;
   isLoadingResults = false;
   isFilterOn = true;
+  baseHrefForImages = environment.baseHrefForImages;
 
   @ViewChild(MatSort) sort: MatSort;
 

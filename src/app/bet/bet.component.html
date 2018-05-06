@@ -2,11 +2,11 @@
   <div fxLayout="row" fxFlex>
     <div fxLayout="row" fxLayoutAlign="end center">
       <span class="padding-team">{{data.team1.name}}</span>
-      <img class="padding-team" src="../../assets/flags-mini/{{data.team1.flag}}.png" [title]="data.team1.name">
+      <img class="padding-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{data.team1.flag}}.png" [title]="data.team1.name">
     </div>
 
     <div fxLayout="row" fxLayoutAlign="start center">
-      <img class="padding-team" src="../../assets/flags-mini/{{data.team2.flag}}.png" [title]="data.team2.name">
+      <img class="padding-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{data.team2.flag}}.png" [title]="data.team2.name">
       <span class="padding-team">{{data.team2.name}}</span>
     </div>
   </div>

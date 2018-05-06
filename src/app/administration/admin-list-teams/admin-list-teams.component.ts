@@ -7,7 +7,7 @@ import { UserService } from '../../_services/index';
 import { DataService } from '../../_services/index';
 import { User } from '../../_models/index';
 import { Team } from '../../_models/index';
-
+import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 
 import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
@@ -21,6 +21,7 @@ export class AdminListTeamsComponent implements OnInit {
   displayedColumns = ['name', 'team','action'];
   dataSource: MatTableDataSource<Team>;
   isLoadingResults = false;
+  baseHrefForImages = environment.baseHrefForImages;
 
   @ViewChild(MatSort) sort: MatSort;
 

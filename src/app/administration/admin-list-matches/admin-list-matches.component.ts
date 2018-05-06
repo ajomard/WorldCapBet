@@ -7,7 +7,7 @@ import { UserService } from '../../_services/index';
 import { DataService } from '../../_services/index';
 import { Matches } from '../../_models/index';
 import { User } from '../../_models/index';
-
+import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 
 import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
@@ -22,7 +22,7 @@ export class AdminListMatchesComponent implements OnInit {
   dataSource: MatTableDataSource<Matches>;
   isLoadingResults = false;
   isFilterOn = true;
-
+  baseHrefForImages = environment.baseHrefForImages;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private matchesService: MatchesService,

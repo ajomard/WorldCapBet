@@ -9,6 +9,8 @@ import { AuthenticationService } from '../_services/index';
 import { PronosticService } from '../_services/index';
 import { AlertService } from '../_services/index';
 
+import { environment } from '../../environments/environment';
+
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 
 @Component({
@@ -19,6 +21,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/ma
 export class BetComponent implements OnInit {
   pronosticTmp: Pronostic;
   betForm: FormGroup;
+  baseHrefForImages = environment.baseHrefForImages;
 
   constructor(public authenticationService: AuthenticationService,
    private pronosticService: PronosticService,

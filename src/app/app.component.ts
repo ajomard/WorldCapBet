@@ -18,7 +18,7 @@ export class AppComponent {
 
   constructor(public authenticationService: AuthenticationService) {}
 
-  close(reason: string) {
+  close() {
     this.sidenav.close();
   }
 }
