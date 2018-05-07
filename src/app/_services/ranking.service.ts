@@ -10,7 +10,7 @@ export class RankingService {
     constructor(private http: HttpClient) { }
 
     calculateRanking() {
-        return this.http.get(this.apiUrl + 'Rankings/UpdateRanking');
+        return this.http.post(this.apiUrl + 'Rankings/UpdateRankings',null);
     }
 
     getAll() {

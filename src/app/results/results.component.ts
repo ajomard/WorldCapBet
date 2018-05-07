@@ -23,7 +23,7 @@ export class ResultsComponent implements OnInit {
 
   constructor(private userService: UserService,
     private rankingService: RankingService,
-    private authenticationService: AuthenticationService) { }
+    public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.getRanking();
@@ -36,6 +36,13 @@ export class ResultsComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.highlightedRow = this.authenticationService.getLoggedUser().id;
       this.isLoadingResults = false;
+    });
+  }
+
+  updateRankings() {
+    this.isLoadingResults = true;
+    this.rankingService.calculateRanking().subscribe(data => {
+      this.getRanking();
     });
   }
 

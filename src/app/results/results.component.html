@@ -1,5 +1,7 @@
 <mat-card>
-  <mat-card-title>Ranking
+  <mat-card-title class="header">
+    <span>Ranking</span>
+    <button mat-raised-button color="primary" *ngIf="authenticationService.isAdmin()" (click)="updateRankings()">Update</button>
   </mat-card-title>
 </mat-card>
 

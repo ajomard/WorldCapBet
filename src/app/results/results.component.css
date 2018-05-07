@@ -41,3 +41,8 @@
   overflow: auto;
   max-height: 500px;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
