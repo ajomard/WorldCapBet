@@ -18,25 +18,49 @@
     <!-- First Name -->
     <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
-      <mat-cell *matCellDef="let rank"> {{rank.firstName}} </mat-cell>
+      <mat-cell *matCellDef="let rank"> {{rank.user.firstName}} </mat-cell>
     </ng-container>
 
     <!-- Last Name -->
     <ng-container matColumnDef="lastName">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
-      <mat-cell *matCellDef="let rank"> {{rank.lastName}} </mat-cell>
+      <mat-cell *matCellDef="let rank"> {{rank.user.lastName}} </mat-cell>
     </ng-container>
 
     <!-- Score -->
     <ng-container matColumnDef="score">
-      <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Score </mat-header-cell>
       <mat-cell *matCellDef="let rank">{{rank.score}} </mat-cell>
     </ng-container>
 
+    <!-- Score -->
+    <ng-container matColumnDef="falsePronostic">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> False Pronostic </mat-header-cell>
+      <mat-cell *matCellDef="let rank">{{rank.falsePronostic}} </mat-cell>
+    </ng-container>
+
+    <!-- Score -->
+    <ng-container matColumnDef="goodPronosticOnly">
+      <mat-header-cell *matHeaderCellDef> Good Pronostic Only </mat-header-cell>
+      <mat-cell *matCellDef="let rank">{{rank.goodPronosticOnly}} </mat-cell>
+    </ng-container>
+
+    <!-- Score -->
+    <ng-container matColumnDef="goodGoalAverage">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Good Goal Average </mat-header-cell>
+      <mat-cell *matCellDef="let rank">{{rank.goodGoalAverage}} </mat-cell>
+    </ng-container>
+
+    <!-- Score -->
+    <ng-container matColumnDef="goodPronosticAndGoodScore">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Good Pronostic And Good Score </mat-header-cell>
+      <mat-cell *matCellDef="let rank">{{rank.goodPronosticAndGoodScore}} </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let rank; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let rank; let i = index; columns: displayedColumns;"></mat-row>
     <!--  [style.background]="rank.id == highlightedRow ? '#3F51B5' : ''"-->
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[25, 50, 100]"></mat-paginator>
 </div>

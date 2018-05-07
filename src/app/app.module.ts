@@ -10,7 +10,7 @@ import { routing }        from './app.routing';
 
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AuthenticationService, UserService, TeamService, MatchesService, PronosticService, DataService } from './_services/index';
+import { AuthenticationService, RankingService, UserService, TeamService, MatchesService, PronosticService, DataService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -101,6 +101,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
         PronosticService,
         DataService,
         TeamService,
+        RankingService,
         UserService,
         {
             provide: HTTP_INTERCEPTORS,

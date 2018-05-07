@@ -2,7 +2,7 @@
   <div class="register-container" fxFlex="33" fxFlex.lt-sm="75">
     <mat-card class="register-card">
       <mat-card-title>Register</mat-card-title>
-      <form class="register-form" [formGroup]="registerForm" (submit)="register()" novalidate>
+      <form class="register-form" [formGroup]="registerForm" novalidate>
         <mat-form-field>
           <input type="text" name="firstName" matInput [(ngModel)]="model.firstName" formControlName="firstName"  placeholder="First name" required>
           <mat-error *ngIf="registerForm.controls['firstName'].errors">You must enter a value</mat-error>
