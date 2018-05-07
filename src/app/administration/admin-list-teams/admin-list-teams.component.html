@@ -11,7 +11,7 @@
     <div class="teams-loading-shade" *ngIf="isLoadingResults">
       <mat-spinner></mat-spinner>
     </div>
-    <mat-table [dataSource]="dataSource" matSort matSortActive="date" matSortDisableClear matSortDirection="asc">
+    <mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
 
       <!-- Date -->
       <ng-container matColumnDef="name">
