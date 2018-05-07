@@ -10,8 +10,8 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input type="text" name="team1" matInput formControlName="team1" [(ngModel)]="match.team1" [matAutocomplete]="auto" placeholder="Team 1" required>
-          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <input type="text" name="team1" matInput formControlName="team1" [(ngModel)]="match.team1" [matAutocomplete]="auto1" placeholder="Team 1" required>
+          <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngFor="let team1 of filteredTeams1 | async" [value]="team1">
               {{ team1.name }}
             </mat-option>
@@ -19,8 +19,8 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input type="text" name="team2" matInput formControlName="team2" [(ngModel)]="match.team2" [matAutocomplete]="auto" placeholder="Team 2" required>
-          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <input type="text" name="team2" matInput formControlName="team2" [(ngModel)]="match.team2" [matAutocomplete]="auto2" placeholder="Team 2" required>
+          <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngFor="let team2 of filteredTeams2 | async" [value]="team2">
               {{ team2.name }}
             </mat-option>
