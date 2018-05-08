@@ -39,7 +39,7 @@
       </form>
 
       <button mat-raised-button color="primary" [disabled]="matchForm.invalid" (click)="createOrUpdate()">Create / Update</button>
-      <a mat-button [routerLink]="['/admin/matches']">Cancel</a>
+      <a mat-button (click)="cancel()">Cancel</a>
 
     </mat-card>
   </div>

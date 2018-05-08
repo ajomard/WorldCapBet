@@ -98,6 +98,11 @@ export class AdminMatchComponent implements OnInit {
 
       }
 
+      cancel() {
+        this.dataService.delete();
+        this.router.navigate(["/admin/matches"]);
+      }
+
       filterTeam(val: string): Team[] {
         return this.teams.filter(team =>
           team.name.toLowerCase().indexOf(val.toLowerCase()) === 0);
