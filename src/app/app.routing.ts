@@ -5,6 +5,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
+import { UserComponent } from './user/user.component';
 import { UsersComponent } from './administration/users/users.component';
 import { AdminListMatchesComponent } from './administration/admin-list-matches/admin-list-matches.component';
 import { AdminListTeamsComponent } from './administration/admin-list-teams/admin-list-teams.component';
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'results', component: ResultsComponent, canActivate: [AuthGuard] },
     { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard] },
+    { path: 'user/edit', component: UserComponent, canActivate: [AuthGuard] },
     { path: 'admin/users', component: UsersComponent , canActivate: [AuthGuard] },
     { path: 'admin/matches', component: AdminListMatchesComponent , canActivate: [AuthGuard] },
     { path: 'admin/match/create', component: AdminMatchComponent , canActivate: [AuthGuard] },

@@ -22,7 +22,12 @@
     <span class="fill-remaining-space"></span>
 
     <span class="font-size-14" *ngIf="authenticationService.isLogged()">
-      {{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}
+      <button mat-button [matMenuTriggerFor]="userMenu">{{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}</button>
+      <mat-menu #userMenu="matMenu">
+        <a mat-menu-item [routerLink]="['/user/edit']">Edit</a>
+        <a mat-menu-item [routerLink]="['/login']">Logout</a>
+      </mat-menu>
+
       <a mat-icon-button routerLink="/login" title="Logout"><mat-icon aria-label="Logout"><i class="material-icons">exit_to_app</i></mat-icon></a>
     </span>
   </mat-toolbar>

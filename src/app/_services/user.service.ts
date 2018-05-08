@@ -42,4 +42,8 @@ export class UserService {
     getRanking() {
       return this.http.get<User[]>(this.apiUrl + '/Users/ranking');
     }
+
+    resetPassword(user: User){
+      return this.http.put(this.apiUrl + '/Users/resetpassword/' + user.id, user);
+    }
 }

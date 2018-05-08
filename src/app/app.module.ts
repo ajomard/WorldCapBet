@@ -21,6 +21,7 @@ import { BetComponent } from './bet/bet.component';
 import { UsersComponent } from './administration/users/users.component';
 import { AdminListMatchesComponent } from './administration/admin-list-matches/admin-list-matches.component';
 import { AdminMatchComponent } from './administration/admin-match/admin-match.component';
+import { UserComponent } from './user/user.component';
 
 import {MatNativeDateModule} from '@angular/material';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -45,6 +46,7 @@ import { AdminTeamComponent } from './administration/admin-team/admin-team.compo
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
 
 @NgModule({
     imports: [
@@ -89,7 +91,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
         AdminListMatchesComponent,
         AdminMatchComponent,
         AdminListTeamsComponent,
-        AdminTeamComponent
+        AdminTeamComponent,
+        UserComponent
     ],
     entryComponents: [
       BetComponent

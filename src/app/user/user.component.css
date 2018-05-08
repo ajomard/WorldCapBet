@@ -1,0 +1,41 @@
+.user-container, .user-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-container {
+  display: flex;
+  justify-content: center;
+}
+
+.width-33 {
+  width: 33%;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.users-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom:0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

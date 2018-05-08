@@ -24,8 +24,9 @@
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Action </mat-header-cell>
-        <mat-cell *matCellDef="let user" fxLayout="row" fxLayoutAlign="center center">
-          <button mat-raised-button color="warn" (click)="deleteUser(user)">Delete</button>
+      <mat-cell *matCellDef="let user" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-button color="warn" (click)="resetPassword(user)">Reset Password</button>
+        <button mat-raised-button color="warn" (click)="deleteUser(user)">Delete</button>
       </mat-cell>
     </ng-container>
 
