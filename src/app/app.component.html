@@ -1,6 +1,6 @@
 <div class="full-height">
   <mat-toolbar color="primary">
-    <div fxShow="true" fxHide.lt-md="true">
+    <div fxShow="true" fxHide.lt-sm="true">
       <a mat-button [routerLink]="['/']">World Cap Bet</a>
       <a mat-button [routerLink]="['/matches']">Matches</a>
       <a mat-button [routerLink]="['/results']">Ranking</a>
@@ -12,7 +12,7 @@
         <a mat-menu-item [routerLink]="['/admin/teams']">Teams</a>
       </mat-menu>
     </div>
-    <div fxShow="true" fxHide.gt-sm="true">
+    <div fxShow="true" fxHide.gt-xs="true">
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon><i class="material-icons">menu</i></mat-icon>
       </button>

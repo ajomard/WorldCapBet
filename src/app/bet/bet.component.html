@@ -10,10 +10,9 @@
       <span class="padding-team">{{data.team2.name}}</span>
     </div>
   </div>
-
 </h2>
 <mat-dialog-content>
-  <form  [formGroup]="betForm" novalidate>
+  <form  [formGroup]="betForm" novalidate fxLayout="row" >
     <mat-form-field>
       <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam1" formControlName="scoreTeam1"  placeholder="Score {{data.team1.name}}" required>
       <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.required">You must enter a value</mat-error>
@@ -32,9 +31,3 @@
   <button mat-button (click)="close()">Back</button>
   <button mat-button color="primary" [disabled]="betForm.invalid" (click)="saveBet()">Save</button>
 </mat-dialog-actions>
-
-
-<mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="end center">
-    <span class="padding-team" >{{row.team1}}</span>
-    <img class="padding-team" src="../../assets/flags-mini/fr.png" [alt]="row.team1" [title]="row.team1">
-</mat-cell>
