@@ -35,28 +35,25 @@
       <mat-cell *matCellDef="let rank">{{rank.score}} </mat-cell>
     </ng-container>
 
-    <!-- Score -->
-    <ng-container matColumnDef="falsePronostic">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> False Pronostic </mat-header-cell>
-      <mat-cell *matCellDef="let rank">{{rank.falsePronostic}} </mat-cell>
+    <ng-container matColumnDef="goodPronosticAndGoodScore">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Good Pronostic And Good Score </mat-header-cell>
+      <mat-cell *matCellDef="let rank">{{rank.goodPronosticAndGoodScore}} </mat-cell>
     </ng-container>
 
-    <!-- Score -->
+    <ng-container matColumnDef="goodGoalAverage">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Good Goal Average </mat-header-cell>
+      <mat-cell *matCellDef="let rank">{{rank.goodGoalAverage}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="goodPronosticOnly">
       <mat-header-cell *matHeaderCellDef> Good Pronostic Only </mat-header-cell>
       <mat-cell *matCellDef="let rank">{{rank.goodPronosticOnly}} </mat-cell>
     </ng-container>
 
     <!-- Score -->
-    <ng-container matColumnDef="goodGoalAverage">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Good Goal Average </mat-header-cell>
-      <mat-cell *matCellDef="let rank">{{rank.goodGoalAverage}} </mat-cell>
-    </ng-container>
-
-    <!-- Score -->
-    <ng-container matColumnDef="goodPronosticAndGoodScore">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Good Pronostic And Good Score </mat-header-cell>
-      <mat-cell *matCellDef="let rank">{{rank.goodPronosticAndGoodScore}} </mat-cell>
+    <ng-container matColumnDef="falsePronostic">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> False Pronostic </mat-header-cell>
+      <mat-cell *matCellDef="let rank">{{rank.falsePronostic}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

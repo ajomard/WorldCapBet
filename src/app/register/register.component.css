@@ -26,3 +26,7 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.error {
+  color: #f44336 !important;
+}

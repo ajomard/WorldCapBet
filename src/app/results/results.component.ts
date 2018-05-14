@@ -14,7 +14,7 @@ import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA} f
 export class ResultsComponent implements OnInit {
   ranking:Ranking[];
   highlightedRow = {};
-  displayedColumns = ['rank', 'firstName', 'lastName', 'score','falsePronostic','goodPronosticOnly','goodGoalAverage','goodPronosticAndGoodScore' ];
+  displayedColumns = ['rank', 'firstName', 'lastName', 'score','goodPronosticAndGoodScore','goodGoalAverage','goodPronosticOnly','falsePronostic' ];
   dataSource: MatTableDataSource<Ranking>;
   isLoadingResults = true;
 
