@@ -57,7 +57,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let rank; let i = index; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let rank; let i = index; columns: displayedColumns;" [style.font-weight]="rank.user.id == highlightedRow ? 'bold' : ''"></mat-row>
     <!--  [style.background]="rank.id == highlightedRow ? '#3F51B5' : ''"-->
   </mat-table>
 
