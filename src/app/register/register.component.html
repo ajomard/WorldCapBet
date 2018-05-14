@@ -29,7 +29,7 @@
           <input [type]="hidePassword2 ? 'password' : 'text'" name="password2" matInput [(ngModel)]="passwordverification" formControlName="password2" placeholder="Retype password" required>
           <mat-icon matSuffix (click)="hidePassword2 = !hidePassword2" class="cursor-pointer">{{hidePassword2 ? 'visibility' : 'visibility_off'}}</mat-icon>
           <mat-error *ngIf="registerForm.controls['password2'].errors">You must enter a value</mat-error>
-          <mat-hint class="mat-error" *ngIf="passwordverification != model.password">Password mismatch</mat-hint>
+          <mat-hint class="error" *ngIf="passwordverification != model.password">Password mismatch</mat-hint>
         </mat-form-field>
 
         <button mat-raised-button color="primary" [disabled]="registerForm.invalid" (click)="register()">Register</button>
