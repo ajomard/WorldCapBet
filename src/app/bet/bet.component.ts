@@ -21,6 +21,7 @@ export class BetComponent implements OnInit {
   pronosticTmp: Pronostic;
   betForm: FormGroup;
   baseHrefForImages = environment.baseHrefForImages;
+  isAction = false;
 
   constructor(public authenticationService: AuthenticationService,
    private pronosticService: PronosticService,
@@ -46,6 +47,7 @@ export class BetComponent implements OnInit {
    }
 
   saveBet() {
+    this.isAction = true;
     if(this.pronosticTmp.id != null) {
       this.pronosticService.update(this.pronosticTmp).subscribe(
           data => {
