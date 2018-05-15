@@ -1,4 +1,4 @@
-﻿<div class="col-md-6 col-md-offset-3">
+﻿<!--<div class="col-md-6 col-md-offset-3">
     <h1>Hi {{currentUser.firstName}}!</h1>
     <p>You're logged in with Angular 2/5 and Angular CLI!!</p>
     <h3>All registered users:</h3>
@@ -9,4 +9,58 @@
         </li>
     </ul>
     <p><a [routerLink]="['/login']">Logout</a></p>
+</div>-->
+<div class="full-container">
+  <div class="match-container" fxFlex="33" fxFlex.lt-sm="75">
+    <mat-card >
+        <mat-card-title matBadge="{{missingBetsNumber}}"  matBadgeColor="warn">Today matches</mat-card-title>
+      <mat-card-content>
+        <mat-table [dataSource]="dataSource" matSort matSortActive="date" matSortDisableClear matSortDirection="asc">
+          <!-- Progress Column -->
+          <ng-container matColumnDef="team1">
+            <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
+            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                <img class="padding-team"  width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
+            </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="team2">
+            <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 2 </mat-header-cell>
+            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                <img class="padding-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
+            </mat-cell>
+          </ng-container>
+
+          <!-- Color Column -->
+          <ng-container matColumnDef="pronostic">
+            <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Pronostic </mat-header-cell>
+            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+              <span *ngIf="isPronostic(row)">{{row.pronostic.scoreTeam1}} - {{row.pronostic.scoreTeam2}}</span>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Action </mat-header-cell>
+            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+              <button mat-button color="primary" (click)="openDialog(row)" [disabled]="isMatchAlreadyPlayed(row)">Bet</button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+    <div class="ranking-container" fxFlex="33" fxFlex.lt-sm="75">
+      <mat-card>
+          <mat-card-title>Ranking</mat-card-title>
+        <mat-card-content>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
 </div>

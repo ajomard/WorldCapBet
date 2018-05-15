@@ -41,6 +41,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatBadgeModule} from '@angular/material/badge';
 import { AdminListTeamsComponent } from './administration/admin-list-teams/admin-list-teams.component';
 import { AdminTeamComponent } from './administration/admin-team/admin-team.component';
 
@@ -77,6 +78,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
         MatNativeDateModule,
         OwlDateTimeModule,
         OwlNativeDateTimeModule,
+        MatBadgeModule
     ],
     declarations: [
         AppComponent,

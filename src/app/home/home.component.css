@@ -1,0 +1,16 @@
+.match-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+}
+
+.full-container {
+  display: flex;
+  justify-content: center;
+}
+
+.ranking-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}

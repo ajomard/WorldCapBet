@@ -29,4 +29,9 @@ export class MatchesService {
       return this.http.get<Matches[]>(this.apiUrl + 'Matches/Pronostic/'+ id );
     }
 
+    getTodayMatchesAndPronostics(id: string) {
+      return this.http.get<Matches[]>(this.apiUrl + 'Matches/TodayPronostic/'+ id );
+    }
+
+
 }
