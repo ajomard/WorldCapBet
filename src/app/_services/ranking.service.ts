@@ -16,4 +16,8 @@ export class RankingService {
     getAll() {
         return this.http.get<Ranking[]>(this.apiUrl + 'Rankings');
     }
+
+    getUserRanking(userId:string) {
+      return this.http.get<Ranking[]>(this.apiUrl + 'Rankings/UserRanking/' + userId);
+    }
 }

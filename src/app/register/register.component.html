@@ -32,7 +32,7 @@
           <mat-hint class="error" *ngIf="passwordverification != model.password">Password mismatch</mat-hint>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" [disabled]="registerForm.invalid" (click)="register()">Register</button>
+        <button mat-raised-button color="primary" [disabled]="registerForm.invalid || loading" (click)="register()">Register</button>
         <a mat-button [routerLink]="['/login']">Cancel</a>
       </form>
 

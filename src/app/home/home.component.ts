@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatchesService } from '../_services/index';
+import { RankingService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
 import { UserService } from '../_services/index';
 import { Matches } from '../_models/index';
 import { User } from '../_models/index';
 import { Pronostic } from '../_models/index';
+import { Ranking } from '../_models/index';
 import { BetComponent } from '../bet/bet.component';
 import * as moment from 'moment';
 
@@ -19,14 +21,18 @@ import { environment } from '../../environments/environment';
 
 export class HomeComponent implements OnInit {
   displayedColumns = ['team1', 'team2', 'pronostic','action'];
+  displayedColumnsRank = ['rank','score','goodPronosticAndGoodScore','goodGoalAverage','goodPronosticOnly','falsePronostic' ];
   dataSource: MatTableDataSource<Matches>;
+  dataSourceRank: MatTableDataSource<Ranking>;
   isLoadingResults = false;
+  isLoadingResultsRank = false;
   isFilterOn = true;
   missingBetsNumber: number;
   baseHrefForImages = environment.baseHrefForImages;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private matchesService: MatchesService,
+    private rankingService: RankingService,
     public authenticationService: AuthenticationService,
     private userService: UserService,
     public dialog: MatDialog,
@@ -36,6 +42,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getTodayMatchesAndPronostics();
+    this.getUserRanking();
   }
 
   getTodayMatchesAndPronostics() {
@@ -57,6 +64,19 @@ export class HomeComponent implements OnInit {
     error => {
         //this.openSnackBar('Error while loading matches', 10000);
         this.isLoadingResults = false;
+    });
+  }
+
+  getUserRanking() {
+    this.isLoadingResultsRank = true;
+    let userid = this.authenticationService.getLoggedUser().id;
+    this.rankingService.getUserRanking(userid).subscribe(ranking => {
+      this.dataSourceRank = new MatTableDataSource(ranking);
+      this.isLoadingResultsRank = false;
+    },
+    error => {
+        //this.openSnackBar('Error while loading matches', 10000);
+        this.isLoadingResultsRank = false;
     });
   }
 

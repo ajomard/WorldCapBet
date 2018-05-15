@@ -1,20 +1,11 @@
-﻿<!--<div class="col-md-6 col-md-offset-3">
-    <h1>Hi {{currentUser.firstName}}!</h1>
-    <p>You're logged in with Angular 2/5 and Angular CLI!!</p>
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.username}} ({{user.firstName}} {{user.lastName}})
-            - <a (click)="deleteUser(user.id)">Delete</a>
-        </li>
-    </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p>
-</div>-->
-<div class="full-container">
-  <div class="match-container" fxFlex="33" fxFlex.lt-sm="75">
-    <mat-card >
-        <mat-card-title matBadge="{{missingBetsNumber}}"  matBadgeColor="warn">Today matches</mat-card-title>
+﻿<div class="full-container">
+  <div class="match-container" fxFlex="45" fxFlex.lt-md="95">
+    <mat-card>
+      <mat-card-title matBadge="{{missingBetsNumber}}"  matBadgeColor="warn">Today matches</mat-card-title>
       <mat-card-content>
+        <div class="matches-loading-shade" *ngIf="isLoadingResults">
+          <mat-spinner></mat-spinner>
+        </div>
         <mat-table [dataSource]="dataSource" matSort matSortActive="date" matSortDisableClear matSortDirection="asc">
           <!-- Progress Column -->
           <ng-container matColumnDef="team1">
@@ -51,14 +42,65 @@
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
       </mat-card-content>
-
     </mat-card>
   </div>
-    <div class="ranking-container" fxFlex="33" fxFlex.lt-sm="75">
+    <div class="ranking-container" fxFlex="45" fxFlex.lt-md="95">
       <mat-card>
-          <mat-card-title>Ranking</mat-card-title>
+          <mat-card-title>Current Ranking</mat-card-title>
         <mat-card-content>
+          <div class="matches-loading-shade" *ngIf="isLoadingResultsRank">
+            <mat-spinner></mat-spinner>
+          </div>
+          <mat-table [dataSource]="dataSourceRank" >
 
+            <!-- Rank -->
+            <ng-container matColumnDef="rank">
+              <mat-header-cell *matHeaderCellDef> Rank </mat-header-cell>
+              <mat-cell *matCellDef="let rank"> {{rank.rank}} </mat-cell>
+            </ng-container>
+
+            <!-- First Name -->
+            <ng-container matColumnDef="firstName">
+              <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+              <mat-cell *matCellDef="let rank"> {{rank.user.firstName}} </mat-cell>
+            </ng-container>
+
+            <!-- Last Name -->
+            <ng-container matColumnDef="lastName">
+              <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+              <mat-cell *matCellDef="let rank"> {{rank.user.lastName}} </mat-cell>
+            </ng-container>
+
+            <!-- Score -->
+            <ng-container matColumnDef="score">
+              <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
+              <mat-cell *matCellDef="let rank">{{rank.score}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="goodPronosticAndGoodScore">
+              <mat-header-cell *matHeaderCellDef> Good Pronostic And Good Score </mat-header-cell>
+              <mat-cell *matCellDef="let rank">{{rank.goodPronosticAndGoodScore}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="goodGoalAverage">
+              <mat-header-cell *matHeaderCellDef> Good Goal Average </mat-header-cell>
+              <mat-cell *matCellDef="let rank">{{rank.goodGoalAverage}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="goodPronosticOnly">
+              <mat-header-cell *matHeaderCellDef> Good Pronostic Only </mat-header-cell>
+              <mat-cell *matCellDef="let rank">{{rank.goodPronosticOnly}} </mat-cell>
+            </ng-container>
+
+            <!-- Score -->
+            <ng-container matColumnDef="falsePronostic">
+              <mat-header-cell *matHeaderCellDef> False Pronostic </mat-header-cell>
+              <mat-cell *matCellDef="let rank">{{rank.falsePronostic}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumnsRank"></mat-header-row>
+            <mat-row *matRowDef="let rank; let i = index; columns: displayedColumnsRank;" [style.font-weight]="rank.user.id == highlightedRow ? 'bold' : ''"></mat-row>
+          </mat-table>
         </mat-card-content>
       </mat-card>
     </div>
