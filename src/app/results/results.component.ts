@@ -33,6 +33,13 @@ export class ResultsComponent implements OnInit {
     this.rankingService.getAll().subscribe(ranking => {
       this.dataSource = new MatTableDataSource(ranking);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sortingDataAccessor = (item, property) => {
+        switch(property) {
+          case 'firstName': return item.user.firstNname;
+          case 'lastName': return item.user.lastName;
+          default: return item[property];
+        }
+      };
       this.dataSource.sort = this.sort;
       this.highlightedRow = this.authenticationService.getLoggedUser().id;
       this.isLoadingResults = false;
