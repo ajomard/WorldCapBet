@@ -4,6 +4,7 @@
       <a mat-button [routerLink]="['/']">World Cap Bet</a>
       <a mat-button [routerLink]="['/matches']">Matches</a>
       <a mat-button [routerLink]="['/results']">Ranking</a>
+      <a mat-button [routerLink]="['/charts/average']">Charts</a>
 
       <button mat-button [matMenuTriggerFor]="menu" *ngIf="authenticationService.isAdmin()">Administration</button>
       <mat-menu #menu="matMenu">

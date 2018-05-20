@@ -38,7 +38,7 @@ export class AverageComponent implements OnInit {
   loadChart() {
     let userid = this.authenticationService.getLoggedUser().id;
     this.chartsService.getAverageStats(userid).subscribe(chart => {
-      this.chart = chart.barList;
+      this.chart = chart;
     });
   }
 
