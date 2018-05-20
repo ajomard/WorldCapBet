@@ -9,7 +9,7 @@ export class ChartsService {
     constructor(private http: HttpClient) { }
 
     getAverageStats(userId: string) {
-        return this.http.get<ChartAverage>(this.apiUrl + 'Rankings/ChartsAverage/' + userId);
+        return this.http.get<ChartAverage>(this.apiUrl + 'Charts/Average/' + userId);
     }
 
 }
