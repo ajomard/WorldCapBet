@@ -35,7 +35,7 @@ export class ResultsComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sortingDataAccessor = (item, property) => {
         switch(property) {
-          case 'firstName': return item.user.firstNname;
+          case 'firstName': return item.user.firstName;
           case 'lastName': return item.user.lastName;
           default: return item[property];
         }

@@ -11,6 +11,7 @@ import { AdminListMatchesComponent } from './administration/admin-list-matches/a
 import { AdminListTeamsComponent } from './administration/admin-list-teams/admin-list-teams.component';
 import { AdminMatchComponent } from './administration/admin-match/admin-match.component';
 import { AdminTeamComponent } from './administration/admin-team/admin-team.component';
+import { AverageComponent } from './charts/average/average.component';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     { path: 'admin/teams', component: AdminListTeamsComponent , canActivate: [AuthGuard] },
     { path: 'admin/team/create', component: AdminTeamComponent , canActivate: [AuthGuard] },
     { path: 'admin/team/edit', component: AdminTeamComponent , canActivate: [AuthGuard] },
+    { path: 'charts/average', component: AverageComponent , canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

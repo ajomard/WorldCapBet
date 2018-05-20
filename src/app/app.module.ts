@@ -4,13 +4,13 @@ import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from "@angular/flex-layout";
-
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AuthenticationService, RankingService, UserService, TeamService, MatchesService, PronosticService, DataService } from './_services/index';
+import { AuthenticationService, ChartsService, RankingService, UserService, TeamService, MatchesService, PronosticService, DataService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -47,6 +47,7 @@ import { AdminTeamComponent } from './administration/admin-team/admin-team.compo
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { AverageComponent } from './charts/average/average.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
         MatNativeDateModule,
         OwlDateTimeModule,
         OwlNativeDateTimeModule,
-        MatBadgeModule
+        MatBadgeModule,
+        NgxChartsModule
     ],
     declarations: [
         AppComponent,
@@ -94,7 +96,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
         AdminMatchComponent,
         AdminListTeamsComponent,
         AdminTeamComponent,
-        UserComponent
+        UserComponent,
+        AverageComponent
     ],
     entryComponents: [
       BetComponent
@@ -107,6 +110,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
         DataService,
         TeamService,
         RankingService,
+        ChartsService,
         UserService,
         {
             provide: HTTP_INTERCEPTORS,
