@@ -11,17 +11,17 @@ import { User } from '../../_models/index';
   styleUrls: ['./average.component.css']
 })
 export class AverageComponent implements OnInit {
-  chart: any[];
-
+  chartStats: any[];
+  chartScore: any[];
+  isLoadingResults = false;
+  isLoadingResultsScore = false;
   // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
   showLegend = true;
   showXAxisLabel = false;
-  xAxisLabel = 'Country';
   showYAxisLabel = false;
-  yAxisLabel = 'Population';
   view: any[] = [700, 400];
   colorScheme = {
   domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
@@ -32,13 +32,25 @@ export class AverageComponent implements OnInit {
               private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-    this.loadChart();
+    this.loadAverageChart();
+    this.loadAverageScore();
   }
 
-  loadChart() {
+  loadAverageChart() {
+    this.isLoadingResults = true;
     let userid = this.authenticationService.getLoggedUser().id;
     this.chartsService.getAverageStats(userid).subscribe(chart => {
-      this.chart = chart;
+      this.chartStats = chart;
+      this.isLoadingResults = false;
+    });
+  }
+
+  loadAverageScore() {
+    this.isLoadingResultsScore = true;
+    let userid = this.authenticationService.getLoggedUser().id;
+    this.chartsService.getAverageScore(userid).subscribe(chart => {
+      this.chartScore = chart;
+      this.isLoadingResultsScore = false;
     });
   }
 

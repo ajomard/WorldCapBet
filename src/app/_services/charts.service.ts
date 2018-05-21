@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { ChartAverage } from '../_models/index';
+import { GroupingBar } from '../_models/index';
+import { Bar } from '../_models/index';
 
 @Injectable()
 export class ChartsService {
@@ -9,7 +10,11 @@ export class ChartsService {
     constructor(private http: HttpClient) { }
 
     getAverageStats(userId: string) {
-        return this.http.get<ChartAverage>(this.apiUrl + 'Charts/Average/' + userId);
+        return this.http.get<GroupingBar[]>(this.apiUrl + 'Charts/Average/' + userId);
+    }
+
+    getAverageScore(userId: string) {
+        return this.http.get<Bar[]>(this.apiUrl + 'Charts/AverageScore/' + userId);
     }
 
 }
