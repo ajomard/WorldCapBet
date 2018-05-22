@@ -42,6 +42,8 @@ export class AverageComponent implements OnInit {
     this.chartsService.getAverageStats(userid).subscribe(chart => {
       this.chartStats = chart;
       this.isLoadingResults = false;
+    }, error => {
+      this.isLoadingResults = false;
     });
   }
 
@@ -50,6 +52,8 @@ export class AverageComponent implements OnInit {
     let userid = this.authenticationService.getLoggedUser().id;
     this.chartsService.getAverageScore(userid).subscribe(chart => {
       this.chartScore = chart;
+      this.isLoadingResultsScore = false;
+    }, error => {
       this.isLoadingResultsScore = false;
     });
   }
