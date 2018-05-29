@@ -1,0 +1,46 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-title class="header">
+      <span>Charts</span>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="charts-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner></mat-spinner>
+      </div>
+      <ngx-charts-bar-vertical-2d
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="chartStats"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel">
+      </ngx-charts-bar-vertical-2d>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title class="header">
+      <span>Score</span>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="charts-loading-shade" *ngIf="isLoadingResultsScore">
+        <mat-spinner></mat-spinner>
+      </div>
+      <ngx-charts-bar-vertical
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="chartScore"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel">
+      </ngx-charts-bar-vertical>
+    </mat-card-content>
+  </mat-card>
+
+</div>

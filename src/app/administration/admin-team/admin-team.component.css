@@ -1,0 +1,14 @@
+.team-container, .team-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-container {
+  display: flex;
+  justify-content: center;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+}

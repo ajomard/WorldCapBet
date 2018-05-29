@@ -1,0 +1,28 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-container {
+  display: flex;
+  justify-content: center;
+}
+
+.width-33 {
+  width: 33%;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

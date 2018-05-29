@@ -1,16 +1,51 @@
-﻿<!-- main app container -->
-<!--<alert></alert>-->
-<header>
-    <app-navbar></app-navbar>
-</header>
+<div class="full-height">
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.lt-sm="true">
+      <a mat-button [routerLink]="['/']">World Cap Bet</a>
+      <a mat-button [routerLink]="['/matches']">Matches</a>
+      <a mat-button [routerLink]="['/results']">Ranking</a>
+      <a mat-button [routerLink]="['/charts/average']">Charts</a>
 
-<div class="container-fluid">
-  <ngx-spinner bdColor = "#333" size = "default" color = "#fff" type = "line-spin-fade"></ngx-spinner>
-  <router-outlet></router-outlet>
+      <button mat-button [matMenuTriggerFor]="menu" *ngIf="authenticationService.isAdmin()">Administration</button>
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item [routerLink]="['/admin/users']">Users</a>
+        <a mat-menu-item [routerLink]="['/admin/matches']">Matches</a>
+        <a mat-menu-item [routerLink]="['/admin/teams']">Teams</a>
+      </mat-menu>
+    </div>
+    <div fxShow="true" fxHide.gt-xs="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon><i class="material-icons">menu</i></mat-icon>
+      </button>
+    </div>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+
+    <span class="font-size-14" *ngIf="authenticationService.isLogged()">
+      <button mat-button [matMenuTriggerFor]="userMenu">{{authenticationService.getLoggedUser().firstName}} {{authenticationService.getLoggedUser().lastName}}</button>
+      <mat-menu #userMenu="matMenu">
+        <a mat-menu-item [routerLink]="['/user/edit']">Edit</a>
+        <a mat-menu-item [routerLink]="['/login']">Logout</a>
+      </mat-menu>
+
+      <a mat-icon-button routerLink="/login" title="Logout"><mat-icon aria-label="Logout"><i class="material-icons">exit_to_app</i></mat-icon></a>
+    </span>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill (backdropClick)="close()">
+    <mat-sidenav #sidenav mode="over" fxLayout="column" opened="false">
+      <div fxLayout="column">
+        <a mat-button [routerLink]="['/matches']" (click)="sidenav.toggle()">Matches</a>
+        <a mat-button [routerLink]="['/results']" (click)="sidenav.toggle()">Ranking</a>
+        <a mat-button [routerLink]="['/admin/users']" *ngIf="authenticationService.isAdmin()">Admin Users</a>
+        <a mat-button [routerLink]="['/admin/matches']" *ngIf="authenticationService.isAdmin()">Admin Matches</a>
+        <a mat-button [routerLink]="['/admin/teams']" *ngIf="authenticationService.isAdmin()">Admin Teams</a>
+      </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
-
-<footer class="footer">
-  <div class="container">
-    <span class="text-muted">Filou la pussy</span>
-  </div>
-</footer>

@@ -1,0 +1,24 @@
+<div class="full-container">
+  <div class="team-container" fxFlex="33" fxFlex.lt-sm="75">
+    <mat-card class="team-card">
+      <mat-card-title>Team</mat-card-title>
+      <form class="team-form" [formGroup]="teamForm" novalidate>
+
+        <mat-form-field>
+          <input type="text" name="name" matInput formControlName="name" [(ngModel)]="team.name" placeholder="Team" required>
+          <mat-error *ngIf="teamForm.controls['name'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" name="flag" matInput formControlName="flag" [(ngModel)]="team.flag" placeholder="Flag" required>
+          <mat-error *ngIf="teamForm.controls['flag'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+
+      </form>
+
+      <button mat-raised-button color="primary" [disabled]="teamForm.invalid" (click)="createOrUpdate()">Create / Update</button>
+      <a mat-button [routerLink]="['/admin/teams']">Cancel</a>
+
+    </mat-card>
+  </div>
+</div>

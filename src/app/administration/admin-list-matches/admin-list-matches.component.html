@@ -1,0 +1,61 @@
+<mat-card>
+  <mat-card-title class="header">
+    <span>Matches</span>
+    <a mat-raised-button color="primary" [routerLink]="['/admin/match/create']">New Match</a>
+    <mat-slide-toggle color="primary" [checked]="isFilterOn" (change)="changeFilter()">
+      Only not played
+    </mat-slide-toggle>
+  </mat-card-title>
+</mat-card>
+
+
+
+<div class="matches-container mat-elevation-z8">
+  <div class="matches-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" matSort matSortActive="date" matSortDisableClear matSortDirection="asc">
+
+    <!-- Date -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Date </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.date | date:'d MMMM y HH:mm' }} </mat-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="team1">
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
+      <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="end center">
+          <span class="padding-team" >{{row.team1.name}}</span>
+          <img class="padding-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
+      </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="team2">
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 2 </mat-header-cell>
+      <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="start center">
+          <img class="padding-team"  width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
+          <span class="padding-team">{{row.team2.name}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Score </mat-header-cell>
+      <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+        <span *ngIf="isMatchScore(row)">{{row.scoreTeam1}} - {{row.scoreTeam2}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Action </mat-header-cell>
+      <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-button color="primary" (click)="edit(row)">Edit</button>
+        <button mat-button color="warn" (click)="delete(row)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

@@ -1,0 +1,45 @@
+<div class="full-container">
+  <div class="user-container" fxFlex="33" fxFlex.lt-sm="75">
+    <mat-card class="user-card">
+      <mat-card-title>Register</mat-card-title>
+      <div class="users-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner></mat-spinner>
+      </div>
+      <form class="user-form" [formGroup]="userForm" novalidate>
+        <mat-form-field>
+          <input type="text" name="email" matInput [(ngModel)]="model.email" formControlName="email" placeholder="Email (@capgemini.com)" required>
+          <mat-error *ngIf="userForm.controls['email'].errors">{{getErrorEmailMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" name="firstName" matInput [(ngModel)]="model.firstName" formControlName="firstName"  placeholder="First name" required>
+          <mat-error *ngIf="userForm.controls['firstName'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" name="lastName" matInput [(ngModel)]="model.lastName" formControlName="lastName" placeholder="Last name" required>
+          <mat-error *ngIf="userForm.controls['lastName'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [type]="hidePassword ? 'password' : 'text'" name="password" matInput [(ngModel)]="model.password" formControlName="password" placeholder="Password" required>
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword" class="cursor-pointer">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error *ngIf="userForm.controls['password'].errors">You must enter a value</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [type]="hidePassword2 ? 'password' : 'text'" name="password2" matInput [(ngModel)]="passwordverification" formControlName="password2" placeholder="Retype password" required>
+          <mat-icon matSuffix (click)="hidePassword2 = !hidePassword2" class="cursor-pointer">{{hidePassword2 ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error *ngIf="userForm.controls['password2'].errors">You must enter a value</mat-error>
+          <mat-hint class="mat-error" *ngIf="passwordverification != model.password">Password mismatch</mat-hint>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" [disabled]="userForm.invalid" (click)="update()">Save</button>
+        <a mat-button [routerLink]="['/']">Cancel</a>
+      </form>
+
+
+
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.full-height {
+  height: calc(100vh - 64px);
+}

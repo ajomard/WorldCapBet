@@ -1,22 +1,20 @@
-<div class="row justify-content-center">
-  <div class="col-4">
-    <alert></alert>
-    <h2>Login</h2>
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && !username.valid }" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="invalid-feedback">Username is required</div>
-        </div>
-        <div class="form-group" >
-            <label for="password">Password</label>
-            <input type="password" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && !password.valid }"name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="invalid-feedback">Password is required</div>
-        </div>
-        <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Login</button>
-            <a [routerLink]="['/register']" class="btn btn-link">Register</a>
-        </div>
-    </form>
+<div class="full-container">
+  <div class="login-container" fxFlex="33" fxFlex.lt-sm="75">
+    <mat-card>
+      <mat-card-title>Login</mat-card-title>
+      <form fxLayout="column" (submit)="login()">
+        <mat-form-field>
+          <input type="text" name="email" matInput [(ngModel)]="model.email" placeholder="Email" cdkFocusInitial>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [type]="hidePassword ? 'password' : 'text'" name="password" matInput [(ngModel)]="model.password" placeholder="Password">
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword" class="cursor-pointer">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="login()">Login</button>
+        <a mat-button [routerLink]="['/register']">Register</a>
+      </form>
+    </mat-card>
   </div>
 </div>

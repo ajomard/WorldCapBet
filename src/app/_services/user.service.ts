@@ -2,6 +2,8 @@
 import { HttpClient } from '@angular/common/http';
 
 import { User } from '../_models/index';
+import { Pronostic } from '../_models/index';
+import { Matches } from '../_models/index';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -10,15 +12,15 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<User[]>(this.apiUrl + '/Users');
+        return this.http.get<User[]>(this.apiUrl + 'Users');
     }
 
     getById(id: number) {
-        return this.http.get(this.apiUrl + '/Users/' + id);
+        return this.http.get<User>(this.apiUrl + '/Users/' + id);
     }
 
     create(user: User) {
-        return this.http.post(this.apiUrl + '/Users', user);
+        return this.http.post(this.apiUrl + 'Users', user);
     }
 
     update(user: User) {
@@ -27,5 +29,21 @@ export class UserService {
 
     delete(id: number) {
         return this.http.delete(this.apiUrl + '/Users/' + id);
+    }
+
+    getAllMatchesAndPronostics(id: number) {
+      return this.http.get<Matches[]>(this.apiUrl + '/Users/' + id +'/AllMatchAndPronostic');
+    }
+
+    getPronostics(id: number) {
+        return this.http.get<Pronostic[]>(this.apiUrl + '/Users/' + id +'/pronostics');
+    }
+
+    getRanking() {
+      return this.http.get<User[]>(this.apiUrl + '/Users/ranking');
+    }
+
+    resetPassword(user: User){
+      return this.http.put(this.apiUrl + '/Users/resetpassword/' + user.id, user);
     }
 }

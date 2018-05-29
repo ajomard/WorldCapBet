@@ -1,0 +1,12 @@
+.buttons-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.padding-team {
+  padding : 0 15px;
+}
+
+.padding-right-10px {
+  padding-right: 10px;
+}

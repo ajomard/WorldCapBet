@@ -1,29 +1,28 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
-
+import {User} from '../_models/user';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticationService {
     apiUrl = environment.apiUrl;
-    constructor(private http: HttpClient, private spinner: NgxSpinnerService) { }
+    constructor(private http: HttpClient) { }
 
-    login(username: string, password: string) {
-        this.spinner.show();
-        return this.http.post<any>(this.apiUrl + '/Users/authenticate', { username: username, password: password })
-            .map(user => {
+    login(user:User) {
+        return this.http.post<any>(this.apiUrl + '/Auth/login', user);
+          /*  .subscribe(user => {
                 // login successful if there's a jwt token in the response
-                if (user && user.token) {
+                if (user) {
+                  let userObj = JSON.parse(user);
+                  if(userObj.auth_token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('currentUser',user );
+                  }
                 }
-                this.spinner.hide();
                 return user;
-            })
+            })*/
     }
 
     logout() {
@@ -33,5 +32,14 @@ export class AuthenticationService {
 
     getLoggedUser() {
         return JSON.parse(localStorage.getItem('currentUser'));
+    }
+
+    isLogged() {
+      return this.getLoggedUser() != null;
+    }
+
+    isAdmin() {
+      let user = this.getLoggedUser();
+      return user != null && user.role == 'Admin';
     }
 }
