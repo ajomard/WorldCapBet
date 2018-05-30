@@ -18,6 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
 import { BetComponent } from './bet/bet.component';
+import { RulesComponent } from './rules/rules.component';
 import { UsersComponent } from './administration/users/users.component';
 import { AdminListMatchesComponent } from './administration/admin-list-matches/admin-list-matches.component';
 import { AdminMatchComponent } from './administration/admin-match/admin-match.component';
@@ -44,6 +45,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatBadgeModule} from '@angular/material/badge';
 import { AdminListTeamsComponent } from './administration/admin-list-teams/admin-list-teams.component';
 import { AdminTeamComponent } from './administration/admin-team/admin-team.component';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
@@ -80,7 +83,9 @@ import { AverageComponent } from './charts/average/average.component';
         OwlDateTimeModule,
         OwlNativeDateTimeModule,
         MatBadgeModule,
-        NgxChartsModule
+        NgxChartsModule,
+        MatListModule,
+        MatDividerModule
     ],
     declarations: [
         AppComponent,
@@ -90,6 +95,7 @@ import { AverageComponent } from './charts/average/average.component';
         RegisterComponent,
         ResultsComponent,
         MatchesComponent,
+        RulesComponent,
         BetComponent,
         UsersComponent,
         AdminListMatchesComponent,

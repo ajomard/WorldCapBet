@@ -1,0 +1,17 @@
+.full-container {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rules-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  min-height: 200px;
+  position: relative;
+}

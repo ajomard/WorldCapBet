@@ -3,6 +3,7 @@
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
+import { RulesComponent } from './rules/rules.component';
 import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
 import { UserComponent } from './user/user.component';
@@ -17,6 +18,7 @@ import { AuthGuard } from './_guards/index';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
+    { path: 'rules', component: RulesComponent},
     { path: 'register', component: RegisterComponent },
     { path: 'results', component: ResultsComponent, canActivate: [AuthGuard] },
     { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard] },
