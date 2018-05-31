@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
                         localStorage.setItem('currentUser',data );
                       }
                     }
+                    this.loading = false;
                     this.openSnackBar('Login successful', 2000);
                     this.router.navigate([this.returnUrl]);
                 },
