@@ -39,7 +39,6 @@
 
 .mat-table {
   overflow: auto;
-  max-height: 500px;
 }
 
 .header {
