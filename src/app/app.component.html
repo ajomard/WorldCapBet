@@ -4,7 +4,7 @@
       <a mat-button [routerLink]="['/']">World Cap Bet</a>
       <a mat-button [routerLink]="['/matches']">Matches</a>
       <a mat-button [routerLink]="['/results']">Ranking</a>
-      <a mat-button [routerLink]="['/charts/average']">Charts</a>
+      <a mat-button [routerLink]="['/charts/average']" fxHide.lt-md="true">Charts</a>
       <a mat-button [routerLink]="['/rules']">Rules</a>
 
       <button mat-button [matMenuTriggerFor]="menu" *ngIf="authenticationService.isAdmin()">Administration</button>
@@ -37,9 +37,10 @@
   <mat-sidenav-container fxFlexFill (backdropClick)="close()">
     <mat-sidenav #sidenav mode="over" fxLayout="column" opened="false">
       <div fxLayout="column">
+        <a mat-button [routerLink]="['/']" (click)="sidenav.toggle()">Home</a>
         <a mat-button [routerLink]="['/matches']" (click)="sidenav.toggle()">Matches</a>
         <a mat-button [routerLink]="['/results']" (click)="sidenav.toggle()">Ranking</a>
-        <a mat-button [routerLink]="['/charts/average']">Charts</a>
+        <a mat-button [routerLink]="['/charts/average']" fxHide.lt-md="true">Charts</a>
         <a mat-button [routerLink]="['/rules']">Rules</a>
         <a mat-button [routerLink]="['/admin/users']" *ngIf="authenticationService.isAdmin()">Admin Users</a>
         <a mat-button [routerLink]="['/admin/matches']" *ngIf="authenticationService.isAdmin()">Admin Matches</a>

@@ -9,17 +9,17 @@
         <mat-table [dataSource]="dataSource" matSort matSortActive="date" matSortDisableClear matSortDirection="asc">
           <!-- Progress Column -->
           <ng-container matColumnDef="team1">
-            <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
             <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
-                <img class="padding-team"  width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
+                <img width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
             </mat-cell>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="team2">
-            <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 2 </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Team 2 </mat-header-cell>
             <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
-                <img class="padding-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
+                <img width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
             </mat-cell>
           </ng-container>
 
