@@ -1,5 +1,8 @@
 <div class="full-container">
   <div class="register-container" fxFlex="33" fxFlex.lt-sm="75">
+    <div class="register-loading-shade" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
     <mat-card class="register-card">
       <mat-card-title>Register</mat-card-title>
       <form class="register-form" [formGroup]="registerForm" novalidate>

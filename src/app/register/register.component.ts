@@ -50,14 +50,15 @@ export class RegisterComponent implements OnInit {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    this.openSnackBar('Registration successful', 5000);
-                    this.router.navigate(['/login']);
+                  this.loading = false;
+                  this.openSnackBar('Registration successful', 5000);
+                  this.router.navigate(['/login']);
                 },
                 error => {
-                    //get first error
-                    var error = Object.values(error.error)[0][0];
-                    this.openSnackBar(error, 10000);
-                    this.loading = false;
+                  //get first error
+                  var error = Object.values(error.error)[0][0];
+                  this.openSnackBar(error, 10000);
+                  this.loading = false;
                 });
     }
 

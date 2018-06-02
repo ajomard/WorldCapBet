@@ -40,15 +40,17 @@ export class UsersComponent implements OnInit {
     }
 
     deleteUser(user:User) {
-      this.isLoadingResults = true;
-      this.userService.delete(user.id).subscribe(() => {
-        this.getUsers();
-        this.openSnackBar('User deleted', 2000);
-      },
-      error => {
-        this.isLoadingResults = false;
-          //this.openSnackBar('Error while deleting user', 10000);
-      });
+      if(confirm("Are you sure to delete : " + user.firstName + " " + user.lastName)) {
+        this.isLoadingResults = true;
+        this.userService.delete(user.id).subscribe(() => {
+          this.getUsers();
+          this.openSnackBar('User deleted', 2000);
+        },
+        error => {
+          this.isLoadingResults = false;
+            //this.openSnackBar('Error while deleting user', 10000);
+        });
+      }
     }
 
     resetPassword(user:User) {
