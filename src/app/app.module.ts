@@ -51,6 +51,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AverageComponent } from './charts/average/average.component';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import { AverageComponent } from './charts/average/average.component';
         MatBadgeModule,
         NgxChartsModule,
         MatListModule,
-        MatDividerModule
+        MatDividerModule,
+        DeviceDetectorModule.forRoot()
     ],
     declarations: [
         AppComponent,
@@ -102,7 +104,8 @@ import { AverageComponent } from './charts/average/average.component';
         AdminMatchComponent,
         AdminListTeamsComponent,
         AdminTeamComponent,
-        UserComponent,
+        UserComponent
+,
         AverageComponent
     ],
     entryComponents: [

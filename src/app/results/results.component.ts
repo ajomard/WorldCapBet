@@ -4,7 +4,7 @@ import { UserService, RankingService, AuthenticationService } from '../_services
 
 
 import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA} from '@angular/material';
-
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-results',
@@ -14,7 +14,7 @@ import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA} f
 export class ResultsComponent implements OnInit {
   ranking:Ranking[];
   highlightedRow = {};
-  displayedColumns = ['rank', 'firstName', 'lastName', 'score','goodPronosticAndGoodScore','goodGoalAverage','goodPronosticOnly','falsePronostic' ];
+  displayedColumns:string[];
   dataSource: MatTableDataSource<Ranking>;
   isLoadingResults = true;
 
@@ -23,7 +23,10 @@ export class ResultsComponent implements OnInit {
 
   constructor(private userService: UserService,
     private rankingService: RankingService,
-    public authenticationService: AuthenticationService) { }
+    public authenticationService: AuthenticationService,
+    private deviceService: DeviceDetectorService) { 
+      this.displayedColumns = this.getDisplayedColumns();
+    }
 
   ngOnInit() {
     this.getRanking();
@@ -51,6 +54,14 @@ export class ResultsComponent implements OnInit {
     this.rankingService.calculateRanking().subscribe(data => {
       this.getRanking();
     });
+  }
+
+  getDisplayedColumns(): string[] {
+    if(this.deviceService.isMobile()) {
+      return ['rank', 'firstName', 'lastName', 'score' ];
+    } else {
+      return ['rank', 'firstName', 'lastName', 'score','goodPronosticAndGoodScore','goodGoalAverage','goodPronosticOnly','falsePronostic' ];
+    }
   }
 
 }

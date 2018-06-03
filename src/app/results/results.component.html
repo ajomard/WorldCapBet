@@ -13,47 +13,47 @@
 
     <!-- Rank -->
     <ng-container matColumnDef="rank">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Rank </mat-header-cell>
-      <mat-cell *matCellDef="let rank"> {{rank.rank}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> Rank </mat-header-cell>
+      <mat-cell *matCellDef="let rank" fxLayoutAlign="center center"> {{rank.rank}} </mat-cell>
     </ng-container>
 
     <!-- First Name -->
     <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> First Name </mat-header-cell>
       <mat-cell *matCellDef="let rank"> {{rank.user.firstName}} </mat-cell>
     </ng-container>
 
     <!-- Last Name -->
     <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> Last Name </mat-header-cell>
       <mat-cell *matCellDef="let rank"> {{rank.user.lastName}} </mat-cell>
     </ng-container>
 
     <!-- Score -->
     <ng-container matColumnDef="score">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Score </mat-header-cell>
-      <mat-cell *matCellDef="let rank">{{rank.score}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> Score </mat-header-cell>
+      <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.score}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="goodPronosticAndGoodScore">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Good Pronostic And Good Score </mat-header-cell>
-      <mat-cell *matCellDef="let rank">{{rank.goodPronosticAndGoodScore}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> Good Pronostic And Good Score </mat-header-cell>
+      <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.goodPronosticAndGoodScore}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="goodGoalAverage">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Good Goal Average </mat-header-cell>
-      <mat-cell *matCellDef="let rank">{{rank.goodGoalAverage}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> Good Goal Average </mat-header-cell>
+      <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.goodGoalAverage}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="goodPronosticOnly">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Good Pronostic Only </mat-header-cell>
-      <mat-cell *matCellDef="let rank">{{rank.goodPronosticOnly}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> Good Pronostic Only </mat-header-cell>
+      <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.goodPronosticOnly}} </mat-cell>
     </ng-container>
 
     <!-- Score -->
     <ng-container matColumnDef="falsePronostic">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> False Pronostic </mat-header-cell>
-      <mat-cell *matCellDef="let rank">{{rank.falsePronostic}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> False Pronostic </mat-header-cell>
+      <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.falsePronostic}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
