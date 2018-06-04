@@ -3,10 +3,15 @@
   justify-content: flex-end;
 }
 
-.padding-team {
-  padding : 0 15px;
+.team-name {
+  padding : 0 10px;
+  font: 500 20px/32px Roboto,"Helvetica Neue",sans-serif;
 }
 
 .padding-right-10px {
   padding-right: 10px;
+}
+
+.padding-left-10px {
+  padding-left: 10px;
 }
