@@ -47,6 +47,7 @@ import { AdminListTeamsComponent } from './administration/admin-list-teams/admin
 import { AdminTeamComponent } from './administration/admin-team/admin-team.component';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
@@ -87,6 +88,7 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
         NgxChartsModule,
         MatListModule,
         MatDividerModule,
+        MatTooltipModule,
         DeviceDetectorModule.forRoot()
     ],
     declarations: [

@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   displayedColumnsRank = ['rank','score','goodPronosticAndGoodScore','goodGoalAverage','goodPronosticOnly','falsePronostic' ];
   dataSource: MatTableDataSource<Matches>;
   dataSourceRank: MatTableDataSource<Ranking>;
+  highlightedRow:any;
   isLoadingResults = false;
   isLoadingResultsRank = false;
   isFilterOn = true;
@@ -58,6 +59,7 @@ export class HomeComponent implements OnInit {
         }
       };
       this.calculateMissingBets(matches);
+      this.highlightedRow = this.authenticationService.getLoggedUser().id;
       this.dataSource.sort = this.sort;
       this.isLoadingResults = false;
     },
