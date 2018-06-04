@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   isLoadingResults = false;
   isLoadingResultsRank = false;
   isFilterOn = true;
-  missingBetsNumber: number;
+  missingBetsNumber = 0;
   baseHrefForImages = environment.baseHrefForImages;
   @ViewChild(MatSort) sort: MatSort;
 

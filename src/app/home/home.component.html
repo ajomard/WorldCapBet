@@ -1,7 +1,7 @@
 ﻿<div class="full-container">
   <div class="match-container" fxFlex="45" fxFlex.lt-md="95">
     <mat-card>
-      <mat-card-title matBadge="{{missingBetsNumber}}"  matBadgeColor="warn">Today matches</mat-card-title>
+      <mat-card-title matBadge="{{missingBetsNumber}}" [matBadgeHidden]="missingBetsNumber == 0"  matBadgeColor="warn">Today matches</mat-card-title>
       <mat-card-content>
         <div class="matches-loading-shade" *ngIf="isLoadingResults">
           <mat-spinner></mat-spinner>
