@@ -4,6 +4,8 @@ import { AuthenticationService } from '../../_services/index';
 //import { UserService } from '../_services/index';
 import { ChartAverage } from '../../_models/index';
 import { User } from '../../_models/index';
+import { GroupingBar } from '../../_models/index';
+import { Bar } from '../../_models/index';
 
 @Component({
   selector: 'app-average',
@@ -11,8 +13,8 @@ import { User } from '../../_models/index';
   styleUrls: ['./average.component.css']
 })
 export class AverageComponent implements OnInit {
-  chartStats: any[];
-  chartScore: any[];
+  chartStats: GroupingBar[];
+  chartScore: Bar[];
   isLoadingResults = false;
   isLoadingResultsScore = false;
   // options
@@ -29,7 +31,10 @@ export class AverageComponent implements OnInit {
 
 
   constructor(private chartsService: ChartsService,
-              private authenticationService: AuthenticationService) { }
+              private authenticationService: AuthenticationService) {
+    this.chartStats = [];
+    this.chartScore = [];
+  }
 
   ngOnInit() {
     this.loadAverageChart();
