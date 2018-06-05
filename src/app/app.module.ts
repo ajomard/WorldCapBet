@@ -53,6 +53,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AverageComponent } from './charts/average/average.component';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import { MatchComponent } from './match/match.component';
 
 
 @NgModule({
@@ -106,9 +107,9 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
         AdminMatchComponent,
         AdminListTeamsComponent,
         AdminTeamComponent,
-        UserComponent
-,
-        AverageComponent
+        UserComponent,
+        AverageComponent,
+        MatchComponent
     ],
     entryComponents: [
       BetComponent
