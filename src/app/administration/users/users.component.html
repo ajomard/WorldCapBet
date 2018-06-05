@@ -27,10 +27,10 @@
       <mat-cell *matCellDef="let user" fxLayout="row" fxLayoutAlign="center center">
         <!--<button mat-button color="warn" (click)="resetPassword(user)">Reset Password</button>
         <button mat-raised-button color="warn" (click)="deleteUser(user)">Delete</button>-->
-        <button mat-icon-button color="primary" (click)="resetPassword(row)" title="Reset Password">
+        <button mat-icon-button color="primary" (click)="resetPassword(user)" title="Reset Password">
           <mat-icon>refresh</mat-icon>
         </button>
-        <button mat-icon-button color="warn" (click)="deleteUser(row)" title="Delete">
+        <button mat-icon-button color="warn" (click)="deleteUser(user)" title="Delete">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
