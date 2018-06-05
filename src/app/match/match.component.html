@@ -1,5 +1,30 @@
 <mat-card>
-  {{match?.id}} -- {{match?.date}} -- {{match?.team1?.name}}
+    <mat-card-title class="header">
+        <span>Match details</span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <span>{{match?.date | date:'d MMMM y HH:mm'}}</span>
+      </mat-card-subtitle>
+  <mat-card-header>
+    <div class="match-container">
+      <div class="align-items">
+          <p class="score">{{match?.team1?.name}}</p>
+          <img class="padding-team" height='125' src="{{baseHrefForImages}}assets/flags-medium/{{match?.team1?.flag}}.png" [title]="match?.team1?.name">
+          <p class="score">{{match?.scoreTeam1}}</p>
+          <p class="score">-</p>
+          <p class="score">{{match?.scoreTeam2}}</p>
+          <img class="padding-team" height='125' src="{{baseHrefForImages}}assets/flags-medium/{{match?.team2?.flag}}.png" [title]="match?.team2?.name">
+          <p class="score">{{match?.team2?.name}}</p>
+      </div>
+      <div class="align-text">
+          <h3></h3>
+        </div>
+    </div>
+  </mat-card-header>
+  
+  <mat-card-content>
+    {{pronos?.length}}
+  </mat-card-content>
 </mat-card>
 
 

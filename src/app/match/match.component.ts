@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { MatchesService, PronosticService } from '../_services';
 import { Matches, Pronostic } from '../_models';
-
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-match',
@@ -14,6 +14,7 @@ export class MatchComponent implements OnInit {
 
   match: Matches;
   pronos: Pronostic[];
+  baseHrefForImages = environment.baseHrefForImages;
 
   constructor(
     private route: ActivatedRoute,
