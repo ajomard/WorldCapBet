@@ -19,19 +19,19 @@
     </div>
   </mat-card-header>
   <mat-divider></mat-divider>
-  <mat-card-content fxFlex>
+  <mat-card-content>
     <h2 class="h2-prono">Pronostics</h2>
     <table mat-table [dataSource]="pronos" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
          <ng-container matColumnDef="name">
             <th mat-header-cell mat-sort-header *matHeaderCellDef > Name </th>
-            <td mat-cell *matCellDef="let prono"> {{prono.user.lastName}} </td>
+            <td mat-cell *matCellDef="let prono"> {{prono.user.lastName | titlecase}} </td>
           </ng-container>
           <ng-container matColumnDef="firstname">
             <th mat-header-cell mat-sort-header *matHeaderCellDef > First Name </th>
-            <td mat-cell *matCellDef="let prono"> {{prono.user.firstName}} </td>
+            <td mat-cell *matCellDef="let prono"> {{prono.user.firstName | titlecase}} </td>
           </ng-container>
           <ng-container matColumnDef="score">
-            <th mat-header-cell *matHeaderCellDef > Score </th>
+            <th mat-header-cell *matHeaderCellDef> Score </th>
             <td mat-cell *matCellDef="let prono">
               <span class="success-{{isRight(prono)}}">{{prono.scoreTeam1}} - {{prono.scoreTeam2}}</span>  
             </td>

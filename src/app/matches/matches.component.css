@@ -42,6 +42,12 @@
   max-height: 100vh;
 }
 
+.flag-mini{
+  margin : 0 15px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gainsboro;
+}
 .padding-team {
   padding : 0 15px;
 }

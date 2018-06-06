@@ -27,7 +27,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="end center">
           <span class="padding-team" fxHide.lt-md="true">{{row.team1.name}}</span>
-          <img class="padding-team"  width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
+          <img class="flag-mini"  width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
       </mat-cell>
     </ng-container>
 
@@ -35,7 +35,7 @@
     <ng-container matColumnDef="team2">
       <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Team 2 </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="start center">
-          <img class="padding-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
+          <img class="flag-mini" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
           <span class="padding-team" fxHide.lt-md="true">{{row.team2.name}}</span>
       </mat-cell>
     </ng-container>
@@ -58,8 +58,8 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Actions </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-button color="primary" (click)="openDialog(row)" [disabled]="isMatchAlreadyPlayed(row)">Bet</button>
-        <button mat-button color="primary" (click)="goToDetail(row)" [disabled]="!isMatchAlreadyPlayed(row)">Details</button>
+        <button mat-button color="primary" (click)="openDialog(row)" *ngIf="!isMatchAlreadyPlayed(row)">Bet</button>
+        <button mat-button color="primary" (click)="goToDetail(row)" *ngIf="isMatchAlreadyPlayed(row)">Details</button>
       </mat-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
         

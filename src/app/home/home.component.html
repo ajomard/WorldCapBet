@@ -11,7 +11,7 @@
           <ng-container matColumnDef="team1">
             <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
             <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
-                <img width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
+                <img class="flag-mini" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
             </mat-cell>
           </ng-container>
 
@@ -19,7 +19,7 @@
           <ng-container matColumnDef="team2">
             <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Team 2 </mat-header-cell>
             <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
-                <img width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
+                <img class="flag-mini" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
             </mat-cell>
           </ng-container>
 
