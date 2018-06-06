@@ -5,6 +5,7 @@ import { MatchesService, PronosticService } from '../_services';
 import { Matches, Pronostic } from '../_models';
 import { environment } from '../../environments/environment';
 import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'app-match',

@@ -56,12 +56,13 @@
     </ng-container>
 
     <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Action </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Actions </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
         <button mat-button color="primary" (click)="openDialog(row)" [disabled]="isMatchAlreadyPlayed(row)">Bet</button>
+        <button mat-button color="primary" (click)="goToDetail(row)" [disabled]="!isMatchAlreadyPlayed(row)">Details</button>
       </mat-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-button color="primary" (click)="goToDetail(row)" [disabled]="isMatchAlreadyPlayed(row)">Detail</button>
+        
       </mat-cell>
     </ng-container>
 

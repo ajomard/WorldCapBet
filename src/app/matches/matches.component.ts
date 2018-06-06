@@ -44,7 +44,7 @@ export class MatchesComponent implements OnInit {
       });
     }
 
-    goTo(match: Matches) {
+    goToDetail(match: Matches) {
       this.router.navigate(['/match', match.id]);
     }
 

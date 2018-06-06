@@ -6,7 +6,7 @@
         <span>{{match?.date | date:'d MMMM y HH:mm'}}</span>
       </mat-card-subtitle>
   <mat-card-header>
-    <div class="match-container">
+    <div class="match-container" fxLayoutAlign="center center">
       <div class="align-items">
           <p class="score-team">{{match?.team1?.name}}</p>
           <img class="flag-team" height='125' src="{{baseHrefForImages}}assets/flags-medium/{{match?.team1?.flag}}.png" [title]="match?.team1?.name">
@@ -18,9 +18,9 @@
       </div>
     </div>
   </mat-card-header>
-  
-  <mat-card-content>
-    <h1>Pronostics</h1>
+  <mat-divider></mat-divider>
+  <mat-card-content fxFlex>
+    <h2 class="h2-prono">Pronostics</h2>
     <table mat-table [dataSource]="pronos" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
          <ng-container matColumnDef="name">
             <th mat-header-cell mat-sort-header *matHeaderCellDef > Name </th>

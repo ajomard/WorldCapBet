@@ -54,3 +54,8 @@
     color: red;
     font-weight: bold;
   }
+
+  .h2-prono {
+    padding-top: 15px;
+    font-weight: normal;
+  }
