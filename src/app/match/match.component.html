@@ -8,22 +8,39 @@
   <mat-card-header>
     <div class="match-container">
       <div class="align-items">
-          <p class="score">{{match?.team1?.name}}</p>
-          <img class="padding-team" height='125' src="{{baseHrefForImages}}assets/flags-medium/{{match?.team1?.flag}}.png" [title]="match?.team1?.name">
+          <p class="score-team">{{match?.team1?.name}}</p>
+          <img class="flag-team" height='125' src="{{baseHrefForImages}}assets/flags-medium/{{match?.team1?.flag}}.png" [title]="match?.team1?.name">
           <p class="score">{{match?.scoreTeam1}}</p>
           <p class="score">-</p>
           <p class="score">{{match?.scoreTeam2}}</p>
-          <img class="padding-team" height='125' src="{{baseHrefForImages}}assets/flags-medium/{{match?.team2?.flag}}.png" [title]="match?.team2?.name">
-          <p class="score">{{match?.team2?.name}}</p>
+          <img class="flag-team" height='125' src="{{baseHrefForImages}}assets/flags-medium/{{match?.team2?.flag}}.png" [title]="match?.team2?.name">
+          <p class="score-team">{{match?.team2?.name}}</p>
       </div>
-      <div class="align-text">
-          <h3></h3>
-        </div>
     </div>
   </mat-card-header>
   
   <mat-card-content>
-    {{pronos?.length}}
+    <h1>Pronostics</h1>
+    <table mat-table [dataSource]="pronos" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+         <ng-container matColumnDef="name">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef > Name </th>
+            <td mat-cell *matCellDef="let prono"> {{prono.user.lastName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="firstname">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef > First Name </th>
+            <td mat-cell *matCellDef="let prono"> {{prono.user.firstName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="score">
+            <th mat-header-cell *matHeaderCellDef > Score </th>
+            <td mat-cell *matCellDef="let prono">
+              <span class="success-{{isRight(prono)}}">{{prono.scoreTeam1}} - {{prono.scoreTeam2}}</span>  
+            </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+          <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    </table>
+      
   </mat-card-content>
 </mat-card>
 

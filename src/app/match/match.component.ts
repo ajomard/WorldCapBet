@@ -4,6 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { MatchesService, PronosticService } from '../_services';
 import { Matches, Pronostic } from '../_models';
 import { environment } from '../../environments/environment';
+import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-match',
@@ -15,6 +16,7 @@ export class MatchComponent implements OnInit {
   match: Matches;
   pronos: Pronostic[];
   baseHrefForImages = environment.baseHrefForImages;
+  columnsToDisplay = ['name', 'firstname', 'score'];
 
   constructor(
     private route: ActivatedRoute,
@@ -44,6 +46,22 @@ export class MatchComponent implements OnInit {
         console.log(this.pronos);
       }
     );
+  }
+
+  isRight(prono: Pronostic): boolean {
+    let res = false;
+    if (this.match.scoreTeam1 && this.match.scoreTeam2) {
+      const diff = this.match.scoreTeam1 - this.match.scoreTeam2;
+      const diffProno = prono.scoreTeam1 - prono.scoreTeam2;
+
+      if (diff > 0 && diffProno > 0 || diff < 0 && diffProno < 0 || diff === 0 && diffProno === 0){
+        res = true;
+      }
+
+    } else {
+      res = false;
+    }
+    return res;
   }
 
 }
