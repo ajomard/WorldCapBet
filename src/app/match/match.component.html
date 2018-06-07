@@ -1,16 +1,16 @@
 <mat-card>
   <mat-card-title>Match details</mat-card-title>
     <mat-card-subtitle>{{match?.date | date:'d MMMM y HH:mm'}}</mat-card-subtitle>
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <p ngClass.gt-sm="score-team" ngClass.lt-md="score-team-mini">{{match?.team1?.name}}</p>
-    <img fxHide fxShow.gt-sm="true" class="flag-team" height='125' width='185' src="{{baseHrefForImages}}assets/flags-medium/{{match?.team1?.flag}}.png" [title]="match?.team1?.name">
-    <img fxHide  fxShow.lt-md="true" class="flag-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{match?.team1?.flag}}.png" [title]="match?.team1?.name">
-    <p ngClass.gt-sm="score" ngClass.lt-md="score-mini">{{match?.scoreTeam1}}</p>
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="match">
+    <p ngClass.gt-sm="score-team" ngClass.lt-md="score-team-mini">{{match.team1.name}}</p>
+    <img fxHide fxShow.gt-sm="true" class="flag-team" height='125' width='185' src="{{baseHrefForImages}}assets/flags-medium/{{match.team1.flag}}.png" [title]="match.team1.name">
+    <img fxHide  fxShow.lt-md="true" class="flag-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{match.team1.flag}}.png" [title]="match.team1.name">
+    <p ngClass.gt-sm="score" ngClass.lt-md="score-mini">{{match.scoreTeam1}}</p>
     <p ngClass.gt-sm="score" ngClass.lt-md="score-mini">-</p>
-    <p ngClass.gt-sm="score" ngClass.lt-md="score-mini">{{match?.scoreTeam2}}</p>
-    <img fxHide fxShow.gt-sm="true" class="flag-team" height='125' width='185' src="{{baseHrefForImages}}assets/flags-medium/{{match?.team2?.flag}}.png" [title]="match?.team2?.name">
-    <img fxHide fxShow.lt-md="true" class="flag-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{match?.team2?.flag}}.png" [title]="match?.team2?.name">
-    <p ngClass.gt-sm="score-team" ngClass.lt-md="score-team-mini">{{match?.team2?.name}}</p>
+    <p ngClass.gt-sm="score" ngClass.lt-md="score-mini">{{match.scoreTeam2}}</p>
+    <img fxHide fxShow.gt-sm="true" class="flag-team" height='125' width='185' src="{{baseHrefForImages}}assets/flags-medium/{{match.team2.flag}}.png" [title]="match.team2.name">
+    <img fxHide fxShow.lt-md="true" class="flag-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{match.team2.flag}}.png" [title]="match.team2.name">
+    <p ngClass.gt-sm="score-team" ngClass.lt-md="score-team-mini">{{match.team2.name}}</p>
   </div>
   <mat-divider></mat-divider>
   <mat-card-content>
