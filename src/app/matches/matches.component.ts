@@ -22,7 +22,7 @@ export class MatchesComponent implements OnInit {
   displayedColumns = ['date', 'team1', 'team2', 'pronostic', 'score', 'action'];
   dataSource: MatTableDataSource<Matches>;
   isLoadingResults = false;
-  isFilterOn = true;
+  isFilterOn = false;
   baseHrefForImages = environment.baseHrefForImages;
 
   @ViewChild(MatSort) sort: MatSort;

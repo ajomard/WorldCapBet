@@ -39,7 +39,7 @@
 
 .mat-table {
   overflow: auto;
-  max-height: 100vh;
+  max-height: calc(100vh - 145px);
 }
 
 .flag-mini{
