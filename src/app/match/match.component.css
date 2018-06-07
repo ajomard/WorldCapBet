@@ -57,8 +57,3 @@
     padding-top: 15px;
     font-weight: normal;
   }
-
-  ::ng-deep .mat-card-header-text {
-    /* CSS styles go here */
-    margin: 0;
-  }
