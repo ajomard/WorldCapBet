@@ -18,23 +18,26 @@
     margin-right: auto;
   }
 
-  .align-items {
-    display: -webkit-flex; /* Safari */
-    -webkit-align-items: center; /* Safari 7.0+ */
-    display: flex;
-    align-items: center;
-  }
-
   .score-team {
       font-size: 3em;
       padding: 0 15px;
       font-weight: bold;
   }
 
+  .score-team-mini {
+    padding: 0 5px;
+    font-weight: bold;
+}
+
   .score {
       font-size: 5em;
       padding: 0 15px;
       font-weight: bold;
+  }
+
+  .score-mini {
+    padding: 0 5px;
+    font-weight: bold;
   }
 
   .mat-table {
@@ -58,4 +61,9 @@
   .h2-prono {
     padding-top: 15px;
     font-weight: normal;
+  }
+
+  ::ng-deep .mat-card-header-text {
+    /* CSS styles go here */
+    margin: 0;
   }
