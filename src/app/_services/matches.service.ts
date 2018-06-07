@@ -13,24 +13,28 @@ export class MatchesService {
         return this.http.get<Matches[]>(this.apiUrl + 'Matches');
     }
 
-    create(match:Matches) {
+    get(id) {
+      return this.http.get<Matches>(this.apiUrl + 'Matches/' + id);
+    }
+
+    create(match: Matches) {
       return this.http.post(this.apiUrl + 'Matches/', match);
     }
 
-    update(match:Matches) {
+    update(match: Matches) {
       return this.http.put(this.apiUrl + 'Matches/' + match.id, match);
     }
 
-    delete(match:Matches) {
+    delete(match: Matches) {
       return this.http.delete(this.apiUrl + 'Matches/' + match.id);
     }
 
     getAllMatchesAndPronostics(id: string) {
-      return this.http.get<Matches[]>(this.apiUrl + 'Matches/Pronostic/'+ id );
+      return this.http.get<Matches[]>(this.apiUrl + 'Matches/Pronostic/' + id );
     }
 
     getTodayMatchesAndPronostics(id: string) {
-      return this.http.get<Matches[]>(this.apiUrl + 'Matches/TodayPronostic/'+ id );
+      return this.http.get<Matches[]>(this.apiUrl + 'Matches/TodayPronostic/' + id );
     }
 
 

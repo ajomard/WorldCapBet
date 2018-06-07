@@ -26,3 +26,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.flag-mini{
+  border-style: solid;
+  border-width: 1px;
+  border-color: gainsboro;
+}
