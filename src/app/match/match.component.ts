@@ -59,7 +59,7 @@ export class MatchComponent implements OnInit {
           }
         };
         this.dataSource.sort = this.sort;
-        this.isLoadingResults = true;
+        this.isLoadingResults = false;
       }
     );
   }
