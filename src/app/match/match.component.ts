@@ -39,7 +39,6 @@ export class MatchComponent implements OnInit {
         if(this.match.scoreTeam1 != null && this.match.scoreTeam2 != null) {
           this.getPronostics();
         }
-        console.debug(this.match.id);
       });
   }
 
@@ -56,7 +55,6 @@ export class MatchComponent implements OnInit {
           }
         };
         this.dataSource.sort = this.sort;
-        console.debug(pronos);
       }
     );
   }
