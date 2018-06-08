@@ -8,15 +8,19 @@
     border-width: 1px;
     border-color: lightslategrey 
   }
-  .match-container {
-    margin-left: auto;
-    margin-right: auto;
-  }
 
   .score-team {
       font-size: 3em;
       padding: 0 15px;
       font-weight: bold;
+  }
+
+  .pronostics-100 {
+    width: 100%;
+  }
+
+  .pronostics-75 {
+    width: 75%;
   }
 
   .score-team-mini {
@@ -34,14 +38,14 @@
     padding: 0 5px;
     font-weight: bold;
   }
-
+/*
   .mat-table {
     width: 75%;
     margin-left: auto;
     margin-right: auto;
     overflow: auto;
     max-height: 100vh;
-  }
+  }*/
 
   .success-true {
       color: green;

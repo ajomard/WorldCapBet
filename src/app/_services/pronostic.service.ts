@@ -26,4 +26,8 @@ export class PronosticService {
     getAll() {
         return this.http.get<Pronostic[]>(this.apiUrl + 'Pronostics/');
     }
+
+    getPronosticsForMatch(idMatch: number) {
+        return this.http.get<Pronostic[]>(this.apiUrl + 'Pronostics/match/' + idMatch);
+    }
 }

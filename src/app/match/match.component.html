@@ -13,28 +13,29 @@
     <p ngClass.gt-sm="score-team" ngClass.lt-md="score-team-mini">{{match.team2.name}}</p>
   </div>
   <mat-divider></mat-divider>
-  <mat-card-content>
+  <mat-card-content >
     <h2 class="h2-prono">Pronostics</h2>
-    <table mat-table [dataSource]="pronos" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-table ngClass.gt-xs="pronostics-75" ngClass.lt-sm="pronostics-100" [dataSource]="dataSource" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
          <ng-container matColumnDef="name">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef > Name </th>
-            <td mat-cell *matCellDef="let prono"> {{prono.user.lastName | titlecase}} </td>
+            <mat-header-cell fxLayoutAlign="center center" mat-sort-header *matHeaderCellDef > Name </mat-header-cell>
+            <mat-cell *matCellDef="let prono"> {{prono.user.lastName | titlecase}} </mat-cell>
           </ng-container>
           <ng-container matColumnDef="firstname">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef > First Name </th>
-            <td mat-cell *matCellDef="let prono"> {{prono.user.firstName | titlecase}} </td>
+            <mat-header-cell fxLayoutAlign="center center" mat-sort-header *matHeaderCellDef > First Name </mat-header-cell>
+            <mat-cell *matCellDef="let prono"> {{prono.user.firstName | titlecase}} </mat-cell>
           </ng-container>
           <ng-container matColumnDef="score">
-            <th mat-header-cell *matHeaderCellDef> Score </th>
-            <td mat-cell *matCellDef="let prono">
+            <mat-header-cell fxLayoutAlign="center center" *matHeaderCellDef> Score </mat-header-cell>
+            <mat-cell *matCellDef="let prono" fxLayoutAlign="center center">
               <span class="success-{{isRight(prono)}}">{{prono.scoreTeam1}} - {{prono.scoreTeam2}}</span>  
-            </td>
+            </mat-cell>
           </ng-container>
     
-          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-          <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
-    </table>
-      
+          <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+          <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+    </mat-table >
+  </div>
   </mat-card-content>
 </mat-card>
 

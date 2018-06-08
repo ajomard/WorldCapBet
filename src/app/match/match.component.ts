@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { MatchesService, PronosticService } from '../_services';
@@ -15,9 +15,10 @@ import {MatDividerModule} from '@angular/material/divider';
 export class MatchComponent implements OnInit {
 
   match: Matches;
-  pronos: Pronostic[];
   baseHrefForImages = environment.baseHrefForImages;
   columnsToDisplay = ['name', 'firstname', 'score'];
+  dataSource: MatTableDataSource<Pronostic>;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,23 +29,34 @@ export class MatchComponent implements OnInit {
 
   ngOnInit() {
     this.getMatch();
-    this.getPronostics();
   }
 
   getMatch(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.matchService.getAll()
-      .subscribe(matches => {
-        this.match = matches.find(x => x.id === id);
-        console.log(this.match.id);
+    this.matchService.get(id)
+      .subscribe(match => {
+        this.match = match;
+        if(match.scoreTeam1 != null && match.scoreTeam2 != null) {
+          this.getPronostics();
+        }
+        console.debug(this.match.id);
       });
   }
 
   getPronostics(): void {
-    this.pronosticService.getAll()
+    let id = +this.route.snapshot.paramMap.get('id');
+    this.pronosticService.getPronosticsForMatch(id)
     .subscribe(pronos => {
-        this.pronos = (pronos.filter(x => x.match.id === this.match.id));
-        console.log(this.pronos);
+        this.dataSource = new MatTableDataSource(pronos);
+        this.dataSource.sortingDataAccessor = (item, property) => {
+          switch (property) {
+            case 'firstName': return item.user.firstName;
+            case 'lastName': return item.user.lastName;
+            default: return item[property];
+          }
+        };
+        this.dataSource.sort = this.sort;
+        console.debug(pronos);
       }
     );
   }
