@@ -38,14 +38,19 @@
     padding: 0 5px;
     font-weight: bold;
   }
-/*
-  .mat-table {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: auto;
-    max-height: 100vh;
-  }*/
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom:0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
 
   .success-true {
       color: green;

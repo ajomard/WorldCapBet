@@ -18,6 +18,7 @@ export class MatchComponent implements OnInit {
   baseHrefForImages = environment.baseHrefForImages;
   columnsToDisplay = ['name', 'firstname', 'score'];
   dataSource: MatTableDataSource<Pronostic>;
+  isLoadingResults = false;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
@@ -32,12 +33,15 @@ export class MatchComponent implements OnInit {
   }
 
   getMatch(): void {
+    this.isLoadingResults = true;
     const id = +this.route.snapshot.paramMap.get('id');
     this.matchService.get(id)
       .subscribe(match => {
         this.match = match;
         if(this.match.scoreTeam1 != null && this.match.scoreTeam2 != null) {
           this.getPronostics();
+        } else {
+          this.isLoadingResults = false;
         }
       });
   }
@@ -55,6 +59,7 @@ export class MatchComponent implements OnInit {
           }
         };
         this.dataSource.sort = this.sort;
+        this.isLoadingResults = true;
       }
     );
   }

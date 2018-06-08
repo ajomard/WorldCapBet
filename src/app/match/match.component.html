@@ -1,4 +1,7 @@
 <mat-card>
+  <div class="loading-shade" *ngIf="isLoadingResults">
+      <mat-spinner></mat-spinner>
+  </div>
   <mat-card-title>Match details</mat-card-title>
     <mat-card-subtitle>{{match?.date | date:'d MMMM y HH:mm'}}</mat-card-subtitle>
   <div fxLayout="row" fxLayoutAlign="center center" *ngIf="match">
