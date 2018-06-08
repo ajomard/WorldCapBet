@@ -36,7 +36,7 @@ export class MatchComponent implements OnInit {
     this.matchService.get(id)
       .subscribe(match => {
         this.match = match;
-        if(match.scoreTeam1 != null && match.scoreTeam2 != null) {
+        if(this.match.scoreTeam1 != null && this.match.scoreTeam2 != null) {
           this.getPronostics();
         }
         console.debug(this.match.id);
@@ -51,7 +51,7 @@ export class MatchComponent implements OnInit {
         this.dataSource.sortingDataAccessor = (item, property) => {
           switch (property) {
             case 'firstName': return item.user.firstName;
-            case 'lastName': return item.user.lastName;
+            case 'name': return item.user.lastName;
             default: return item[property];
           }
         };
