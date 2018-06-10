@@ -13,13 +13,16 @@
     </div>
     <mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
 
-      <!-- Date -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Name </mat-header-cell>
         <mat-cell *matCellDef="let team"> {{team.name }} </mat-cell>
       </ng-container>
 
-      <!-- Progress Column -->
+      <ng-container matColumnDef="group">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Group </mat-header-cell>
+        <mat-cell *matCellDef="let team" fxLayoutAlign="center center"> {{team.group }} </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="team">
         <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Flag </mat-header-cell>
         <mat-cell *matCellDef="let team" fxLayout="row" fxLayoutAlign="center center">

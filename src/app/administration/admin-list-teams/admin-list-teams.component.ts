@@ -3,14 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { TeamService } from '../../_services/index';
 import { AuthenticationService } from '../../_services/index';
-import { UserService } from '../../_services/index';
 import { DataService } from '../../_services/index';
-import { User } from '../../_models/index';
 import { Team } from '../../_models/index';
 import { environment } from '../../../environments/environment';
-import * as moment from 'moment';
 
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import { MatSort, MatTableDataSource, MatDialog, MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-admin-listt-teams',
@@ -18,7 +15,7 @@ import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, M
   styleUrls: ['./admin-list-teams.component.css']
 })
 export class AdminListTeamsComponent implements OnInit {
-  displayedColumns = ['name', 'team','action'];
+  displayedColumns = ['name', 'team','group','action'];
   dataSource: MatTableDataSource<Team>;
   isLoadingResults = false;
   baseHrefForImages = environment.baseHrefForImages;
@@ -27,7 +24,6 @@ export class AdminListTeamsComponent implements OnInit {
 
   constructor(private teamService: TeamService,
     public authenticationService: AuthenticationService,
-    private userService: UserService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private router: Router,
@@ -45,7 +41,6 @@ export class AdminListTeamsComponent implements OnInit {
       this.isLoadingResults = false;
     },
     error => {
-        //this.openSnackBar('Error while loading teams', 10000);
         this.isLoadingResults = false;
     });
   }

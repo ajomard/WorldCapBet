@@ -14,6 +14,14 @@
           <mat-error *ngIf="teamForm.controls['flag'].errors">You must enter a value</mat-error>
         </mat-form-field>
 
+        <mat-form-field>
+          <mat-select placeholder="Group" formControlName="group"  [(ngModel)]="team.group">
+            <mat-option *ngFor="let group of groupList" [value]="group">
+              {{ group }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
       </form>
 
       <button mat-raised-button color="primary" [disabled]="teamForm.invalid" (click)="createOrUpdate()">Create / Update</button>

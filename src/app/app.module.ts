@@ -48,6 +48,7 @@ import { AdminTeamComponent } from './administration/admin-team/admin-team.compo
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
@@ -90,6 +91,7 @@ import { MatchComponent } from './match/match.component';
         MatListModule,
         MatDividerModule,
         MatTooltipModule,
+        MatSelectModule,
         DeviceDetectorModule.forRoot()
     ],
     declarations: [
