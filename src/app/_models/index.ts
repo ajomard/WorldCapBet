@@ -7,3 +7,5 @@ export * from './charts/bar';
 export * from './charts/groupingBar';
 export * from './charts/chartAverage';
 export * from './constants';
+export * from './team-ranking';
+export * from './group-ranking';

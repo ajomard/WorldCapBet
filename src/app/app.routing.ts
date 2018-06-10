@@ -15,6 +15,7 @@ import { AdminMatchComponent } from './administration/admin-match/admin-match.co
 import { AdminTeamComponent } from './administration/admin-team/admin-team.component';
 import { AverageComponent } from './charts/average/average.component';
 import { AuthGuard } from './_guards/index';
+import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     { path: 'admin/team/create', component: AdminTeamComponent , canActivate: [AuthGuard] },
     { path: 'admin/team/edit', component: AdminTeamComponent , canActivate: [AuthGuard] },
     { path: 'charts/average', component: AverageComponent , canActivate: [AuthGuard] },
+    { path: 'teamsranking', component: TeamRankingComponent , canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

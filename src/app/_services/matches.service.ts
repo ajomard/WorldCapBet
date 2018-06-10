@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Matches } from '../_models/index';
+import { Matches, TeamRanking } from '../_models/index';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -35,6 +35,10 @@ export class MatchesService {
 
     getTodayMatchesAndPronostics(id: string) {
       return this.http.get<Matches[]>(this.apiUrl + 'Matches/TodayPronostic/' + id );
+    }
+
+    getGroupRanking(group: string) {
+      return this.http.get<TeamRanking[]>(this.apiUrl + 'Matches/GroupRanking/' + group );
     }
 
 

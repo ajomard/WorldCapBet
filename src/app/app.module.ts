@@ -55,7 +55,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AverageComponent } from './charts/average/average.component';
 import { DeviceDetectorModule } from 'ngx-device-detector';
-import { MatchComponent } from './match/match.component';
+import { MatchComponent } from './match/match.component';;
+import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
+import { GroupRankingComponent } from './rankings/group-ranking/group-ranking.component';
 
 
 @NgModule({
@@ -113,7 +115,9 @@ import { MatchComponent } from './match/match.component';
         AdminTeamComponent,
         UserComponent,
         AverageComponent,
-        MatchComponent
+        MatchComponent,
+        TeamRankingComponent,
+        GroupRankingComponent
     ],
     entryComponents: [
       BetComponent

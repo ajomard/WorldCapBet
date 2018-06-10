@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Group {{groupName}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-table [dataSource]="dataSource" matSort matSortActive="rank"> 
+            <ng-container matColumnDef="team">
+              <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Team </mat-header-cell>
+              <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="start center">
+                  <img class="flag-mini" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team.flag}}.png" [title]="row.team.name">
+                  <span>{{row.team.name}}</span>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="win">
+              <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Win </mat-header-cell>
+              <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                <span>{{row.win}}</span>
+              </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="draw">
+              <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Draw </mat-header-cell>
+              <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                <span>{{row.draw}}</span>
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="loose">
+                <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Loose </mat-header-cell>
+                <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                  <span>{{row.loose}}</span>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="goalaverage">
+                  <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> +/- </mat-header-cell>
+                  <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                    <span>{{row.goalAverage}}</span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="score">
+                  <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Score </mat-header-cell>
+                  <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                    <span>{{row.score}}</span>
+                  </mat-cell>
+                </ng-container>
+  
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+    </mat-card-content>
+
+</mat-card>

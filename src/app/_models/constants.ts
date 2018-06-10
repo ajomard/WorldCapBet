@@ -9,3 +9,7 @@ export class MatchType {
     id: number;
     name: string;
 }
+
+export class Constants {
+    public static GROUPS: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+}
