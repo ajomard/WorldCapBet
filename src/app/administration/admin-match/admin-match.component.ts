@@ -4,7 +4,7 @@ import { FormControl, FormGroup,  Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 import { MatSnackBar} from '@angular/material';
-import { Matches } from '../../_models/index';
+import { Matches, MatchType, MATCH_TYPE } from '../../_models/index';
 import { Team } from '../../_models/index';
 import { UserService, MatchesService, DataService, TeamService } from '../../_services/index';
 import { DateTimeAdapter } from 'ng-pick-datetime';
@@ -20,6 +20,7 @@ export class AdminMatchComponent implements OnInit {
   teams: Team[];
   filteredTeams1: Observable<Team[]>;
   filteredTeams2: Observable<Team[]>;
+  matchsType: MatchType[] = MATCH_TYPE;
   constructor(
       private router: Router,
       private userService: UserService,
@@ -63,6 +64,11 @@ export class AdminMatchComponent implements OnInit {
            'team2': new FormControl(this.match.team2, [
              Validators.required,
            ]),
+           'type': new FormControl(this.match.type, [
+            Validators.required,
+          ]),
+           'title': new FormControl({value:'',  disabled: true}, [
+          ]),
            'scoreTeam1': new FormControl(this.match.scoreTeam1, [
 
            ]),
@@ -75,14 +81,12 @@ export class AdminMatchComponent implements OnInit {
       }
 
       createOrUpdate() {
-        //this.match.date = new Date(this.match.date).toISOString();
         if(this.match.id == null) {
           this.matchService.create(this.match).subscribe(data => {
             this.dataService.delete();
             this.openSnackBar("Match created", 2000);
             this.router.navigate(["/admin/matches"]);
           }, error => {
-            //alert('ko');
             this.dataService.delete();
           });
         } else {
@@ -91,7 +95,6 @@ export class AdminMatchComponent implements OnInit {
             this.openSnackBar("Match updated", 2000);
             this.router.navigate(["/admin/matches"]);
           }, error => {
-            //alert('ko');
             this.dataService.delete();
           });
         }
@@ -118,5 +121,12 @@ export class AdminMatchComponent implements OnInit {
          });
        }
 
+       toggleTitleState() {
+        if(this.match.type == 0)  {
+          this.matchForm.controls['title'].disable();
+          this.match.title = null;
+        }
+        else this.matchForm.controls['title'].enable();
+       }
 
 }

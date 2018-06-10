@@ -5,12 +5,11 @@ import { MatchesService } from '../../_services/index';
 import { AuthenticationService } from '../../_services/index';
 import { UserService } from '../../_services/index';
 import { DataService } from '../../_services/index';
-import { Matches } from '../../_models/index';
-import { User } from '../../_models/index';
+import { Matches, MatchType, MATCH_TYPE} from '../../_models/index';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {MatSort, MatTableDataSource, MatDialog, MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-admin-list-matches',
@@ -18,7 +17,8 @@ import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, M
   styleUrls: ['./admin-list-matches.component.css']
 })
 export class AdminListMatchesComponent implements OnInit {
-  displayedColumns = ['date', 'team1', 'team2', 'score', 'action'];
+  displayedColumns = ['date','type', 'team1', 'team2', 'score', 'action'];
+  matchsType: MatchType[] = MATCH_TYPE;
   dataSource: MatTableDataSource<Matches>;
   isLoadingResults = false;
   isFilterOn = false;
@@ -54,7 +54,7 @@ export class AdminListMatchesComponent implements OnInit {
         matchsResults = matches;
       }
       this.dataSource = new MatTableDataSource(matchsResults);
-      //allow to sorte nested objects
+      //allow to sort nested objects
       this.dataSource.sortingDataAccessor = (item, property) => {
         switch(property) {
           case 'team1': return item.team1.name;
@@ -66,7 +66,6 @@ export class AdminListMatchesComponent implements OnInit {
       this.isLoadingResults = false;
     },
     error => {
-        //this.openSnackBar('Error while loading matches', 10000);
         this.isLoadingResults = false;
     });
   }
@@ -83,6 +82,27 @@ export class AdminListMatchesComponent implements OnInit {
     return match.scoreTeam1 != null && match.scoreTeam2 != null;
   }
 
+  getMatchType(match:Matches): string {
+    const type = match.type;
+    if(type === 0) {
+      let group = '';
+      if(match.team1.group != null && match.team2.group != null) {
+        group = ' : ' + match.team1.group;
+      }
+      return MATCH_TYPE.find(mt => mt.id === type).name + group
+    } 
+    else if(type > 0) {
+      let title = '';
+      if(match.title != null) {
+        title = ' : ' + match.title;
+      }
+      return MATCH_TYPE.find(mt => mt.id === type).name + title;
+    } 
+    else {
+      return match.title!=null?match.title:'';
+    }
+  }
+
   openSnackBar(message: string, time: number) {
     this.snackBar.open(message,'Close', {
       duration: time,
@@ -96,7 +116,7 @@ export class AdminListMatchesComponent implements OnInit {
 
   delete(match:Matches) {
     this.matchesService.delete(match).subscribe(
-        data => {
+        (data) => {
             this.getAllMatches();
             this.openSnackBar('Match Deleted',2000);
         });

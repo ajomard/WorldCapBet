@@ -3,6 +3,19 @@
     <mat-card class="match-card">
       <mat-card-title>Match</mat-card-title>
       <form class="match-form" [formGroup]="matchForm" novalidate>
+
+        <div fxLayoutAlign="center center" class="padding-radio-bottom">
+          <mat-radio-group formControlName="type" [(ngModel)]="match.type" (change)="toggleTitleState()">
+              <mat-radio-button *ngFor="let matchType of matchsType" [value]="matchType.id">
+                {{matchType.name}}
+              </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <mat-form-field>
+            <input type="text" name="title"  matInput [(ngModel)]="match.title" formControlName="title" placeholder="Title">
+          </mat-form-field>
+
         <mat-form-field>
           <input matInput [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [(ngModel)]="match.date" formControlName="date"  placeholder="Date" required>
           <mat-icon class="cursor-pointer" matSuffix  [owlDateTimeTrigger]="dt">date_range</mat-icon>
@@ -27,6 +40,9 @@
           </mat-autocomplete>
         </mat-form-field>
 
+
+         
+        
         <mat-form-field>
           <input type="number" name="scoreTeam1" matInput [(ngModel)]="match.scoreTeam1" formControlName="scoreTeam1" placeholder="Score Team 1">
           <mat-error *ngIf="matchForm.controls['scoreTeam1'].errors">You must enter a value</mat-error>

@@ -8,5 +8,7 @@ export class Matches {
   scoreTeam1: number;
   scoreTeam2: number;
   date: Date;
+  type?: number;
   pronostic: Pronostic;
+  title: string;
 }

@@ -49,6 +49,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
@@ -92,6 +93,7 @@ import { MatchComponent } from './match/match.component';
         MatDividerModule,
         MatTooltipModule,
         MatSelectModule,
+        MatRadioModule,
         DeviceDetectorModule.forRoot()
     ],
     declarations: [

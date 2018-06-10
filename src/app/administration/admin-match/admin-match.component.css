@@ -16,3 +16,11 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.mat-radio-button {
+  margin: 0 5px;
+}
+
+.padding-radio-bottom {
+  padding-bottom: 20px;
+}
