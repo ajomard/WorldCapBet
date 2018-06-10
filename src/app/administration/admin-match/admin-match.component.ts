@@ -67,7 +67,7 @@ export class AdminMatchComponent implements OnInit {
            'type': new FormControl(this.match.type, [
             Validators.required,
           ]),
-           'title': new FormControl({value:'',  disabled: true}, [
+           'title': new FormControl('', [
           ]),
            'scoreTeam1': new FormControl(this.match.scoreTeam1, [
 
@@ -76,6 +76,8 @@ export class AdminMatchComponent implements OnInit {
 
            ])
          });
+
+         this.toggleTitleState();
 
 
       }
@@ -124,7 +126,7 @@ export class AdminMatchComponent implements OnInit {
        toggleTitleState() {
         if(this.match.type == 0)  {
           this.matchForm.controls['title'].disable();
-          this.match.title = null;
+          //this.match.title = null;
         }
         else this.matchForm.controls['title'].enable();
        }
