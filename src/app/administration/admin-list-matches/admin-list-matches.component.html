@@ -26,8 +26,8 @@
     </ng-container>
 
     <ng-container matColumnDef="type">
-        <mat-header-cell *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Title </mat-header-cell>
-        <mat-cell *matCellDef="let row" fxLayoutAlign="center center">
+        <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header fxLayout="row" fxLayoutAlign="center center"> Title </mat-header-cell>
+        <mat-cell fxFlex="10%" *matCellDef="let row" fxLayoutAlign="center center">
           {{getMatchType(row)}}
         </mat-cell>
       </ng-container>

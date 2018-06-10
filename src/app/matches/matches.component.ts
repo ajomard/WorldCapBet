@@ -1,16 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatchesService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
-import { UserService } from '../_services/index';
-import { Matches } from '../_models/index';
-import { User } from '../_models/index';
-import { Pronostic } from '../_models/index';
-import { BetComponent } from '../bet/bet.component';
+import { Matches, MatchType, MATCH_TYPE } from '../_models/index';
 import * as moment from 'moment';
 
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {MatSort, MatTableDataSource, MatDialog, MatSnackBar} from '@angular/material';
+import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { BetComponent } from '../bet/bet.component';
 
 
 @Component({
@@ -19,7 +16,8 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./matches.component.css']
 })
 export class MatchesComponent implements OnInit {
-  displayedColumns = ['date', 'team1', 'team2', 'pronostic', 'score', 'action'];
+  matchsType: MatchType[] = MATCH_TYPE;
+  displayedColumns = ['date','title', 'team1', 'team2', 'pronostic', 'score', 'action'];
   dataSource: MatTableDataSource<Matches>;
   isLoadingResults = false;
   isFilterOn = false;
@@ -29,17 +27,17 @@ export class MatchesComponent implements OnInit {
 
   constructor(private matchesService: MatchesService,
     public authenticationService: AuthenticationService,
-    private userService: UserService,
     private router: Router,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar) { 
+    }
 
     ngOnInit() {
       this.getAllMatchesAndPronostics();
     }
 
     openDialog(match: Matches) {
-      const dialogRef = this.dialog.open(BetComponent, {
+      this.dialog.open(BetComponent, {
         data: match
       });
     }
@@ -78,10 +76,9 @@ export class MatchesComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.isLoadingResults = false;
     },
-    error => {
-        // this.openSnackBar('Error while loading matches', 10000);
+    () => {
         this.isLoadingResults = false;
-    });
+      });
   }
 
   isMatchAlreadyPlayed(match: Matches): boolean {
@@ -100,6 +97,27 @@ export class MatchesComponent implements OnInit {
     this.snackBar.open(message, 'Close', {
       duration: time,
     });
+  }
+
+  getMatchType(match:Matches): string {
+    const type = match.type;
+    if(type === 0) {
+      let group = '';
+      if(match.team1.group != null && match.team2.group != null) {
+        group = ' : ' + match.team1.group;
+      }
+      return MATCH_TYPE.find(mt => mt.id === type).name + group
+    } 
+    else if(type > 0) {
+      let title = '';
+      if(match.title != null) {
+        title = ' : ' + match.title;
+      }
+      return MATCH_TYPE.find(mt => mt.id === type).name + title;
+    } 
+    else {
+      return match.title!=null?match.title:'';
+    }
   }
 
 }

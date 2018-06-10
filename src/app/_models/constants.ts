@@ -1,6 +1,8 @@
 export const MATCH_TYPE: MatchType[] = [
     { id: 0, name: 'Group' },
-    { id: 1, name: 'Elimination' }
+    { id: 1, name: 'Elimination' },
+    { id: 2, name: 'Friendly' },
+    { id: 3, name: 'Other' }
 ];
 
 export class MatchType {

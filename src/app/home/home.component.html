@@ -94,8 +94,8 @@
 
             <!-- Score -->
             <ng-container matColumnDef="falsePronostic">
-              <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> False Pronostic </mat-header-cell>
-              <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.falsePronostic}} </mat-cell>
+              <mat-header-cell fxHide.lt-md *matHeaderCellDef fxLayoutAlign="center center"> False Pronostic </mat-header-cell>
+              <mat-cell fxHide.lt-md *matCellDef="let rank" fxLayoutAlign="center center">{{rank.falsePronostic}} </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumnsRank"></mat-header-row>

@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 
 import {MatSort, MatTableDataSource, MatDialog, MatSnackBar} from '@angular/material';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-admin-list-matches',
@@ -17,7 +18,7 @@ import {MatSort, MatTableDataSource, MatDialog, MatSnackBar} from '@angular/mate
   styleUrls: ['./admin-list-matches.component.css']
 })
 export class AdminListMatchesComponent implements OnInit {
-  displayedColumns = ['date','type', 'team1', 'team2', 'score', 'action'];
+  displayedColumns:string[];
   matchsType: MatchType[] = MATCH_TYPE;
   dataSource: MatTableDataSource<Matches>;
   isLoadingResults = false;
@@ -27,11 +28,13 @@ export class AdminListMatchesComponent implements OnInit {
 
   constructor(private matchesService: MatchesService,
     public authenticationService: AuthenticationService,
-    private userService: UserService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private router: Router,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private deviceService: DeviceDetectorService) { 
+      this.displayedColumns = this.getDisplayedColumns();
+    }
 
     ngOnInit() {
       this.getAllMatches();
@@ -120,6 +123,14 @@ export class AdminListMatchesComponent implements OnInit {
             this.getAllMatches();
             this.openSnackBar('Match Deleted',2000);
         });
+  }
+
+  getDisplayedColumns(): string[] {
+    if(this.deviceService.isMobile()) {
+      return ['date', 'team1', 'team2', 'score', 'action'];
+    } else {
+      return ['date','type', 'team1', 'team2', 'score', 'action'];
+    }
   }
 
 }
