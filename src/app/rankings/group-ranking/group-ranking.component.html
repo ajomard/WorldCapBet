@@ -6,9 +6,9 @@
         <mat-table [dataSource]="dataSource" matSort matSortActive="rank"> 
             <ng-container matColumnDef="team">
               <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Team </mat-header-cell>
-              <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="start center">
-                  <img class="flag-mini" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team.flag}}.png" [title]="row.team.name">
-                  <span>{{row.team.name}}</span>
+              <mat-cell *matCellDef="let row" fxLayout="row wrap" fxLayoutAlign="center center">
+                  <img class="flag-mini" width="30" height="20"  src="{{baseHrefForImages}}assets/flags-mini/{{row.team.flag}}.png" [title]="row.team.name">
+                  <span fxHide.lt-xl="true">{{row.team.name}}</span>
                 </mat-cell>
             </ng-container>
 
@@ -27,7 +27,7 @@
             </ng-container>
 
             <ng-container matColumnDef="loose">
-                <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Loose </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Lose </mat-header-cell>
                 <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
                   <span>{{row.loose}}</span>
                 </mat-cell>
@@ -42,7 +42,7 @@
 
                 <ng-container matColumnDef="score">
                   <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Score </mat-header-cell>
-                  <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                  <mat-cell class="score" *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
                     <span>{{row.score}}</span>
                   </mat-cell>
                 </ng-container>

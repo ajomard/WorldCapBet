@@ -1,0 +1,17 @@
+.flag-mini{
+    margin : 0 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gainsboro;
+  }
+
+  .score {
+      font-weight: bold;
+  }
+
+  .mat-column-win,
+  .mat-column-loose,
+  .mat-column-draw,
+  .mat-column-goalaverage{
+      max-width: 32px;
+  }

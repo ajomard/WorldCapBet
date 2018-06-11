@@ -1,3 +1,9 @@
-<ng-container *ngFor="let group of groupList">
-    <app-group-ranking groupName="{{group}}"></app-group-ranking>
-</ng-container>
+<div fxLayout="row wrap" fxLayoutGap="5px">
+    <ng-container *ngFor="let group of groupList">
+        <app-group-ranking 
+            fxFlex="1 1 calc(25% - 5px)" 
+            fxFlex.lt-lg="100" 
+            groupName="{{group}}">
+        </app-group-ranking>
+    </ng-container>
+</div>
