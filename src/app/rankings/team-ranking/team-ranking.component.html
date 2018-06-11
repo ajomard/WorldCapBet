@@ -1,9 +1,16 @@
-<div fxLayout="row wrap" fxLayoutGap="5px">
-    <ng-container *ngFor="let group of groupList">
-        <app-group-ranking 
-            fxFlex="1 1 calc(25% - 5px)" 
-            fxFlex.lt-lg="100" 
-            groupName="{{group}}">
-        </app-group-ranking>
-    </ng-container>
-</div>
+<mat-tab-group>
+    <mat-tab label="Groups">
+        <div fxLayout="row wrap" fxLayoutGap="5px">
+            <ng-container *ngFor="let group of groupList">
+                <app-group-ranking 
+                    fxFlex="1 1 calc(25% - 5px)" 
+                    fxFlex.lt-lg="100" 
+                    groupName="{{group}}">
+                </app-group-ranking>
+            </ng-container>
+        </div>
+    </mat-tab>
+    <mat-tab label="Knockout phase">
+        <h1>Coming soon ... ;)</h1>
+    </mat-tab>
+</mat-tab-group>
