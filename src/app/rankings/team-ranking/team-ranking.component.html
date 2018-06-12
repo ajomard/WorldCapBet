@@ -1,10 +1,10 @@
 <mat-tab-group>
     <mat-tab label="Groups">
-        <div fxLayout="row wrap" fxLayoutGap="5px">
+        <div fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="5px">
             <ng-container *ngFor="let group of groupList">
                 <app-group-ranking 
-                    fxFlex="1 1 calc(25% - 5px)" 
-                    fxFlex.lt-lg="100" 
+                    fxFlex="1 1 450px" 
+                    fxFlex.lt-sm="1 1 100" 
                     groupName="{{group}}">
                 </app-group-ranking>
             </ng-container>
