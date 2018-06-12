@@ -1,8 +1,8 @@
 <app-matches-view></app-matches-view>
-<div fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="5px">
+<div fxLayout="row wrap" fxLayoutAlign="center start">
     <ng-container *ngFor="let group of groupList">
         <app-group-ranking 
-            fxFlex="1 1 450px" 
+            fxFlex="1 1 440px" 
             fxFlex.lt-sm="1 1 100" 
             groupName="{{group}}">
         </app-group-ranking>
