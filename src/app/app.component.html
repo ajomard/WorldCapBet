@@ -2,7 +2,7 @@
   <mat-toolbar color="primary">
     <div fxShow="true" fxHide.lt-sm="true">
       <a mat-button [routerLink]="['/']">World Cap Bet</a>
-      <a mat-button [routerLink]="['/matches']">Matches</a>
+      <a mat-button [routerLink]="['/matches/list']">Matches</a>
       <a mat-button [routerLink]="['/results']">Ranking</a>
       <a mat-button [routerLink]="['/charts/average']" fxHide.lt-md="true">Charts</a>
       <a mat-button [routerLink]="['/rules']">Rules</a>
@@ -38,7 +38,7 @@
     <mat-sidenav #sidenav mode="over" fxLayout="column" opened="false">
       <div fxLayout="column">
         <a mat-button [routerLink]="['/']" (click)="sidenav.toggle()">Home</a>
-        <a mat-button [routerLink]="['/matches']" (click)="sidenav.toggle()">Matches</a>
+        <a mat-button [routerLink]="['/matches/list']" (click)="sidenav.toggle()">Matches</a>
         <a mat-button [routerLink]="['/results']" (click)="sidenav.toggle()">Ranking</a>
         <a mat-button [routerLink]="['/charts/average']" fxHide.lt-md="true">Charts</a>
         <a mat-button [routerLink]="['/rules']" (click)="sidenav.toggle()">Rules</a>

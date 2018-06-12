@@ -16,6 +16,8 @@ import { AdminTeamComponent } from './administration/admin-team/admin-team.compo
 import { AverageComponent } from './charts/average/average.component';
 import { AuthGuard } from './_guards/index';
 import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
+import { MatchesViewComponent } from './matches-view/matches-view.component';
+import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -24,7 +26,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'results', component: ResultsComponent, canActivate: [AuthGuard] },
     { path: 'match/:id', component: MatchComponent, canActivate: [AuthGuard]},
-    { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard] },
+    { path: 'matches/list', component: MatchesComponent, canActivate: [AuthGuard] },
     { path: 'user/edit', component: UserComponent, canActivate: [AuthGuard] },
     { path: 'admin/users', component: UsersComponent , canActivate: [AuthGuard] },
     { path: 'admin/matches', component: AdminListMatchesComponent , canActivate: [AuthGuard] },
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     { path: 'admin/team/create', component: AdminTeamComponent , canActivate: [AuthGuard] },
     { path: 'admin/team/edit', component: AdminTeamComponent , canActivate: [AuthGuard] },
     { path: 'charts/average', component: AverageComponent , canActivate: [AuthGuard] },
-    { path: 'teamsranking', component: TeamRankingComponent , canActivate: [AuthGuard] },
+    { path: 'matches/groups', component: TeamRankingComponent , canActivate: [AuthGuard] },
+    { path: 'matches/knockout', component: KnockoutPhaseComponent , canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

@@ -58,7 +58,9 @@ import { AverageComponent } from './charts/average/average.component';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MatchComponent } from './match/match.component';;
 import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
-import { GroupRankingComponent } from './rankings/group-ranking/group-ranking.component';
+import { GroupRankingComponent } from './rankings/group-ranking/group-ranking.component';;
+import { MatchesViewComponent } from './matches-view/matches-view.component';
+import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component'
 
 
 @NgModule({
@@ -119,8 +121,10 @@ import { GroupRankingComponent } from './rankings/group-ranking/group-ranking.co
         AverageComponent,
         MatchComponent,
         TeamRankingComponent,
-        GroupRankingComponent
-    ],
+        GroupRankingComponent,
+        MatchesViewComponent
+,
+        KnockoutPhaseComponent    ],
     entryComponents: [
       BetComponent
     ],
