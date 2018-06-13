@@ -51,17 +51,18 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AverageComponent } from './charts/average/average.component';
 import { DeviceDetectorModule } from 'ngx-device-detector';
-import { MatchComponent } from './match/match.component';;
+import { MatchComponent } from './match/match.component';
 import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
-import { GroupRankingComponent } from './rankings/group-ranking/group-ranking.component';;
-import { MatchesViewComponent } from './matches-view/matches-view.component';
-import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component'
-
+import { GroupRankingComponent } from './rankings/group-ranking/group-ranking.component';
+import { MatchesViewComponent } from './matches-view/matches-view.component';
+import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component';
+import { KnockoutMatchComponent } from './rankings/knockout-phase/knockout-match/knockout-match.component';
 
 @NgModule({
     imports: [
@@ -100,6 +101,7 @@ import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase
         MatSelectModule,
         MatRadioModule,
         MatTabsModule,
+        MatGridListModule,
         DeviceDetectorModule.forRoot()
     ],
     declarations: [
@@ -121,10 +123,11 @@ import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase
         AverageComponent,
         MatchComponent,
         TeamRankingComponent,
-        GroupRankingComponent,
-        MatchesViewComponent
-,
-        KnockoutPhaseComponent    ],
+        GroupRankingComponent,
+        MatchesViewComponent,
+        KnockoutPhaseComponent ,
+        KnockoutMatchComponent
+    ],
     entryComponents: [
       BetComponent
     ],
