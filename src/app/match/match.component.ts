@@ -38,7 +38,9 @@ export class MatchComponent implements OnInit {
     this.matchService.get(id)
       .subscribe(match => {
         this.match = match;
-        if(this.match.scoreTeam1 != null && this.match.scoreTeam2 != null) {
+        const date = new Date();
+        const dateMatch = new Date(match.date);
+        if (date > dateMatch) {
           this.getPronostics();
         } else {
           this.isLoadingResults = false;
