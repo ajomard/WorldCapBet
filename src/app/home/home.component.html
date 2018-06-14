@@ -34,7 +34,8 @@
           <ng-container matColumnDef="action">
             <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Action </mat-header-cell>
             <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
-              <button mat-button color="primary" (click)="openDialog(row)" [disabled]="isMatchAlreadyPlayed(row)">Bet</button>
+              <button mat-button color="primary" (click)="openDialog(row)" *ngIf="!isMatchAlreadyPlayed(row)">Bet</button>
+              <button mat-button color="primary" (click)="goToDetail(row)" *ngIf="isMatchAlreadyPlayed(row)">Details</button>
             </mat-cell>
           </ng-container>
 

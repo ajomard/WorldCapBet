@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://worldcapbetservicetest.azurewebsites.net/api/",
+  apiUrl: "http://worldcapbetservice.azurewebsites.net/api/",
   //apiUrl: "http://localhost:61393/api/",
   baseHrefForImages: "./"
 

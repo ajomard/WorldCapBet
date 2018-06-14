@@ -12,6 +12,7 @@ import * as moment from 'moment';
 
 import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id.toString(),
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit {
   constructor(private matchesService: MatchesService,
     private rankingService: RankingService,
     public authenticationService: AuthenticationService,
+    private router: Router,
     private userService: UserService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar) {
@@ -86,6 +88,10 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(BetComponent, {
       data: match
     });
+  }
+
+  goToDetail(match: Matches) {
+    this.router.navigate(['/match', match.id]);
   }
 
   calculateMissingBets(matches:Matches[]) {

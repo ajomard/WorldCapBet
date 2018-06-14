@@ -68,7 +68,7 @@ export class MatchComponent implements OnInit {
 
   isRight(prono: Pronostic): boolean {
     let res = false;
-    if (this.match.scoreTeam1 && this.match.scoreTeam2) {
+    if (this.match.scoreTeam1 != null && this.match.scoreTeam2 != null) {
       const diff = this.match.scoreTeam1 - this.match.scoreTeam2;
       const diffProno = prono.scoreTeam1 - prono.scoreTeam2;
 
