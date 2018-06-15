@@ -3,7 +3,7 @@
     <div fxLayout="column" ngClass.gt-xs="padding-right-10px">
       <div fxLayoutAlign="end center" fxLayoutAlign.lt-sm="center center">
         <span class="team-name">{{data.team1.name}}</span>
-        <img width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{data.team1.flag}}.png" [title]="data.team1.name">
+        <img width="30" height="20" class="flag-mini" src="{{baseHrefForImages}}assets/flags-mini/{{data.team1.flag}}.png" [title]="data.team1.name">
       </div>
       <mat-form-field>
         <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam1" formControlName="scoreTeam1"  placeholder="Score {{data.team1.name}}" required>
@@ -14,7 +14,7 @@
     </div>
     <div fxLayout="column" ngClass.gt-xs="padding-left-10px">
       <div fxLayoutAlign="start center" fxLayoutAlign.lt-sm="center center">
-        <img width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{data.team2.flag}}.png" [title]="data.team2.name">
+        <img width="30" height="20" class="flag-mini" src="{{baseHrefForImages}}assets/flags-mini/{{data.team2.flag}}.png" [title]="data.team2.name">
         <span class="team-name">{{data.team2.name}}</span>
       </div>
       <mat-form-field >
