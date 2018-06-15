@@ -14,7 +14,7 @@ export class MatchComponent implements OnInit {
 
   match: Matches;
   baseHrefForImages = environment.baseHrefForImages;
-  columnsToDisplay = ['name', 'firstname', 'score'];
+  columnsToDisplay = ['name', 'firstName', 'score'];
   dataSource: MatTableDataSource<Pronostic>;
   isLoadingResults = false;
   @ViewChild(MatSort) sort: MatSort;
