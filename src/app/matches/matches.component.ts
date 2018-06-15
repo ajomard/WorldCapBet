@@ -69,6 +69,7 @@ export class MatchesComponent implements OnInit {
         switch (property) {
           case 'team1': return item.team1.name;
           case 'team2': return item.team2.name;
+          case 'title' : return this.getMatchType(item);
           default: return item[property];
         }
       };
