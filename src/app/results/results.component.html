@@ -20,13 +20,13 @@
     <!-- First Name -->
     <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> First Name </mat-header-cell>
-      <mat-cell *matCellDef="let rank"> {{rank.user.firstName}} </mat-cell>
+      <mat-cell *matCellDef="let rank"> {{rank.user.firstName | titlecase}} </mat-cell>
     </ng-container>
 
     <!-- Last Name -->
     <ng-container matColumnDef="lastName">
       <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> Last Name </mat-header-cell>
-      <mat-cell *matCellDef="let rank"> {{rank.user.lastName}} </mat-cell>
+      <mat-cell *matCellDef="let rank"> {{rank.user.lastName | titlecase}} </mat-cell>
     </ng-container>
 
     <!-- Score -->
