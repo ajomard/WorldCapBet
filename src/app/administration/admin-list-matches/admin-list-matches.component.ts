@@ -64,6 +64,7 @@ export class AdminListMatchesComponent implements OnInit {
         switch (property) {
           case 'team1': return item.team1.name;
           case 'team2': return item.team2.name;
+          case 'type' : return this.getMatchType(item);
           default: return item[property];
         }
       };
