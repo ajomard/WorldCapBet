@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatchesService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
-import { Matches, MatchType, MATCH_TYPE } from '../_models/index';
+import { Matches, MatchType, MATCH_TYPE, MATCH_STATUS } from '../_models/index';
 import * as moment from 'moment';
 
 import {MatSort, MatTableDataSource, MatDialog, MatSnackBar} from '@angular/material';
@@ -91,6 +91,16 @@ export class MatchesComponent implements OnInit {
 
   isMatchScore(match: Matches): boolean {
     return match.scoreTeam1 != null && match.scoreTeam2 != null;
+  }
+
+  isInPlay(match: Matches): boolean {
+    // In play status = 1
+    return match.status === 1;
+  }
+
+  isFinished(match: Matches): boolean {
+    // Finished status = 2
+    return match.status === 2;
   }
 
   openSnackBar(message: string, time: number) {

@@ -106,4 +106,14 @@ export class HomeComponent implements OnInit {
     return moment(match.date) <= moment();
   }
 
+  isInPlay(match: Matches): boolean {
+    // In play status = 1
+    return match.status === 1;
+  }
+
+  isFinished(match: Matches): boolean {
+    // Finished status = 2
+    return match.status === 2;
+  }
+
 }

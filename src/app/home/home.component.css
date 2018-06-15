@@ -32,3 +32,11 @@
   border-width: 1px;
   border-color: gainsboro;
 }
+
+.icon-16px {
+  font-size: 16px;
+}
+
+.status {
+  flex: 1;
+}

@@ -51,3 +51,15 @@
 .padding-team {
   padding : 0 15px;
 }
+
+.icon-16px {
+  font-size: 16px;
+}
+
+.status {
+  flex:1;
+}
+
+.padding-status {
+  padding-left: 10px;
+}

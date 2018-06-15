@@ -11,4 +11,5 @@ export class Matches {
   type?: number;
   pronostic: Pronostic;
   title: string;
+  status: number;
 }
