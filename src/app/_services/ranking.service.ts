@@ -10,14 +10,14 @@ export class RankingService {
     constructor(private http: HttpClient) { }
 
     calculateRanking() {
-        return this.http.post(this.apiUrl + 'Rankings/UpdateRankings',null);
+        return this.http.post(this.apiUrl + 'Rankings/UpdateRankings', null);
     }
 
     getAll() {
         return this.http.get<Ranking[]>(this.apiUrl + 'Rankings');
     }
 
-    getUserRanking(userId:string) {
+    getUserRanking(userId: string) {
       return this.http.get<Ranking[]>(this.apiUrl + 'Rankings/UserRanking/' + userId);
     }
 }

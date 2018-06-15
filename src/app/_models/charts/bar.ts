@@ -1,4 +1,4 @@
 export class Bar {
-  name:string;
+  name: string;
   value: number;
 }

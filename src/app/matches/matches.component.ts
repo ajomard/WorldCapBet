@@ -17,7 +17,7 @@ import { BetComponent } from '../bet/bet.component';
 })
 export class MatchesComponent implements OnInit {
   matchsType: MatchType[] = MATCH_TYPE;
-  displayedColumns = ['date','title', 'team1', 'team2', 'pronostic', 'score', 'action'];
+  displayedColumns = ['date', 'title', 'team1', 'team2', 'pronostic', 'score', 'action'];
   dataSource: MatTableDataSource<Matches>;
   isLoadingResults = false;
   isFilterOn = false;
@@ -29,8 +29,7 @@ export class MatchesComponent implements OnInit {
     public authenticationService: AuthenticationService,
     private router: Router,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar) { 
-    }
+    public snackBar: MatSnackBar) { }
 
     ngOnInit() {
       this.getAllMatchesAndPronostics();
@@ -53,11 +52,11 @@ export class MatchesComponent implements OnInit {
 
   getAllMatchesAndPronostics() {
     this.isLoadingResults = true;
-    let userid = this.authenticationService.getLoggedUser().id;
+    const userid = this.authenticationService.getLoggedUser().id;
     this.matchesService.getAllMatchesAndPronostics(userid).subscribe(matches => {
       let matchsResults = [];
       if (this.isFilterOn) {
-        for (let match of matches) {
+        for (const match of matches) {
           if (!this.isMatchAlreadyPlayed(match)) {
             matchsResults.push(match);
           }
@@ -99,24 +98,22 @@ export class MatchesComponent implements OnInit {
     });
   }
 
-  getMatchType(match:Matches): string {
+  getMatchType(match: Matches): string {
     const type = match.type;
-    if(type === 0) {
+    if (type === 0) {
       let group = '';
-      if(match.team1.group != null && match.team2.group != null) {
+      if (match.team1.group != null && match.team2.group != null) {
         group = ' : ' + match.team1.group;
       }
-      return MATCH_TYPE.find(mt => mt.id === type).name + group
-    } 
-    else if(type > 0) {
+      return MATCH_TYPE.find(mt => mt.id === type).name + group;
+    } else if (type > 0) {
       let title = '';
-      if(match.title != null) {
+      if (match.title != null) {
         title = ' : ' + match.title;
       }
       return MATCH_TYPE.find(mt => mt.id === type).name + title;
-    } 
-    else {
-      return match.title!=null?match.title:'';
+    } else {
+      return match.title != null ? match.title : '';
     }
   }
 

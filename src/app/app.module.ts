@@ -1,16 +1,23 @@
-﻿import { NgModule }      from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-import { AppComponent }  from './app.component';
-import { routing }        from './app.routing';
+import { AppComponent } from './app.component';
+import { routing } from './app.routing';
 
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AuthenticationService, ChartsService, RankingService, UserService, TeamService, MatchesService, PronosticService, DataService } from './_services/index';
+import { AuthenticationService } from './_services/index';
+import { ChartsService } from './_services/index';
+import { RankingService } from './_services/index';
+import { UserService } from './_services/index';
+import { TeamService } from './_services/index';
+import { MatchesService } from './_services/index';
+import { PronosticService } from './_services/index';
+import { DataService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -56,11 +63,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AverageComponent } from './charts/average/average.component';
 import { DeviceDetectorModule } from 'ngx-device-detector';
-import { MatchComponent } from './match/match.component';;
+import { MatchComponent } from './match/match.component';
 import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
-import { GroupRankingComponent } from './rankings/group-ranking/group-ranking.component';;
-import { MatchesViewComponent } from './matches-view/matches-view.component';
-import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component'
+import { GroupRankingComponent } from './rankings/group-ranking/group-ranking.component';
+import { MatchesViewComponent } from './matches-view/matches-view.component';
+import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component';
 
 
 @NgModule({
@@ -121,7 +128,8 @@ import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase
         AverageComponent,
         MatchComponent,
         TeamRankingComponent,
-        GroupRankingComponent,
+        GroupRankingComponent
+,
         MatchesViewComponent
 ,
         KnockoutPhaseComponent    ],

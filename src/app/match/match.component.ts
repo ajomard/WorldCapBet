@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { MatchesService, PronosticService } from '../_services';
 import { Matches, Pronostic } from '../_models';
 import { environment } from '../../environments/environment';
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
-import {MatDividerModule} from '@angular/material/divider';
+import {MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-match',
@@ -31,7 +29,6 @@ export class MatchComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private matchService: MatchesService,
     private pronosticService: PronosticService
   ) { }
@@ -57,7 +54,7 @@ export class MatchComponent implements OnInit {
   }
 
   getPronostics(): void {
-    let id = +this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id');
     this.pronosticService.getPronosticsForMatch(id)
     .subscribe(pronos => {
         this.dataSource = new MatTableDataSource(pronos);

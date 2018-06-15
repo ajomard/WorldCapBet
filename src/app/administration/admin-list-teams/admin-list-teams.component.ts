@@ -15,7 +15,7 @@ import { MatSort, MatTableDataSource, MatDialog, MatSnackBar} from '@angular/mat
   styleUrls: ['./admin-list-teams.component.css']
 })
 export class AdminListTeamsComponent implements OnInit {
-  displayedColumns = ['name', 'team','group','action'];
+  displayedColumns = ['name', 'team', 'group', 'action'];
   dataSource: MatTableDataSource<Team>;
   isLoadingResults = false;
   baseHrefForImages = environment.baseHrefForImages;
@@ -46,21 +46,21 @@ export class AdminListTeamsComponent implements OnInit {
   }
 
   openSnackBar(message: string, time: number) {
-    this.snackBar.open(message,'Close', {
+    this.snackBar.open(message, 'Close', {
       duration: time,
     });
   }
 
-  edit(team:Team) {
+  edit(team: Team) {
     this.dataService.set(team);
-    this.router.navigate(["/admin/team/edit"]);
+    this.router.navigate(['/admin/team/edit']);
   }
 
-  delete(team:Team) {
+  delete(team: Team) {
     this.teamService.delete(team).subscribe(
         data => {
             this.getTeams();
-            this.openSnackBar('Team Deleted',2000);
+            this.openSnackBar('Team Deleted', 2000);
         });
   }
 

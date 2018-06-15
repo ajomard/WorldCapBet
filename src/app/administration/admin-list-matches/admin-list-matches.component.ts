@@ -18,7 +18,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   styleUrls: ['./admin-list-matches.component.css']
 })
 export class AdminListMatchesComponent implements OnInit {
-  displayedColumns:string[];
+  displayedColumns: string[];
   matchsType: MatchType[] = MATCH_TYPE;
   dataSource: MatTableDataSource<Matches>;
   isLoadingResults = false;
@@ -32,7 +32,7 @@ export class AdminListMatchesComponent implements OnInit {
     public snackBar: MatSnackBar,
     private router: Router,
     private dataService: DataService,
-    private deviceService: DeviceDetectorService) { 
+    private deviceService: DeviceDetectorService) {
       this.displayedColumns = this.getDisplayedColumns();
     }
 
@@ -49,17 +49,19 @@ export class AdminListMatchesComponent implements OnInit {
     this.isLoadingResults = true;
     this.matchesService.getAll().subscribe(matches => {
       let matchsResults = [];
-      if(this.isFilterOn) {
-        for(let match of matches) {
-          if(!this.isMatchAlreadyPlayed(match)) matchsResults.push(match);
+      if (this.isFilterOn) {
+        for (const match of matches) {
+          if (!this.isMatchAlreadyPlayed(match)) {
+            matchsResults.push(match);
+          }
         }
       } else {
         matchsResults = matches;
       }
       this.dataSource = new MatTableDataSource(matchsResults);
-      //allow to sort nested objects
+      // Allow to sort nested objects
       this.dataSource.sortingDataAccessor = (item, property) => {
-        switch(property) {
+        switch (property) {
           case 'team1': return item.team1.name;
           case 'team2': return item.team2.name;
           default: return item[property];
@@ -73,63 +75,61 @@ export class AdminListMatchesComponent implements OnInit {
     });
   }
 
-  isMatchAlreadyPlayed(match:Matches): boolean {
+  isMatchAlreadyPlayed(match: Matches): boolean {
     return moment(match.date) <= moment();
   }
 
-  isPronostic(match:Matches): boolean {
+  isPronostic(match: Matches): boolean {
     return match.pronostic.scoreTeam1 != null && match.pronostic.scoreTeam2 != null;
   }
 
-  isMatchScore(match:Matches): boolean {
+  isMatchScore(match: Matches): boolean {
     return match.scoreTeam1 != null && match.scoreTeam2 != null;
   }
 
-  getMatchType(match:Matches): string {
+  getMatchType(match: Matches): string {
     const type = match.type;
-    if(type === 0) {
+    if (type === 0) {
       let group = '';
-      if(match.team1.group != null && match.team2.group != null) {
+      if (match.team1.group != null && match.team2.group != null) {
         group = ' : ' + match.team1.group;
       }
-      return MATCH_TYPE.find(mt => mt.id === type).name + group
-    } 
-    else if(type > 0) {
+      return MATCH_TYPE.find(mt => mt.id === type).name + group;
+    } else if (type > 0) {
       let title = '';
-      if(match.title != null) {
+      if (match.title != null) {
         title = ' : ' + match.title;
       }
       return MATCH_TYPE.find(mt => mt.id === type).name + title;
-    } 
-    else {
-      return match.title!=null?match.title:'';
+    } else {
+      return match.title != null ? match.title : '';
     }
   }
 
   openSnackBar(message: string, time: number) {
-    this.snackBar.open(message,'Close', {
+    this.snackBar.open(message, 'Close', {
       duration: time,
     });
   }
 
-  edit(match:Matches) {
+  edit(match: Matches) {
     this.dataService.set(match);
-    this.router.navigate(["/admin/match/edit"]);
+    this.router.navigate(['/admin/match/edit']);
   }
 
-  delete(match:Matches) {
+  delete(match: Matches) {
     this.matchesService.delete(match).subscribe(
         (data) => {
             this.getAllMatches();
-            this.openSnackBar('Match Deleted',2000);
+            this.openSnackBar('Match Deleted', 2000);
         });
   }
 
   getDisplayedColumns(): string[] {
-    if(this.deviceService.isMobile()) {
+    if (this.deviceService.isMobile()) {
       return ['date', 'team1', 'team2', 'score', 'action'];
     } else {
-      return ['date','type', 'team1', 'team2', 'score', 'action'];
+      return ['date', 'type', 'team1', 'team2', 'score', 'action'];
     }
   }
 
