@@ -21,7 +21,6 @@ import { DataService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
 import { BetComponent } from './bet/bet.component';
@@ -113,7 +112,6 @@ import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase
         AppComponent,
         HomeComponent,
         LoginComponent,
-        NavbarComponent,
         RegisterComponent,
         ResultsComponent,
         MatchesComponent,
@@ -128,11 +126,10 @@ import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase
         AverageComponent,
         MatchComponent,
         TeamRankingComponent,
-        GroupRankingComponent
-,
-        MatchesViewComponent
-,
-        KnockoutPhaseComponent    ],
+        GroupRankingComponent,
+        MatchesViewComponent,
+        KnockoutPhaseComponent
+    ],
     entryComponents: [
       BetComponent
     ],
