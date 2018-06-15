@@ -2,6 +2,10 @@
     padding : 0 15px;
   }
 
+  h3{
+    font-weight: normal;
+  }
+
   .flag-team {
     margin : 0 15px;
     border-style: solid;
@@ -66,3 +70,91 @@
     padding-top: 15px;
     font-weight: normal;
   }
+
+  .victory-graph{
+    height: 20px;
+    margin: 5px 0;
+  }
+
+  .victory1{
+    background:rgb(229, 57, 53);
+  }
+  .victory2{
+    background:rgb(30, 136, 229);
+  }
+
+  .draw{
+    background: rgb(189, 189, 189);
+  }
+
+  .score0{
+    background:rgb(229, 57, 53);
+  }
+  .score1{
+    background: rgb(255, 179, 0);
+  }
+  .score2{
+    background: rgb(0, 172, 193);
+  }
+  .score4{
+    background: rgb(67, 160, 71);
+  }
+  .stat-text{
+    text-align: center;
+  }
+  .text-score0{
+    color:rgb(229, 57, 53);
+    font-weight: bold;
+  }
+  .text-score1{
+    color: rgb(255, 179, 0);
+    font-weight: bold;
+  }
+  .text-score2{
+    color: rgb(0, 172, 193);
+    font-weight: bold;
+  }
+  .text-score4{
+    color: rgb(67, 160, 71);
+    font-weight: bold;
+  }
+
+  .team1-mini{
+    height: 20px;
+    width: 20px;
+    background: rgb(229, 57, 53);
+  }
+  .team2-mini{
+    height: 20px;
+    width: 20px;
+    background:rgb(30, 136, 229);
+  }
+  .draw-mini{
+    height: 20px;
+    width: 20px;
+    background: rgb(189, 189, 189);
+  }
+  .score0-mini{
+    height: 20px;
+    width: 20px;
+    background: rgb(229, 57, 53);
+  }
+  .score1-mini{
+    height: 20px;
+    width: 20px;
+    background: rgb(255, 179, 0);
+  }
+  .score2-mini{
+    height: 20px;
+    width: 20px;
+    background: rgb(0, 172, 193);
+  }
+  .score4-mini{
+    height: 20px;
+    width: 20px;
+    background: rgb(67, 160, 71);
+  }
+  .legend{
+    margin: 10px;
+  }
+  

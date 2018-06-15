@@ -15,30 +15,135 @@
     <img fxHide fxShow.lt-md="true" class="flag-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{match.team2.flag}}.png" [title]="match.team2.name">
     <p ngClass.gt-sm="score-team" ngClass.lt-md="score-team-mini">{{match.team2.name}}</p>
   </div>
+  
+  
+  
   <mat-divider></mat-divider>
   <mat-card-content >
     <h2 class="h2-prono">Pronostics</h2>
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <mat-table ngClass.gt-xs="pronostics-75" ngClass.lt-sm="pronostics-100" [dataSource]="dataSource" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
-         <ng-container matColumnDef="name">
-            <mat-header-cell fxLayoutAlign="center center" mat-sort-header *matHeaderCellDef > Name </mat-header-cell>
-            <mat-cell *matCellDef="let prono"> {{prono.user.lastName | titlecase}} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="firstname">
-            <mat-header-cell fxLayoutAlign="center center" mat-sort-header *matHeaderCellDef > First Name </mat-header-cell>
-            <mat-cell *matCellDef="let prono"> {{prono.user.firstName | titlecase}} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="score">
-            <mat-header-cell fxLayoutAlign="center center" *matHeaderCellDef> Score </mat-header-cell>
-            <mat-cell *matCellDef="let prono" fxLayoutAlign="center center">
-              <span class="success-{{isRight(prono)}}">{{prono.scoreTeam1}} - {{prono.scoreTeam2}}</span>  
-            </mat-cell>
-          </ng-container>
+    <mat-tab-group>
+      <mat-tab label="Stats">
+<!-- Stat bar -->
+        
+        <div fxLayout="column">
+            <h3>Winning Team</h3>
+            <div class="legend" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+                  <div class="team1-mini"></div>
+                  <div>{{match?.team1.name}}</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+                    <div class="draw-mini"></div>
+                    <div>Draw</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+                    <div class="team2-mini"></div>
+                    <div>{{match?.team2.name}}</div>
+                </div>
+              </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxFlex="75" fxLayout="row">
+                    <div [fxFlex]="victoryTeam1" class="stat-text" fxLayoutAlign="center center">
+                      {{victoryTeam1}}%
+                    </div>
+                    <div [fxFlex]="draw" class="stat-text" fxLayoutAlign="center center">
+                      {{draw}}%
+                    </div>
+                    <div [fxFlex]="victoryTeam2" class="stat-text" fxLayoutAlign="center center">
+                        {{victoryTeam2}}%
+                    </div>
+                  </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxFlex="75" class="victory-graph" fxLayout="row">
+                    <div [fxFlex]="victoryTeam1" class="victory1">
+                    </div>
+                    <div [fxFlex]="draw" class="draw" >
+                    </div>
+                    <div [fxFlex]="victoryTeam2" class="victory2" >
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <!-- Result bar -->
+        <div fxLayout="column">
+            <h3>Pronostics Results</h3>
+            <div class="legend" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+                  <div class="score4-mini"></div>
+                  <div>4 points</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+                    <div class="score2-mini"></div>
+                    <div>2 points</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+                    <div class="score1-mini"></div>
+                    <div>1 point</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+                    <div class="score0-mini"></div>
+                    <div>0 point</div>
+                </div>
+              </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxFlex="75" fxLayout="row">
+                    <div [fxFlex]="score4" class="stat-text" *ngIf="score4 > 0" fxLayoutAlign="center center">
+                      {{score4}}%
+                    </div>
+                    <div [fxFlex]="score2" class="stat-text" *ngIf="score2 > 0" fxLayoutAlign="center center">
+                      {{score2}}%
+                    </div>
+                    <div [fxFlex]="score1" class="stat-text" *ngIf="score1 > 0" fxLayoutAlign="center center">
+                        {{score1}}%
+                    </div>
+                    <div [fxFlex]="score0" class="stat-text" *ngIf="score0 > 0" fxLayoutAlign="center center">
+                        {{score0}}%
+                    </div>
+                  </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxFlex="75" class="victory-graph" fxLayout="row">
+                    <div [fxFlex]="score4" class="score4" >
+                    </div>
+                    <div [fxFlex]="score2" class="score2" >
+                    </div>
+                    <div [fxFlex]="score1" class="score1" >
+                    </div>
+                    <div [fxFlex]="score0" class="score0" >
+                    </div>
+                  </div>
+            </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="List">
+            <!-- List -->
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <mat-table ngClass.gt-xs="pronostics-75" ngClass.lt-sm="pronostics-100" [dataSource]="dataSource" matSort matSortActive="score" matSortDisableClear matSortDirection="desc">
+            <ng-container matColumnDef="name">
+                <mat-header-cell fxLayoutAlign="center center" mat-sort-header *matHeaderCellDef > Name </mat-header-cell>
+                <mat-cell *matCellDef="let prono"> {{prono.user.lastName | titlecase}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="firstname">
+                <mat-header-cell fxLayoutAlign="center center" mat-sort-header *matHeaderCellDef > First Name </mat-header-cell>
+                <mat-cell *matCellDef="let prono"> {{prono.user.firstName | titlecase}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="score">
+                <mat-header-cell fxLayoutAlign="center center" mat-sort-header *matHeaderCellDef> Score </mat-header-cell>
+                <mat-cell *matCellDef="let prono" fxLayoutAlign="center center">
+                  <span class="text-score{{isRight(prono)}}">{{prono.scoreTeam1}} - {{prono.scoreTeam2}}</span>  
+                </mat-cell>
+              </ng-container>
+        
+              <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+              <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+          </mat-table >
+        </div>
+      </mat-tab>
+    </mat-tab-group>
     
-          <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-          <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
-    </mat-table >
-  </div>
+    
+
   </mat-card-content>
 </mat-card>
 
