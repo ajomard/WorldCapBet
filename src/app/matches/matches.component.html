@@ -59,8 +59,13 @@
     <ng-container matColumnDef="score">
       <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Score </mat-header-cell>
       <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+        <span  class="status" *ngIf="isFinished(row) || isInPlay(row)"></span>
         <span *ngIf="isMatchScore(row)">{{row.scoreTeam1}} - {{row.scoreTeam2}}</span>
-      </mat-cell>
+        <span *ngIf="isFinished(row) || isInPlay(row)" fxLayoutAlign="start center" class="status">
+            <i *ngIf="isFinished(row)" class="material-icons icon-16px padding-status" title="Finished">done</i>
+            <img *ngIf="isInPlay(row)" class="padding-status" width="16" height="16" src="{{baseHrefForImages}}assets/soccer_ball_animated.svg" title="In Play">
+        </span>
+      </mat-cell>               
     </ng-container>
 
     <ng-container matColumnDef="action">

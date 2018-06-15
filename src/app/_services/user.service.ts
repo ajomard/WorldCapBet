@@ -32,18 +32,18 @@ export class UserService {
     }
 
     getAllMatchesAndPronostics(id: number) {
-      return this.http.get<Matches[]>(this.apiUrl + '/Users/' + id +'/AllMatchAndPronostic');
+      return this.http.get<Matches[]>(this.apiUrl + '/Users/' + id + '/AllMatchAndPronostic');
     }
 
     getPronostics(id: number) {
-        return this.http.get<Pronostic[]>(this.apiUrl + '/Users/' + id +'/pronostics');
+        return this.http.get<Pronostic[]>(this.apiUrl + '/Users/' + id + '/pronostics');
     }
 
     getRanking() {
       return this.http.get<User[]>(this.apiUrl + '/Users/ranking');
     }
 
-    resetPassword(user: User){
+    resetPassword(user: User) {
       return this.http.put(this.apiUrl + '/Users/resetpassword/' + user.id, user);
     }
 }

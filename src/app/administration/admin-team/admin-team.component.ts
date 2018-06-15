@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup,  Validators} from '@angular/forms';
 import { MatSnackBar} from '@angular/material';
-import { Team } from '../../_models/index';
+import { Team, GROUPS } from '../../_models/index';
 import { DataService, TeamService } from '../../_services/index';
 
 @Component({
@@ -13,7 +13,7 @@ import { DataService, TeamService } from '../../_services/index';
 export class AdminTeamComponent implements OnInit {
   team: Team;
   teamForm: FormGroup;
-  groupList: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+  groupList: string[] = GROUPS;
   constructor(
       private router: Router,
       private teamService: TeamService,
@@ -22,8 +22,9 @@ export class AdminTeamComponent implements OnInit {
 
       ngOnInit() {
         this.team = this.dataService.get();
-        if(this.team == null) this.team = new Team();
-
+        if (this.team == null) {
+          this.team = new Team();
+        }
         this.teamForm = new FormGroup({
            'name': new FormControl(this.team.name, [
              Validators.required
@@ -38,19 +39,19 @@ export class AdminTeamComponent implements OnInit {
       }
 
       createOrUpdate() {
-        if(this.team.id == null) {
+        if (this.team.id == null) {
           this.teamService.create(this.team).subscribe(() => {
             this.dataService.delete();
-            this.openSnackBar("Team created", 2000);
-            this.router.navigate(["/admin/teams"]);
+            this.openSnackBar('Team created', 2000);
+            this.router.navigate(['/admin/teams']);
           }, () => {
               this.dataService.delete();
             });
         } else {
           this.teamService.update(this.team).subscribe(() => {
             this.dataService.delete();
-            this.openSnackBar("Team updated", 2000);
-            this.router.navigate(["/admin/teams"]);
+            this.openSnackBar('Team updated', 2000);
+            this.router.navigate(['/admin/teams']);
           }, () => {
               this.dataService.delete();
             });
@@ -58,7 +59,7 @@ export class AdminTeamComponent implements OnInit {
       }
 
       openSnackBar(message: string, time: number) {
-        this.snackBar.open(message,'Close', {
+        this.snackBar.open(message, 'Close', {
           duration: time,
         });
       }

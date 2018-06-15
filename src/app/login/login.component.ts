@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     if (data) {
-                      let userObj = JSON.parse(data);
-                      if(userObj.auth_token) {
+                      const userObj = JSON.parse(data);
+                      if (userObj.auth_token) {
                         // store user details and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('currentUser',data );
+                        localStorage.setItem('currentUser', data );
                       }
                     }
                     this.loading = false;
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
 
 
     openSnackBar(message: string, time: number) {
-      this.snackBar.open(message,'Close', {
+      this.snackBar.open(message, 'Close', {
         duration: time,
       });
     }

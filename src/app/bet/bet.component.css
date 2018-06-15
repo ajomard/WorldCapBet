@@ -15,3 +15,9 @@
 .padding-left-10px {
   padding-left: 10px;
 }
+
+.flag-mini {
+  border-style: solid;
+  border-width: 1px;
+  border-color: gainsboro;
+}
