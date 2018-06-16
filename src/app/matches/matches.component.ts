@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatchesService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
 import { Matches, MatchType, MATCH_TYPE, MATCH_STATUS } from '../_models/index';
@@ -8,6 +8,7 @@ import {MatSort, MatTableDataSource, MatDialog, MatSnackBar} from '@angular/mate
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { BetComponent } from '../bet/bet.component';
+import { Subscription, Observable, interval } from 'rxjs';
 
 
 @Component({
@@ -15,13 +16,15 @@ import { BetComponent } from '../bet/bet.component';
   templateUrl: './matches.component.html',
   styleUrls: ['./matches.component.css']
 })
-export class MatchesComponent implements OnInit {
+export class MatchesComponent implements OnInit, OnDestroy {
+  private subscription: Subscription = new Subscription();
   matchsType: MatchType[] = MATCH_TYPE;
   displayedColumns = ['date', 'title', 'team1', 'team2', 'pronostic', 'score', 'action'];
   dataSource: MatTableDataSource<Matches>;
   isLoadingResults = false;
   isFilterOn = false;
   baseHrefForImages = environment.baseHrefForImages;
+  private userId: string;
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -32,7 +35,19 @@ export class MatchesComponent implements OnInit {
     public snackBar: MatSnackBar) { }
 
     ngOnInit() {
-      this.getAllMatchesAndPronostics();
+      this.userId = this.authenticationService.getLoggedUser().id;
+      this.getAllMatchesAndPronostics(this.userId, true);
+      this.autoRefresh();
+    }
+
+    ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+    }
+
+    autoRefresh() {
+      this.subscription.add(
+        interval(60000).subscribe(() => this.getAllMatchesAndPronostics(this.userId, false))
+      );
     }
 
     openDialog(match: Matches) {
@@ -47,12 +62,13 @@ export class MatchesComponent implements OnInit {
 
     changeFilter() {
       this.isFilterOn = !this.isFilterOn;
-      this.getAllMatchesAndPronostics();
+      this.getAllMatchesAndPronostics(this.userId, true);
     }
 
-  getAllMatchesAndPronostics() {
-    this.isLoadingResults = true;
-    const userid = this.authenticationService.getLoggedUser().id;
+  getAllMatchesAndPronostics(userid: string, displaySpinner: boolean) {
+    if (displaySpinner) {
+      this.isLoadingResults = true;
+    }
     this.matchesService.getAllMatchesAndPronostics(userid).subscribe(matches => {
       let matchsResults = [];
       if (this.isFilterOn) {
