@@ -1,17 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatchesService, PronosticService } from '../_services';
 import { Matches, Pronostic } from '../_models';
 import { environment } from '../../environments/environment';
 import {MatSort, MatTableDataSource} from '@angular/material';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-match',
   templateUrl: './match.component.html',
   styleUrls: ['./match.component.css']
 })
-export class MatchComponent implements OnInit {
-
+export class MatchComponent implements OnInit, OnDestroy {
+  subscription: Subscription = new Subscription();
   match: Matches;
   baseHrefForImages = environment.baseHrefForImages;
   columnsToDisplay = ['name', 'firstName', 'score'];
@@ -26,6 +27,8 @@ export class MatchComponent implements OnInit {
   score2;
   score1;
   score0;
+  refreshIntervalTime = 60000;
+  isAutoRefresh = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +38,10 @@ export class MatchComponent implements OnInit {
 
   ngOnInit() {
     this.getMatch();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   getMatch(): void {
@@ -114,6 +121,21 @@ export class MatchComponent implements OnInit {
       filter(x => this.isRight(x) === 0).length / this.totalProno * 100.0
     ).toFixed(1);
 
+  }
+
+  autoRefresh(): void {
+    this.subscription.add(
+      interval(this.refreshIntervalTime).subscribe(() => this.getMatch())
+    );
+  }
+
+  changeAutoRefresh(): void {
+    this.isAutoRefresh = !this.isAutoRefresh;
+    if (this.isAutoRefresh) {
+      this.autoRefresh();
+    } else {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

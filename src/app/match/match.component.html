@@ -2,7 +2,12 @@
   <div class="loading-shade" *ngIf="isLoadingResults">
       <mat-spinner></mat-spinner>
   </div>
-  <mat-card-title>Match details</mat-card-title>
+  <mat-card-title  fxLayoutAlign="space-between center">
+    Match details
+    <mat-slide-toggle color="primary" [checked]="isAutoRefresh" (change)="changeAutoRefresh()">
+      Auto refresh
+    </mat-slide-toggle>
+  </mat-card-title>
     <mat-card-subtitle>{{match?.date | date:'d MMMM y HH:mm'}}</mat-card-subtitle>
   <div fxLayout="row" fxLayoutAlign="center center" *ngIf="match">
     <p ngClass.gt-sm="score-team" ngClass.lt-md="score-team-mini">{{match.team1.name}}</p>
