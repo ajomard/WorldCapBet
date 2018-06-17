@@ -17,6 +17,8 @@ import { AuthGuard } from './_guards/index';
 import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
 import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component';
 import { ChartsComponent } from './charts/charts/charts.component';
+import { PronosticsComponent } from './charts/pronostics/pronostics.component';
+import { ScoresComponent } from './charts/scores/scores.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     { path: 'admin/teams', component: AdminListTeamsComponent , canActivate: [AuthGuard] },
     { path: 'admin/team/create', component: AdminTeamComponent , canActivate: [AuthGuard] },
     { path: 'admin/team/edit', component: AdminTeamComponent , canActivate: [AuthGuard] },
-    { path: 'charts', component: ChartsComponent , canActivate: [AuthGuard] },
+    { path: 'charts/pronostics', component: PronosticsComponent , canActivate: [AuthGuard] },
+    { path: 'charts/scores', component: ScoresComponent , canActivate: [AuthGuard] },
     { path: 'matches/groups', component: TeamRankingComponent , canActivate: [AuthGuard] },
     { path: 'matches/knockout', component: KnockoutPhaseComponent , canActivate: [AuthGuard] },
 

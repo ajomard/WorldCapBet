@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit {
+  navLinks = [
+    {path: '/charts/pronostics', label: 'Pronostics'},
+    {path: '/charts/scores', label: 'Scores'},
+  ];
 
   constructor() { }
 
