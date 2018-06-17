@@ -1,16 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatchesService } from '../_services/index';
 import { RankingService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
-import { UserService } from '../_services/index';
 import { Matches } from '../_models/index';
 import { Ranking } from '../_models/index';
 import { BetComponent } from '../bet/bet.component';
 import * as moment from 'moment';
 
-import {MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {MatSort, MatTableDataSource, MatDialog, MatSnackBar} from '@angular/material';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
     moduleId: module.id.toString(),
@@ -18,7 +18,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  subscription: Subscription = new Subscription();
   displayedColumns = ['team1', 'team2', 'pronostic', 'action'];
   displayedColumnsRank = ['rank', 'score', 'goodPronosticAndGoodScore', 'goodGoalAverage', 'goodPronosticOnly', 'falsePronostic' ];
   dataSource: MatTableDataSource<Matches>;
@@ -29,6 +30,8 @@ export class HomeComponent implements OnInit {
   isFilterOn = true;
   missingBetsNumber = 0;
   baseHrefForImages = environment.baseHrefForImages;
+  nextMatch: Matches;
+  timeToNextMatch: string;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private matchesService: MatchesService,
@@ -37,12 +40,16 @@ export class HomeComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar) {
-
+      moment.relativeTimeThreshold('m', 60 * 60);
   }
 
   ngOnInit() {
     this.getTodayMatchesAndPronostics();
     this.getUserRanking();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   getTodayMatchesAndPronostics() {
@@ -60,6 +67,9 @@ export class HomeComponent implements OnInit {
       this.calculateMissingBets(matches);
       this.highlightedRow = this.authenticationService.getLoggedUser().id;
       this.dataSource.sort = this.sort;
+      this.nextMatch = this.getNextMatch();
+      this.getTimeToNextMatch();
+      this.refreshTimeToNextMatch();
       this.isLoadingResults = false;
     },
     error => {
@@ -114,6 +124,32 @@ export class HomeComponent implements OnInit {
   isFinished(match: Matches): boolean {
     // Finished status = 2
     return match.status === 2;
+  }
+
+  getNextMatch(): Matches {
+    return this.dataSource.data.find(m => moment(m.date).valueOf() > moment.now());
+  }
+
+  getTimeToNextMatch(): string {
+    this.timeToNextMatch = '';
+    // If next match already started, search next match
+    if (this.nextMatch == null || moment(this.nextMatch.date).isAfter()) {
+      this.getNextMatch();
+    }
+
+    if (this.nextMatch != null) {
+      this.timeToNextMatch = moment(this.nextMatch.date).fromNow();
+    } else {
+      // No next match today, stop refreshing timer
+      this.subscription.unsubscribe();
+    }
+    return this.timeToNextMatch;
+  }
+
+  refreshTimeToNextMatch(): void {
+    this.subscription.add(
+      interval(60000).subscribe(() => this.getTimeToNextMatch())
+    );
   }
 
 }

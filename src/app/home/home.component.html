@@ -2,6 +2,8 @@
   <div class="match-container" fxFlex="45" fxFlex.lt-md="95">
     <mat-card>
       <mat-card-title matBadge="{{missingBetsNumber}}" [matBadgeHidden]="missingBetsNumber == 0"  matBadgeColor="warn">Today matches</mat-card-title>
+      <mat-card-subtitle *ngIf="nextMatch">Next match {{ timeToNextMatch }}</mat-card-subtitle>
+    
       <mat-card-content>
         <div class="matches-loading-shade" *ngIf="isLoadingResults">
           <mat-spinner></mat-spinner>
@@ -12,8 +14,8 @@
             <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
             <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
                 <span *ngIf="isFinished(row) || isInPlay(row)" fxLayoutAlign="start center" class="status">
-                    <i  *ngIf="isFinished(row)" class="material-icons icon-16px" title="Finished">done</i>
-                    <img  *ngIf="isInPlay(row)"  width="16" height="16" src="{{baseHrefForImages}}assets/soccer_ball_animated.svg" title="In Play">
+                    <i *ngIf="isFinished(row)" class="material-icons icon-16px" title="Finished">done</i>
+                    <img *ngIf="isInPlay(row)"  width="16" height="16" src="{{baseHrefForImages}}assets/soccer_ball_animated.svg" title="In Play">
                 </span>        
                 <img class="flag-mini" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
                 <span  class="status" *ngIf="isFinished(row) || isInPlay(row)"></span>
