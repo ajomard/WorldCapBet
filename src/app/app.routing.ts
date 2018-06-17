@@ -13,10 +13,10 @@ import { AdminListMatchesComponent } from './administration/admin-list-matches/a
 import { AdminListTeamsComponent } from './administration/admin-list-teams/admin-list-teams.component';
 import { AdminMatchComponent } from './administration/admin-match/admin-match.component';
 import { AdminTeamComponent } from './administration/admin-team/admin-team.component';
-import { AverageComponent } from './charts/average/average.component';
 import { AuthGuard } from './_guards/index';
 import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
 import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component';
+import { ChartsComponent } from './charts/charts/charts.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
     { path: 'admin/teams', component: AdminListTeamsComponent , canActivate: [AuthGuard] },
     { path: 'admin/team/create', component: AdminTeamComponent , canActivate: [AuthGuard] },
     { path: 'admin/team/edit', component: AdminTeamComponent , canActivate: [AuthGuard] },
-    { path: 'charts/average', component: AverageComponent , canActivate: [AuthGuard] },
+    { path: 'charts', component: ChartsComponent , canActivate: [AuthGuard] },
     { path: 'matches/groups', component: TeamRankingComponent , canActivate: [AuthGuard] },
     { path: 'matches/knockout', component: KnockoutPhaseComponent , canActivate: [AuthGuard] },
 

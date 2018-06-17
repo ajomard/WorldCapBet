@@ -40,7 +40,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar) {
-      moment.relativeTimeThreshold('m', 60 * 60);
+      moment.relativeTimeThreshold('s', 60 );
+      moment.relativeTimeThreshold('m', 60 );
   }
 
   ngOnInit() {
@@ -133,7 +134,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   getTimeToNextMatch(): string {
     this.timeToNextMatch = '';
     // If next match already started, search next match
-    if (this.nextMatch == null || moment(this.nextMatch.date).isAfter()) {
+    if (this.nextMatch == null || moment(this.nextMatch.date).isBefore()) {
       this.getNextMatch();
     }
 

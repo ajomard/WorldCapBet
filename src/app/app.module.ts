@@ -60,14 +60,15 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import { AverageComponent } from './charts/average/average.component';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MatchComponent } from './match/match.component';
 import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
 import { GroupRankingComponent } from './rankings/group-ranking/group-ranking.component';
 import { MatchesViewComponent } from './matches-view/matches-view.component';
 import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component';
-
+import { ChartsComponent } from './charts/charts/charts.component';
+import { PronosticsComponent } from './charts/pronostics/pronostics.component';
+import { ScoresComponent } from './charts/scores/scores.component';
 
 @NgModule({
     imports: [
@@ -123,12 +124,14 @@ import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase
         AdminListTeamsComponent,
         AdminTeamComponent,
         UserComponent,
-        AverageComponent,
         MatchComponent,
         TeamRankingComponent,
         GroupRankingComponent,
         MatchesViewComponent,
-        KnockoutPhaseComponent
+        KnockoutPhaseComponent,
+        ChartsComponent,
+        PronosticsComponent,
+        ScoresComponent
     ],
     entryComponents: [
       BetComponent

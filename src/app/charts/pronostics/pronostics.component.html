@@ -1,0 +1,23 @@
+<div fxLayoutAlign="center center" class="margin-top">
+  <mat-card class="margin-top" *ngIf="chartStats?.length > 0 || isLoadingResults">
+    <mat-card-title class="header">
+      <span>Pronostics</span>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="charts-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner></mat-spinner>
+      </div>
+      <ngx-charts-bar-vertical-2d
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="chartStats"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel">
+      </ngx-charts-bar-vertical-2d>
+    </mat-card-content>
+  </mat-card>
+</div>
