@@ -60,5 +60,5 @@
     <mat-row *matRowDef="let rank; let i = index; columns: displayedColumns;" [style.font-weight]="rank.user.id == highlightedRow ? 'bold' : ''"></mat-row>
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[25, 50, 100]"></mat-paginator>
+  <mat-paginator fxHide.lt-md="true" [pageSizeOptions]="[25, 50, 100]"></mat-paginator>
 </div>

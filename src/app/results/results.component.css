@@ -3,6 +3,7 @@
   flex-direction: column;
   min-width: 300px;
   min-height: 200px;
+  max-height: calc(100vh - 150px);
   position: relative;
 }
 

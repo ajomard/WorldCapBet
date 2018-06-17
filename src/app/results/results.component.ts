@@ -36,7 +36,6 @@ export class ResultsComponent implements OnInit {
   getRanking() {
     this.rankingService.getAll().subscribe(ranking => {
       this.dataSource = new MatTableDataSource(ranking);
-      this.dataSource.paginator = this.paginator;
       this.dataSource.sortingDataAccessor = (item, property) => {
         switch (property) {
           case 'firstName': return item.user.firstName;
@@ -44,8 +43,12 @@ export class ResultsComponent implements OnInit {
           default: return item[property];
         }
       };
-      const idx = this.dataSource.data.findIndex(r => r.user.id === this.userId);
-      this.dataSource.paginator.pageIndex = Math.floor(idx / this.dataSource.paginator.pageSize);
+
+      if (!this.deviceService.isMobile()) {
+        const idx = this.dataSource.data.findIndex(r => r.user.id === this.userId);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator.pageIndex = Math.floor(idx / this.dataSource.paginator.pageSize);
+      }
       this.dataSource.sort = this.sort;
       this.highlightedRow = this.userId;
       this.isLoadingResults = false;

@@ -9,6 +9,7 @@
   min-width: 300px;
   min-height: 200px;
   position: relative;
+  max-height: calc(100vh - 195px);
 }
 
 .matches-header {
