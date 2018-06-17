@@ -27,15 +27,15 @@ export class UserService {
         return this.http.put(this.apiUrl + '/Users/' + user.id, user);
     }
 
-    delete(id: number) {
+    delete(id: string) {
         return this.http.delete(this.apiUrl + '/Users/' + id);
     }
 
-    getAllMatchesAndPronostics(id: number) {
+    getAllMatchesAndPronostics(id: string) {
       return this.http.get<Matches[]>(this.apiUrl + '/Users/' + id + '/AllMatchAndPronostic');
     }
 
-    getPronostics(id: number) {
+    getPronostics(id: string) {
         return this.http.get<Pronostic[]>(this.apiUrl + '/Users/' + id + '/pronostics');
     }
 
