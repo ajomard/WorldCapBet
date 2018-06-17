@@ -17,6 +17,7 @@ export class ResultsComponent implements OnInit {
   displayedColumns: string[];
   dataSource: MatTableDataSource<Ranking>;
   isLoadingResults = true;
+  userId: string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -28,6 +29,7 @@ export class ResultsComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.userId = this.authenticationService.getLoggedUser().id;
     this.getRanking();
   }
 
@@ -42,8 +44,10 @@ export class ResultsComponent implements OnInit {
           default: return item[property];
         }
       };
+      const idx = this.dataSource.data.findIndex(r => r.user.id === this.userId);
+      this.dataSource.paginator.pageIndex = Math.floor(idx / this.dataSource.paginator.pageSize);
       this.dataSource.sort = this.sort;
-      this.highlightedRow = this.authenticationService.getLoggedUser().id;
+      this.highlightedRow = this.userId;
       this.isLoadingResults = false;
     });
   }
