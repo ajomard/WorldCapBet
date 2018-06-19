@@ -38,10 +38,6 @@
   width: 100%;
 }
 
-.mat-table {
-  overflow: auto;
-}
-
 .header {
   display: flex;
   justify-content: space-between;

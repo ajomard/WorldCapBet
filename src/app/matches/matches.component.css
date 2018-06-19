@@ -38,10 +38,11 @@
   width: 100%;
 }
 
+/*
 .mat-table {
   overflow: auto;
   max-height: calc(100vh - 145px);
-}
+}*/
 
 .flag-mini{
   margin : 0 15px;
