@@ -16,7 +16,6 @@ import { AdminTeamComponent } from './administration/admin-team/admin-team.compo
 import { AverageComponent } from './charts/average/average.component';
 import { AuthGuard } from './_guards/index';
 import { TeamRankingComponent } from './rankings/team-ranking/team-ranking.component';
-import { MatchesViewComponent } from './matches-view/matches-view.component';
 import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase.component';
 
 const appRoutes: Routes = [

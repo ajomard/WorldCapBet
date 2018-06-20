@@ -4,14 +4,13 @@ import { RankingService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
 import { UserService } from '../_services/index';
 import { Matches } from '../_models/index';
-import { User } from '../_models/index';
-import { Pronostic } from '../_models/index';
 import { Ranking } from '../_models/index';
 import { BetComponent } from '../bet/bet.component';
 import * as moment from 'moment';
 
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id.toString(),
@@ -20,11 +19,11 @@ import { environment } from '../../environments/environment';
 })
 
 export class HomeComponent implements OnInit {
-  displayedColumns = ['team1', 'team2', 'pronostic','action'];
-  displayedColumnsRank = ['rank','score','goodPronosticAndGoodScore','goodGoalAverage','goodPronosticOnly','falsePronostic' ];
+  displayedColumns = ['team1', 'team2', 'pronostic', 'action'];
+  displayedColumnsRank = ['rank', 'score', 'goodPronosticAndGoodScore', 'goodGoalAverage', 'goodPronosticOnly', 'falsePronostic' ];
   dataSource: MatTableDataSource<Matches>;
   dataSourceRank: MatTableDataSource<Ranking>;
-  highlightedRow:any;
+  highlightedRow: any;
   isLoadingResults = false;
   isLoadingResultsRank = false;
   isFilterOn = true;
@@ -35,7 +34,7 @@ export class HomeComponent implements OnInit {
   constructor(private matchesService: MatchesService,
     private rankingService: RankingService,
     public authenticationService: AuthenticationService,
-    private userService: UserService,
+    private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar) {
 
@@ -48,11 +47,11 @@ export class HomeComponent implements OnInit {
 
   getTodayMatchesAndPronostics() {
     this.isLoadingResults = true;
-    let userid = this.authenticationService.getLoggedUser().id;
+    const userid = this.authenticationService.getLoggedUser().id;
     this.matchesService.getTodayMatchesAndPronostics(userid).subscribe(matches => {
       this.dataSource = new MatTableDataSource(matches);
       this.dataSource.sortingDataAccessor = (item, property) => {
-        switch(property) {
+        switch (property) {
           case 'team1': return item.team1.name;
           case 'team2': return item.team2.name;
           default: return item[property];
@@ -64,45 +63,57 @@ export class HomeComponent implements OnInit {
       this.isLoadingResults = false;
     },
     error => {
-        //this.openSnackBar('Error while loading matches', 10000);
         this.isLoadingResults = false;
     });
   }
 
   getUserRanking() {
     this.isLoadingResultsRank = true;
-    let userid = this.authenticationService.getLoggedUser().id;
+    const userid = this.authenticationService.getLoggedUser().id;
     this.rankingService.getUserRanking(userid).subscribe(ranking => {
       this.dataSourceRank = new MatTableDataSource(ranking);
       this.isLoadingResultsRank = false;
     },
     error => {
-        //this.openSnackBar('Error while loading matches', 10000);
         this.isLoadingResultsRank = false;
     });
   }
 
-  openDialog(match:Matches) {
-    const dialogRef = this.dialog.open(BetComponent, {
+  openDialog(match: Matches) {
+    this.dialog.open(BetComponent, {
       data: match
     });
   }
 
-  calculateMissingBets(matches:Matches[]) {
+  goToDetail(match: Matches) {
+    this.router.navigate(['/match', match.id]);
+  }
+
+  calculateMissingBets(matches: Matches[]) {
     this.missingBetsNumber = 0;
-    for(let match of matches) {
-      if(!this.isPronostic(match)) {
+    for (const match of matches) {
+      if (!this.isPronostic(match)) {
         this.missingBetsNumber++;
       }
     }
   }
 
-  isPronostic(match:Matches): boolean {
+  isPronostic(match: Matches): boolean {
     return match.pronostic != null;
   }
 
-  isMatchAlreadyPlayed(match:Matches): boolean {
+  isMatchAlreadyPlayed(match: Matches): boolean {
     return moment(match.date) <= moment();
+  }
+
+  isInPlay(match: Matches): boolean {
+    // In play status = 1
+    return match.status === 1;
+  }
+
+  isFinished(match: Matches): boolean {
+    // Finished status = 2
+    return match.status === 2;
   }
 
 }

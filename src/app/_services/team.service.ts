@@ -13,15 +13,15 @@ export class TeamService {
         return this.http.get<Team[]>(this.apiUrl + 'Teams');
     }
 
-    create(team:Team) {
+    create(team: Team) {
       return this.http.post(this.apiUrl + 'Teams/', team);
     }
 
-    update(team:Team) {
+    update(team: Team) {
       return this.http.put(this.apiUrl + 'Teams/' + team.id, team);
     }
 
-    delete(team:Team) {
+    delete(team: Team) {
       return this.http.delete(this.apiUrl + 'Teams/' + team.id);
     }
 

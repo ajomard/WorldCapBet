@@ -10,7 +10,7 @@ import { PronosticService } from '../_services/index';
 
 import { environment } from '../../environments/environment';
 
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-bet',
@@ -48,7 +48,7 @@ export class BetComponent implements OnInit {
 
   saveBet() {
     this.isAction = true;
-    if(this.pronosticTmp.id != null) {
+    if (this.pronosticTmp.id != null) {
       this.pronosticService.update(this.pronosticTmp).subscribe(
           data => {
             this.data.pronostic = this.pronosticTmp;
@@ -56,7 +56,6 @@ export class BetComponent implements OnInit {
             this.close();
           },
           error => {
-            //this.openSnackBar('Error while saving bet', 10000);
             this.close();
           });
     } else {
@@ -70,7 +69,6 @@ export class BetComponent implements OnInit {
             this.close();
           },
           error => {
-            //this.openSnackBar('Error while creating bet', 10000);
             this.close();
           });
     }
@@ -82,7 +80,7 @@ export class BetComponent implements OnInit {
   }
 
   openSnackBar(message: string, time: number) {
-    this.snackBar.open(message,'Close', {
+    this.snackBar.open(message, 'Close', {
       duration: time,
     });
   }

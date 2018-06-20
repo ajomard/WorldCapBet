@@ -52,8 +52,9 @@ export class AdminMatchComponent implements OnInit {
 
 
         this.match = this.dataService.get();
-        if(this.match == null) this.match = new Matches();
-
+        if (this.match == null) {
+          this.match = new Matches();
+        }
         this.matchForm = new FormGroup({
            'date': new FormControl(this.match.date, [
              Validators.required
@@ -83,19 +84,19 @@ export class AdminMatchComponent implements OnInit {
       }
 
       createOrUpdate() {
-        if(this.match.id == null) {
+        if (this.match.id == null) {
           this.matchService.create(this.match).subscribe(data => {
             this.dataService.delete();
-            this.openSnackBar("Match created", 2000);
-            this.router.navigate(["/admin/matches"]);
+            this.openSnackBar('Match created', 2000);
+            this.router.navigate(['/admin/matches']);
           }, error => {
             this.dataService.delete();
           });
         } else {
           this.matchService.update(this.match).subscribe(data => {
             this.dataService.delete();
-            this.openSnackBar("Match updated", 2000);
-            this.router.navigate(["/admin/matches"]);
+            this.openSnackBar('Match updated', 2000);
+            this.router.navigate(['/admin/matches']);
           }, error => {
             this.dataService.delete();
           });
@@ -105,7 +106,7 @@ export class AdminMatchComponent implements OnInit {
 
       cancel() {
         this.dataService.delete();
-        this.router.navigate(["/admin/matches"]);
+        this.router.navigate(['/admin/matches']);
       }
 
       filterTeam(val: string): Team[] {
@@ -118,17 +119,17 @@ export class AdminMatchComponent implements OnInit {
        }
 
        openSnackBar(message: string, time: number) {
-         this.snackBar.open(message,'Close', {
+         this.snackBar.open(message, 'Close', {
            duration: time,
          });
        }
 
        toggleTitleState() {
-        if(this.match.type == 0)  {
+        if (this.match.type === 0)  {
           this.matchForm.controls['title'].disable();
-          //this.match.title = null;
+        } else {
+          this.matchForm.controls['title'].enable();
         }
-        else this.matchForm.controls['title'].enable();
        }
 
 }
