@@ -1,0 +1,19 @@
+.round-matches {
+    margin: 10px;
+}
+
+.round-title {
+    background: #fff;
+}
+
+.round-title-border{
+    border-right: 1px solid gainsboro;
+}
+
+h4 {
+    -webkit-margin-before: 10px;
+    -webkit-margin-after: 10px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}

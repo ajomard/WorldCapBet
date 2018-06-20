@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+﻿﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -57,6 +57,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
@@ -69,6 +70,7 @@ import { KnockoutPhaseComponent } from './rankings/knockout-phase/knockout-phase
 import { ChartsComponent } from './charts/charts/charts.component';
 import { PronosticsComponent } from './charts/pronostics/pronostics.component';
 import { ScoresComponent } from './charts/scores/scores.component';
+import { KnockoutMatchComponent } from './rankings/knockout-phase/knockout-match/knockout-match.component';
 
 @NgModule({
     imports: [
@@ -107,6 +109,7 @@ import { ScoresComponent } from './charts/scores/scores.component';
         MatSelectModule,
         MatRadioModule,
         MatTabsModule,
+        MatGridListModule,
         DeviceDetectorModule.forRoot()
     ],
     declarations: [
@@ -131,7 +134,8 @@ import { ScoresComponent } from './charts/scores/scores.component';
         KnockoutPhaseComponent,
         ChartsComponent,
         PronosticsComponent,
-        ScoresComponent
+        ScoresComponent,
+        KnockoutMatchComponent
     ],
     entryComponents: [
       BetComponent

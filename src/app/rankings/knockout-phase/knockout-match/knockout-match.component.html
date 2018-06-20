@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    
+  </mat-card-header>
+  <mat-card-content>
+    <div class="matches-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="20px" (click)="goToMatch()">
+        <div fxFlex="1 1 50" fxLayout="row" fxLayoutAlign="space-between center">
+          <span fxFlex="1 1 180px" fxLayout="row" fxLayoutAlign="start center">
+              <img class="flag-mini" width="30" height="20" *ngIf="match != null" src="{{baseHrefForImages}}assets/flags-mini/{{match.team1.flag}}.png">  
+              <span class="padding-team" fxHide.lt-md="true" *ngIf="match != null">{{match.team1.name}}</span>
+              <span *ngIf="match == null">T.B.A</span>
+          </span>
+          <span class="score" *ngIf="match != null">{{match.scoreTeam1}}</span>
+          <span *ngIf="match == null">-</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span fxFlex="1 1 180px" fxLayout="row" fxLayoutAlign="start center">
+                <img class="flag-mini" width="30" height="20" *ngIf="match != null" src="{{baseHrefForImages}}assets/flags-mini/{{match.team2.flag}}.png">  
+                <span class="padding-team" fxHide.lt-md="true" *ngIf="match != null">{{match.team2.name}}</span>
+                <span *ngIf="match == null">T.B.A</span>
+            </span>
+            <span *ngIf="match != null" class="score">{{match.scoreTeam2}}</span>
+            <span *ngIf="match == null">-</span>
+        </div>
+      </div>
+  </mat-card-content>
+
+</mat-card>
+
