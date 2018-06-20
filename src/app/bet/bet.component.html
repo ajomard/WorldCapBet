@@ -1,0 +1,32 @@
+<mat-dialog-content>
+  <form  [formGroup]="betForm" novalidate fxLayout.lt-sm="column"  (submit)="saveBet()">
+    <div fxLayout="column" ngClass.gt-xs="padding-right-10px">
+      <div fxLayoutAlign="end center" fxLayoutAlign.lt-sm="center center">
+        <span class="team-name">{{data.team1.name}}</span>
+        <img width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{data.team1.flag}}.png" [title]="data.team1.name">
+      </div>
+      <mat-form-field>
+        <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam1" formControlName="scoreTeam1"  placeholder="Score {{data.team1.name}}" required>
+        <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.required">You must enter a value</mat-error>
+        <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.min">Min score is 0</mat-error>
+        <mat-error *ngIf="betForm.controls['scoreTeam1'].errors && betForm.controls['scoreTeam1'].errors.max">Max score is 20</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="column" ngClass.gt-xs="padding-left-10px">
+      <div fxLayoutAlign="start center" fxLayoutAlign.lt-sm="center center">
+        <img width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{data.team2.flag}}.png" [title]="data.team2.name">
+        <span class="team-name">{{data.team2.name}}</span>
+      </div>
+      <mat-form-field >
+        <input type="number" min="0" max="20" matInput [(ngModel)]="pronosticTmp.scoreTeam2" formControlName="scoreTeam2" placeholder="Score {{data.team2.name}}" required>
+        <mat-error *ngIf="betForm.controls['scoreTeam2'].errors && betForm.controls['scoreTeam2'].errors.required">You must enter a value</mat-error>
+        <mat-error *ngIf="betForm.controls['scoreTeam2'].errors && betForm.controls['scoreTeam2'].errors.min">Min score is 0</mat-error>
+        <mat-error *ngIf="betForm.controls['scoreTeam2'].errors && betForm.controls['scoreTeam2'].errors.max">Max score is 20</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="buttons-right">
+  <button mat-button (click)="close()">Back</button>
+  <button mat-button color="primary" [disabled]="betForm.invalid || isAction" (click)="saveBet()">Save</button>
+</mat-dialog-actions>

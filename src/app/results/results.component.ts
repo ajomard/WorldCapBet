@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Ranking } from '../_models/index';
+import { User, Ranking } from '../_models/index';
 import { UserService, RankingService, AuthenticationService } from '../_services/index';
 
 
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
@@ -12,18 +12,19 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
-  ranking: Ranking[];
+  ranking:Ranking[];
   highlightedRow = {};
-  displayedColumns: string[];
+  displayedColumns:string[];
   dataSource: MatTableDataSource<Ranking>;
   isLoadingResults = true;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private rankingService: RankingService,
+  constructor(private userService: UserService,
+    private rankingService: RankingService,
     public authenticationService: AuthenticationService,
-    private deviceService: DeviceDetectorService) {
+    private deviceService: DeviceDetectorService) { 
       this.displayedColumns = this.getDisplayedColumns();
     }
 
@@ -36,7 +37,7 @@ export class ResultsComponent implements OnInit {
       this.dataSource = new MatTableDataSource(ranking);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sortingDataAccessor = (item, property) => {
-        switch (property) {
+        switch(property) {
           case 'firstName': return item.user.firstName;
           case 'lastName': return item.user.lastName;
           default: return item[property];
@@ -56,11 +57,10 @@ export class ResultsComponent implements OnInit {
   }
 
   getDisplayedColumns(): string[] {
-    if (this.deviceService.isMobile()) {
+    if(this.deviceService.isMobile()) {
       return ['rank', 'firstName', 'lastName', 'score' ];
     } else {
-      return ['rank', 'firstName', 'lastName', 'score', 'goodPronosticAndGoodScore',
-       'goodGoalAverage', 'goodPronosticOnly', 'falsePronostic' ];
+      return ['rank', 'firstName', 'lastName', 'score','goodPronosticAndGoodScore','goodGoalAverage','goodPronosticOnly','falsePronostic' ];
     }
   }
 

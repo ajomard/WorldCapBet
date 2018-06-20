@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartsService } from '../../_services/index';
 import { AuthenticationService } from '../../_services/index';
+//import { UserService } from '../_services/index';
+import { ChartAverage } from '../../_models/index';
+import { User } from '../../_models/index';
 import { GroupingBar } from '../../_models/index';
 import { Bar } from '../../_models/index';
 
@@ -26,6 +29,7 @@ export class AverageComponent implements OnInit {
   domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
 };
 
+
   constructor(private chartsService: ChartsService,
               private authenticationService: AuthenticationService) {
     this.chartStats = [];
@@ -39,7 +43,7 @@ export class AverageComponent implements OnInit {
 
   loadAverageChart() {
     this.isLoadingResults = true;
-    const userid = this.authenticationService.getLoggedUser().id;
+    let userid = this.authenticationService.getLoggedUser().id;
     this.chartsService.getAverageStats(userid).subscribe(chart => {
       this.chartStats = chart;
       this.isLoadingResults = false;
@@ -50,7 +54,7 @@ export class AverageComponent implements OnInit {
 
   loadAverageScore() {
     this.isLoadingResultsScore = true;
-    const userid = this.authenticationService.getLoggedUser().id;
+    let userid = this.authenticationService.getLoggedUser().id;
     this.chartsService.getAverageScore(userid).subscribe(chart => {
       this.chartScore = chart;
       this.isLoadingResultsScore = false;

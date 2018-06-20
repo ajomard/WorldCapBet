@@ -1,7 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { User } from '../_models/index';
 import { Pronostic } from '../_models/index';
+import { Matches } from '../_models/index';
 import { environment } from '../../environments/environment';
 
 @Injectable()

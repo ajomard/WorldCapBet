@@ -14,7 +14,7 @@ import { UserService } from '../_services/index';
 export class RegisterComponent implements OnInit {
     model: any = {};
     loading = false;
-    passwordverification: '';
+    passwordverification: "";
     registerForm: FormGroup;
     hidePassword = true;
     hidePassword2 = true;
@@ -55,9 +55,9 @@ export class RegisterComponent implements OnInit {
                   this.router.navigate(['/login']);
                 },
                 error => {
-                  // Get first error
-                  const errorToDisplay = Object.values(error.error)[0][0];
-                  this.openSnackBar(errorToDisplay, 10000);
+                  //get first error
+                  var error = Object.values(error.error)[0][0];
+                  this.openSnackBar(error, 10000);
                   this.loading = false;
                 });
     }
@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
     }
 
     openSnackBar(message: string, time: number) {
-      this.snackBar.open(message, 'Close', {
+      this.snackBar.open(message,'Close', {
         duration: time,
       });
     }

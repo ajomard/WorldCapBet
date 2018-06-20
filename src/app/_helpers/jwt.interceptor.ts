@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpInterceptor } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent,HttpResponse,HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { map, filter, tap } from 'rxjs/operators';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { MatSnackBar} from '@angular/material';
 
@@ -13,7 +13,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.auth_token) {
             request = request.clone({
                 setHeaders: {
@@ -29,8 +29,8 @@ export class JwtInterceptor implements HttpInterceptor {
           }
         }, error => {
             this.openSnackBar(error.statusText, 10000);
-            if (error.status === 401) {
-              this.router.navigate(['/login']);
+            if(error.status == 401) {
+              this.router.navigate(['/login']);;
             }
 
     }));
@@ -38,7 +38,7 @@ export class JwtInterceptor implements HttpInterceptor {
     }
 
     openSnackBar(message: string, time: number) {
-      this.snackBar.open(message, 'Close', {
+      this.snackBar.open(message,'Close', {
         duration: time,
       });
     }

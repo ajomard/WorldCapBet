@@ -10,22 +10,22 @@ import { MatchesService } from '../../_services';
   styleUrls: ['./group-ranking.component.css']
 })
 export class GroupRankingComponent implements OnInit {
-  displayedColumns = ['team', 'win', 'draw', 'loose', 'goalaverage', 'score'];
+  displayedColumns = ["team", "win", "draw", "loose", "goalaverage", "score"];
   dataSource: MatTableDataSource<TeamRanking>;
   isLoadingResults = false;
   baseHrefForImages = environment.baseHrefForImages;
   @Input()
-  groupName: string;
+  groupName:string;
 
-  constructor(private matchService: MatchesService) { }
+  constructor(private matchService:MatchesService) { }
 
   ngOnInit() {
     this.loadGroupResults(this.groupName);
   }
 
-  loadGroupResults(group: string) {
+  loadGroupResults(group:string) {
     this.isLoadingResults = true;
-    this.matchService.getGroupRanking(group).subscribe(data => {
+    this.matchService.getGroupRanking(this.groupName).subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.isLoadingResults = false;
     });

@@ -19,6 +19,7 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private userService: UserService,
+    private authenticationService: AuthenticationService,
     public snackBar: MatSnackBar) { }
 
     ngOnInit() {
@@ -34,11 +35,12 @@ export class UsersComponent implements OnInit {
         this.isLoadingResults = false;
       },
       error => {
+        //  this.openSnackBar('Error while loading users', 10000);
       });
     }
 
-    deleteUser(user: User) {
-      if (confirm('Are you sure to delete : ' + user.firstName + ' ' + user.lastName)) {
+    deleteUser(user:User) {
+      if(confirm("Are you sure to delete : " + user.firstName + " " + user.lastName)) {
         this.isLoadingResults = true;
         this.userService.delete(user.id).subscribe(() => {
           this.getUsers();
@@ -46,11 +48,12 @@ export class UsersComponent implements OnInit {
         },
         error => {
           this.isLoadingResults = false;
+            //this.openSnackBar('Error while deleting user', 10000);
         });
       }
     }
 
-    resetPassword(user: User) {
+    resetPassword(user:User) {
       this.isLoadingResults = true;
       this.userService.resetPassword(user).subscribe((newPassword) => {
         this.isLoadingResults = false;
@@ -58,11 +61,12 @@ export class UsersComponent implements OnInit {
       },
       error => {
         this.isLoadingResults = false;
+          //this.openSnackBar('Error while deleting user', 10000);
       });
     }
 
     openSnackBar(message: string, time: number) {
-      this.snackBar.open(message, 'Close', {
+      this.snackBar.open(message,'Close', {
         duration: time,
       });
     }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup,  Validators} from '@angular/forms';
 import { MatSnackBar} from '@angular/material';
+import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
 
@@ -12,15 +13,16 @@ import { AuthenticationService } from '../_services/index';
 })
 
 export class UserComponent implements OnInit {
-    model: any = {};
+    model: any= {};
     loading = false;
-    passwordverification: '';
+    passwordverification: "";
     userForm: FormGroup;
     hidePassword = true;
     hidePassword2 = true;
     isLoadingResults = false;
 
     constructor(
+        private router: Router,
         private userService: UserService,
         public snackBar: MatSnackBar,
         private authenticationService: AuthenticationService) { }
@@ -49,7 +51,7 @@ export class UserComponent implements OnInit {
 
     loadUser() {
       this.isLoadingResults = true;
-      const loggedUser = this.authenticationService.getLoggedUser();
+      let loggedUser = this.authenticationService.getLoggedUser();
       this.userService.getById(loggedUser.id).subscribe(user => {
         this.model = user;
         this.model.id = loggedUser.id;
@@ -65,11 +67,12 @@ export class UserComponent implements OnInit {
                 data => {
                     this.isLoadingResults = false;
                     this.openSnackBar('User updated', 5000);
+                    //this.router.navigate(['/']);
                 },
                 error => {
-                  // Get first error
-                  const errorToDisplay = Object.values(error.error)[0][0];
-                  this.openSnackBar(errorToDisplay, 10000);
+                  //get first error
+                  var error = Object.values(error.error)[0][0];
+                  this.openSnackBar(error, 10000);
                   this.isLoadingResults = false;
                 });
     }
@@ -85,7 +88,7 @@ export class UserComponent implements OnInit {
     }
 
     openSnackBar(message: string, time: number) {
-      this.snackBar.open(message, 'Close', {
+      this.snackBar.open(message,'Close', {
         duration: time,
       });
     }

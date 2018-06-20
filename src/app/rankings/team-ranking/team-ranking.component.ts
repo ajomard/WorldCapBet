@@ -7,6 +7,7 @@ import { GROUPS } from '../../_models';
   styleUrls: ['./team-ranking.component.css']
 })
 export class TeamRankingComponent implements OnInit {
+  // groupList: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   groupList: string[] = GROUPS;
   constructor() { }
 

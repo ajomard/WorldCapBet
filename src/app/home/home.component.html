@@ -1,0 +1,111 @@
+﻿<div class="full-container">
+  <div class="match-container" fxFlex="45" fxFlex.lt-md="95">
+    <mat-card>
+      <mat-card-title matBadge="{{missingBetsNumber}}" [matBadgeHidden]="missingBetsNumber == 0"  matBadgeColor="warn">Today matches</mat-card-title>
+      <mat-card-content>
+        <div class="matches-loading-shade" *ngIf="isLoadingResults">
+          <mat-spinner></mat-spinner>
+        </div>
+        <mat-table [dataSource]="dataSource" matSort matSortActive="date" matSortDisableClear matSortDirection="asc">
+          <!-- Progress Column -->
+          <ng-container matColumnDef="team1">
+            <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Team 1 </mat-header-cell>
+            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                <img class="flag-mini" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team1.flag}}.png" [title]="row.team1.name">
+            </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="team2">
+            <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Team 2 </mat-header-cell>
+            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+                <img class="flag-mini" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{row.team2.flag}}.png" [title]="row.team2.name">
+            </mat-cell>
+          </ng-container>
+
+          <!-- Color Column -->
+          <ng-container matColumnDef="pronostic">
+            <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Pronostic </mat-header-cell>
+            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+              <span *ngIf="isPronostic(row)">{{row.pronostic.scoreTeam1}} - {{row.pronostic.scoreTeam2}}</span>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef fxLayout="row" fxLayoutAlign="center center"> Action </mat-header-cell>
+            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutAlign="center center">
+              <button mat-button color="primary" (click)="openDialog(row)" [disabled]="isMatchAlreadyPlayed(row)">Bet</button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+    <div class="ranking-container" fxFlex="45" fxFlex.lt-md="95">
+      <mat-card>
+          <mat-card-title>Current Ranking</mat-card-title>
+        <mat-card-content>
+          <div class="matches-loading-shade" *ngIf="isLoadingResultsRank">
+            <mat-spinner></mat-spinner>
+          </div>
+          <mat-table [dataSource]="dataSourceRank" >
+
+            <!-- Rank -->
+            <ng-container matColumnDef="rank">
+              <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> Rank </mat-header-cell>
+              <mat-cell *matCellDef="let rank" fxLayoutAlign="center center"> {{rank.rank}} </mat-cell>
+            </ng-container>
+
+            <!-- First Name -->
+            <ng-container matColumnDef="firstName">
+              <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> First Name </mat-header-cell>
+              <mat-cell *matCellDef="let rank" fxLayoutAlign="center center"> {{rank.user.firstName}} </mat-cell>
+            </ng-container>
+
+            <!-- Last Name -->
+            <ng-container matColumnDef="lastName">
+              <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> Last Name </mat-header-cell>
+              <mat-cell *matCellDef="let rank" fxLayoutAlign="center center"> {{rank.user.lastName}} </mat-cell>
+            </ng-container>
+
+            <!-- Score -->
+            <ng-container matColumnDef="score">
+              <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> Score </mat-header-cell>
+              <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.score}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="goodPronosticAndGoodScore">
+              <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> Good Pronostic And Good Score </mat-header-cell>
+              <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.goodPronosticAndGoodScore}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="goodGoalAverage">
+              <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> Good Goal Average </mat-header-cell>
+              <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.goodGoalAverage}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="goodPronosticOnly">
+              <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> Good Pronostic Only </mat-header-cell>
+              <mat-cell *matCellDef="let rank" fxLayoutAlign="center center">{{rank.goodPronosticOnly}} </mat-cell>
+            </ng-container>
+
+            <!-- Score -->
+            <ng-container matColumnDef="falsePronostic">
+              <mat-header-cell fxHide.lt-md *matHeaderCellDef fxLayoutAlign="center center"> False Pronostic </mat-header-cell>
+              <mat-cell fxHide.lt-md *matCellDef="let rank" fxLayoutAlign="center center">{{rank.falsePronostic}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumnsRank"></mat-header-row>
+            <mat-row *matRowDef="let rank; let i = index; columns: displayedColumnsRank;"
+             [style.font-weight]="rank.user.id == highlightedRow ? 'bold' : ''" 
+             matTooltip="{{rank.user.firstName}} {{rank.user.lastName}}" matTooltipPosition="before">
+            </mat-row>
+          </mat-table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+</div>

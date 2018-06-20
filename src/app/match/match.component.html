@@ -1,0 +1,45 @@
+<mat-card>
+  <div class="loading-shade" *ngIf="isLoadingResults">
+      <mat-spinner></mat-spinner>
+  </div>
+  <mat-card-title>Match details</mat-card-title>
+    <mat-card-subtitle>{{match?.date | date:'d MMMM y HH:mm'}}</mat-card-subtitle>
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="match">
+    <p ngClass.gt-sm="score-team" ngClass.lt-md="score-team-mini">{{match.team1.name}}</p>
+    <img fxHide fxShow.gt-sm="true" class="flag-team" height='125' src="{{baseHrefForImages}}assets/flags-medium/{{match.team1.flag}}.png" [title]="match.team1.name">
+    <img fxHide  fxShow.lt-md="true" class="flag-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{match.team1.flag}}.png" [title]="match.team1.name">
+    <p ngClass.gt-sm="score" ngClass.lt-md="score-mini">{{match.scoreTeam1}}</p>
+    <p ngClass.gt-sm="score" ngClass.lt-md="score-mini">-</p>
+    <p ngClass.gt-sm="score" ngClass.lt-md="score-mini">{{match.scoreTeam2}}</p>
+    <img fxHide fxShow.gt-sm="true" class="flag-team" height='125' src="{{baseHrefForImages}}assets/flags-medium/{{match.team2.flag}}.png" [title]="match.team2.name">
+    <img fxHide fxShow.lt-md="true" class="flag-team" width="30" height="20" src="{{baseHrefForImages}}assets/flags-mini/{{match.team2.flag}}.png" [title]="match.team2.name">
+    <p ngClass.gt-sm="score-team" ngClass.lt-md="score-team-mini">{{match.team2.name}}</p>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-card-content >
+    <h2 class="h2-prono">Pronostics</h2>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-table ngClass.gt-xs="pronostics-75" ngClass.lt-sm="pronostics-100" [dataSource]="dataSource" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+         <ng-container matColumnDef="name">
+            <mat-header-cell fxLayoutAlign="center center" mat-sort-header *matHeaderCellDef > Name </mat-header-cell>
+            <mat-cell *matCellDef="let prono"> {{prono.user.lastName | titlecase}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="firstname">
+            <mat-header-cell fxLayoutAlign="center center" mat-sort-header *matHeaderCellDef > First Name </mat-header-cell>
+            <mat-cell *matCellDef="let prono"> {{prono.user.firstName | titlecase}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="score">
+            <mat-header-cell fxLayoutAlign="center center" *matHeaderCellDef> Score </mat-header-cell>
+            <mat-cell *matCellDef="let prono" fxLayoutAlign="center center">
+              <span class="success-{{isRight(prono)}}">{{prono.scoreTeam1}} - {{prono.scoreTeam2}}</span>  
+            </mat-cell>
+          </ng-container>
+    
+          <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+          <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+    </mat-table >
+  </div>
+  </mat-card-content>
+</mat-card>
+
+

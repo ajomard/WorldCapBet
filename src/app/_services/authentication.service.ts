@@ -10,7 +10,7 @@ export class AuthenticationService {
     apiUrl = environment.apiUrl;
     constructor(private http: HttpClient) { }
 
-    login(user: User) {
+    login(user:User) {
         return this.http.post<any>(this.apiUrl + '/Auth/login', user);
           /*  .subscribe(user => {
                 // login successful if there's a jwt token in the response
@@ -39,7 +39,7 @@ export class AuthenticationService {
     }
 
     isAdmin() {
-      const user = this.getLoggedUser();
-      return user != null && user.role === 'Admin';
+      let user = this.getLoggedUser();
+      return user != null && user.role == 'Admin';
     }
 }
