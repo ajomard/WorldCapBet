@@ -2,29 +2,43 @@
 </app-matches-view>
 
 <div>
+    <div class="round-title" fxLayout="row" fxLayoutAlign="space-around center">
+        <div class="round-title-border" fxFlex fxFlexAlign="stretch"  fxLayout="column" fxLayoutAlign="space-evenly center">
+            <h4>1/8</h4>
+        </div>
+        <div class="round-title-border" fxFlex fxFlexAlign="stretch"  fxLayout="column" fxLayoutAlign="space-evenly center">
+            <h4>1/4</h4>
+        </div>
+        <div class="round-title-border" fxFlex fxFlexAlign="stretch"  fxLayout="column" fxLayoutAlign="space-evenly center">
+            <h4>1/2</h4>
+        </div>
+        <div class="round-title-border" fxFlex fxFlexAlign="stretch"  fxLayout="column" fxLayoutAlign="space-evenly center">
+            <h4>Final</h4>
+        </div>
+    </div>
     <div fxLayout="row" fxLayoutAlign="space-around center">
-        <div fxFlex fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="5px">
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
+        <div class="round-matches" fxFlex fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="5px">
+            <app-knockout-match matchTitle="1.1"></app-knockout-match>
+            <app-knockout-match matchTitle="1.2"></app-knockout-match>
+            <app-knockout-match matchTitle="1.3"></app-knockout-match>
+            <app-knockout-match matchTitle="1.4"></app-knockout-match>
+            <app-knockout-match matchTitle="1.5"></app-knockout-match>
+            <app-knockout-match matchTitle="1.6"></app-knockout-match>
+            <app-knockout-match matchTitle="1.7"></app-knockout-match>
+            <app-knockout-match matchTitle="1.8"></app-knockout-match>
         </div>
-        <div fxFlex fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="5px">
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
+        <div class="round-matches" fxFlex fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="5px">
+            <app-knockout-match matchTitle="2.1"></app-knockout-match>
+            <app-knockout-match matchTitle="2.2"></app-knockout-match>
+            <app-knockout-match matchTitle="2.3"></app-knockout-match>
+            <app-knockout-match matchTitle="2.4"></app-knockout-match>
         </div>
-        <div fxFlex fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="5px">
-            <app-knockout-match></app-knockout-match>
-            <app-knockout-match></app-knockout-match>
+        <div class="round-matches" fxFlex fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="5px">
+            <app-knockout-match matchTitle="3.1"></app-knockout-match>
+            <app-knockout-match matchTitle="3.2"></app-knockout-match>
         </div>
-        <div fxFlex fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="5px">
-            <app-knockout-match></app-knockout-match>
+        <div class="round-matches" fxFlex fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="5px">
+            <app-knockout-match matchTitle="4.1"></app-knockout-match>
             
         </div>
       </div>
